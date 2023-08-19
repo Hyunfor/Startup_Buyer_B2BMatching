@@ -11,7 +11,11 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.mis.web">
+	<logger name="com.mis.controller">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.mis.interceptor">
 		<level value="info" />
 	</logger>
 	
