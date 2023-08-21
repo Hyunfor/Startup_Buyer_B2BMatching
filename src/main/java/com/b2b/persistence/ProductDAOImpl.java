@@ -1,11 +1,14 @@
 package com.b2b.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.b2b.domain.ProductVO;
+import com.b2b.domain.SearchCriteria;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO{
@@ -35,5 +38,20 @@ public class ProductDAOImpl implements ProductDAO{
 		session.delete(namespace + ".delete", pno);	
 	}
 	
+	@Override
+	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception {
+		return session.selectList(namespace + ".listSearch", cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		return session.selectOne(namespace + ".listSearchCount", cri);
+	}
+	
+	@Override
+	public void updateViewCount(int pno) throws Exception {
+		session.update(namespace + ".updateViewCount", pno);
+	}
+
 
 }
