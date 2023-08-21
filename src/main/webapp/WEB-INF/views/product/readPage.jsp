@@ -29,8 +29,14 @@
 
 				<div class="box-body">
 					<div class="form-group">
-						<label for="exampleInputEmail1">제품명</label> <input type="text"
+						<label for="exampleInputEmail1">상품명</label> <input type="text"
 							name='pname' class="form-control" value="${productVO.pname}"
+							readonly="readonly">
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">카테고리</label> <input type="text"
+							name='price' class="form-control" value="${productVO.category}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
@@ -38,15 +44,11 @@
 						<textarea class="form-control" name="content" rows="3"
 							readonly="readonly">${productVO.content}</textarea>
 					</div>
-					<div class="form-group">
-						<label for="exampleInputEmail1">가격</label> <input type="text"
-							name='price' class="form-control" value="${productVO.price}"
-							readonly="readonly">
-					</div>					
+										
 					
 					<div class="form-group">
-						<label for="exampleInputEmail1">작성자</label> <input type="text"
-							name="writer" class="form-control" value="${productVO.writer}"
+						<label for="exampleInputEmail1">스타트업</label> <input type="text"
+							name="writer" class="form-control" value="${productVO.startup_id}"
 							readonly="readonly">
 					</div>
 				</div>
