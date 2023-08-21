@@ -1,4 +1,4 @@
-package com.mis.domain;
+package com.b2b.domain;
 
 public class UserVO {
 

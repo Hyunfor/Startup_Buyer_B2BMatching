@@ -1,7 +1,7 @@
-package com.mis.service;
+package com.b2b.service;
 
-import com.mis.domain.UserVO;
-import com.mis.dto.LoginDTO;
+import com.b2b.domain.UserVO;
+import com.b2b.dto.LoginDTO;
 
 public interface UserService {
 

@@ -1,12 +1,12 @@
-package com.mis.persistence;
+package com.b2b.persistence;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.mis.domain.UserVO;
-import com.mis.dto.LoginDTO;
+import com.b2b.domain.UserVO;
+import com.b2b.dto.LoginDTO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {

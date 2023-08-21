@@ -1,12 +1,12 @@
-package com.mis.service;
+package com.b2b.service;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.mis.domain.UserVO;
-import com.mis.dto.LoginDTO;
-import com.mis.persistence.UserDAO;
+import com.b2b.domain.UserVO;
+import com.b2b.dto.LoginDTO;
+import com.b2b.persistence.UserDAO;
 
 @Service
 public class UserServiceImpl implements UserService {
