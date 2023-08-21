@@ -22,30 +22,22 @@
 							<label for="exampleInputEmail1">제품명</label> <input type="text"
 								name='pname' class="form-control" placeholder="Enter Title">
 						</div>
+						
+						<div class="form-group">
+							<label for="exampleInputEmail1">카테고리</label> <input type="text"
+								name='price' class="form-control" placeholder="Enter Title">
+						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">내용</label>
 							<textarea class="form-control" name="content" rows="3"
 								placeholder="Enter ..."></textarea>
 						</div>
 						
-						<div class="form-group">
-							<label for="exampleInputEmail1">금액</label> <input type="text"
-								name='price' class="form-control" placeholder="Enter Title">
-						</div>
-						
  						<div class="form-group">
-							<label for="exampleInputEmail1">작성자</label> <input type="text"
-								name="writer" class="form-control" value='${login.usid }'
+							<label for="exampleInputEmail1">스타트업</label> <input type="text"
+								name="writer" class="form-control" value='${login.startup_id }'
 								readonly>
 						</div> 
-						
-						
-<!-- 						 	<div class="form-group">
-							<label for="exampleInputEmail1">Writer</label> <input type="text"
-								name="writer" class="form-control" placeholder="Enter Writer">
-						</div>
-						 -->
-						
 					</div>
 					<!-- /.box-body -->
 

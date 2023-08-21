@@ -15,7 +15,7 @@
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
-					<h3 class="box-title">제품 관리</h3>
+					<h3 class="box-title">상품 관리</h3>
 				</div>
 
 
@@ -27,26 +27,26 @@
 							---</option>
 						<option value="n"
 							<c:out value="${cri.searchType eq 'n'?'selected':''}"/>>
-							제품명</option>
+							상품명</option>
 						<option value="c"
 							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
 							내용</option>
 						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							작성자</option>
+							<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
+							스타트업</option>
 						<option value="nc"
 							<c:out value="${cri.searchType eq 'nc'?'selected':''}"/>>
-							제품명 OR 내용</option>
+							상품명 OR 내용</option>
 						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							내용 OR 작성자</option>
+							<c:out value="${cri.searchType eq 'cs'?'selected':''}"/>>
+							내용 OR 스타트업</option>
 						<option value="ncw"
-							<c:out value="${cri.searchType eq 'ncw'?'selected':''}"/>>
-							제품명 OR 내용 OR 작성자</option>
+							<c:out value="${cri.searchType eq 'ncs'?'selected':''}"/>>
+							상품명 OR 내용 OR 스타트업</option>
 					</select> <input type="text" name='keyword' id="keywordInput"
 						value='${cri.keyword }'>
 					<button id='searchBtn'>검색</button>
-					<button id='newBtn'>제품 등록</button>
+					<button id='newBtn'>상품 등록</button>
 
 				</div>
 			</div>
@@ -54,17 +54,16 @@
 
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">제품 목록</h3>
+					<h3 class="box-title">상품 목록</h3>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
 						    <th style="width: 10px">NO</th>
-							<th>제품명</th>
-							<th>가격</th>
+							<th>상품명</th>
+							<th>카테고리</th>
 							<th>작성자</th>
 							<th>등록일</th>
-							<th style="width: 60px">조회수</th>
 						</tr>
 
 						<c:forEach items="${list}" var="productVO" varStatus="var">
@@ -83,7 +82,6 @@
 								<td>${productVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${productVO.regdate}" /></td>
-								<td><span class="badge bg-red">${productVO.viewcnt }</span></td>
 							</tr>
 
 						</c:forEach>
