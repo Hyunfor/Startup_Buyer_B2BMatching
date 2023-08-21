@@ -6,7 +6,10 @@ public class ProductVO {
 	
 	private int pno;
 	private String pname;
+<<<<<<< HEAD
 	private String category;
+=======
+>>>>>>> 69ae2dab15be6704ae55bfd218fdc0602e971f98
 	private String content;
 	private Date regdate;
 	private String startUp_Id;
@@ -23,12 +26,15 @@ public class ProductVO {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
+<<<<<<< HEAD
 	public String getCategory() {
 		return category;
 	}
 	public void setCategory(String category) {
 		this.category = category;
 	}
+=======
+>>>>>>> 69ae2dab15be6704ae55bfd218fdc0602e971f98
 	public String getContent() {
 		return content;
 	}
@@ -50,8 +56,16 @@ public class ProductVO {
 	
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "ProductVO [pno=" + pno + ", pname=" + pname + ", category=" + category + ", content=" + content
 				+ ", regdate=" + regdate + ", startUp_Id=" + startUp_Id + "]";
 	}
 
 }
+=======
+		return "ProductVO [pno=" + pno + ", pname=" + pname + ", content=" + content + ", regdate=" + regdate
+				+ ", startUp_Id=" + startUp_Id + "]";
+	}
+
+}
+>>>>>>> 69ae2dab15be6704ae55bfd218fdc0602e971f98
