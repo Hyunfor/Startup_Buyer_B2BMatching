@@ -13,7 +13,7 @@ public class ProductDAOImpl implements ProductDAO{
 	@Inject
 	private SqlSession session;
 	
-	private static final String namespace = "com.mis.mapper.ProductMapper";
+	private static final String namespace = "com.b2b.mapper.ProductMapper";
 
 	@Override
 	public void create(ProductVO vo) throws Exception {
