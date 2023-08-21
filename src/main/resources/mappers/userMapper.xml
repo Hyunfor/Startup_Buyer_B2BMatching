@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mis.mapper.UserMapper">
+<mapper namespace="com.b2b.mapper.UserMapper">
 
-	<select id="login" resultType="com.mis.domain.UserVO">
+	<select id="login" resultType="com.b2b.domain.UserVO">
 		SELECT UNAME, USID, UPW,
 		FROM TBL_USER
 		WHERE USID = #{usid} AND UPW = #{upw}
@@ -15,7 +15,7 @@
 		VALUES (#{uname}, #{usid}, #{upw})
 	</insert>
 
-	<select id="read" resultType="com.mis.domain.UserVO">
+	<select id="read" resultType="com.b2b.domain.UserVO">
 		SELECT UNAME, USID, UPW
 		FROM TBL_USER
 		WHERE USID = #{usid}
