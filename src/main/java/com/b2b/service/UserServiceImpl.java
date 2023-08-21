@@ -4,8 +4,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.b2b.DTO.LoginDTO;
 import com.b2b.domain.UserVO;
-import com.b2b.dto.LoginDTO;
 import com.b2b.persistence.UserDAO;
 
 @Service
