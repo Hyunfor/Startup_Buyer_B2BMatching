@@ -1,0 +1,14 @@
+	기능 순서        
+1. 테이블 확인 -> VO, DTO
+2. DAO -> 기능 추가(method)
+3. mapper 추가
+4. DAOImpl method 구현
+5. read -> 조회수  ServiceImpl readmethod() 구현      
+
+sql 디벨로퍼에 계정 생성
+CREATE USER b2b2023 IDENTFIED BY 1234
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP;
+
+생성한 계정에 권한부여
+GRANT CONNECT, DBA TO b2b2023l
