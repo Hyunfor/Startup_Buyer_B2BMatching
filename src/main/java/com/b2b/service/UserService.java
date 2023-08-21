@@ -3,6 +3,7 @@ package com.b2b.service;
 import com.b2b.DTO.LoginDTO;
 import com.b2b.domain.UserVO;
 
+
 public interface UserService {
 
 	public UserVO login(LoginDTO dto) throws Exception;

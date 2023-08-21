@@ -3,6 +3,7 @@ package com.b2b.persistence;
 import com.b2b.DTO.LoginDTO;
 import com.b2b.domain.UserVO;
 
+
 public interface UserDAO {
 
 	public UserVO login(LoginDTO dto) throws Exception;

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.b2b.domain;
+=======
+package com.mis.domain;
+>>>>>>> 900ea8e8460d84eaeef7ce953fadb6a325e07685
 
 public class UserVO {
 
