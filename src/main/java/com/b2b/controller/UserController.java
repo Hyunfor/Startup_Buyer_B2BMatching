@@ -1,4 +1,4 @@
-package com.mis.controller;
+package com.b2b.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mis.domain.SearchCriteria;
-import com.mis.domain.UserVO;
-import com.mis.dto.LoginDTO;
-import com.mis.service.UserService;
+import com.b2b.domain.SearchCriteria;
+import com.b2b.domain.UserVO;
+import com.b2b.dto.LoginDTO;
+import com.b2b.service.UserService;
+
+
 
 @Controller
 @RequestMapping("/user")
