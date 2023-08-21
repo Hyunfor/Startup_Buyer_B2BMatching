@@ -6,6 +6,7 @@ public class ProductVO {
 	
 	private int pno;
 	private String pname;
+	private String category;
 	private String content;
 	private Date regdate;
 	private String startUp_Id;
@@ -21,6 +22,12 @@ public class ProductVO {
 	}
 	public void setPname(String pname) {
 		this.pname = pname;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getContent() {
 		return content;
@@ -43,8 +50,8 @@ public class ProductVO {
 	
 	@Override
 	public String toString() {
-		return "ProductVO [pno=" + pno + ", pname=" + pname + ", content=" + content + ", regdate=" + regdate
-				+ ", startUp_Id=" + startUp_Id + "]";
+		return "ProductVO [pno=" + pno + ", pname=" + pname + ", category=" + category + ", content=" + content
+				+ ", regdate=" + regdate + ", startUp_Id=" + startUp_Id + "]";
 	}
 
 }
