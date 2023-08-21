@@ -1,4 +1,4 @@
-package com.mis.web;
+package com.b2b.web;
 
 import java.sql.Connection;
 
