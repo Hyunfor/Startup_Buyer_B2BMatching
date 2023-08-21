@@ -1,7 +1,7 @@
 package com.b2b.service;
 
+import com.b2b.DTO.LoginDTO;
 import com.b2b.domain.UserVO;
-import com.b2b.dto.LoginDTO;
 
 public interface UserService {
 

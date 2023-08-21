@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.b2b.domain.SearchCriteria;
+import com.b2b.DTO.LoginDTO;
 import com.b2b.domain.UserVO;
-import com.b2b.dto.LoginDTO;
 import com.b2b.service.UserService;
 
 
