@@ -21,4 +21,6 @@ public interface ProductDAO {
 	// 페이징, 검색 기능 게시물 수 가져오는 기능
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
+	public void updateViewCount(int pno) throws Exception;
+
 }

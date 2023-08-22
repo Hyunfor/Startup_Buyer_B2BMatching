@@ -13,7 +13,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">상품 상세보기</h3>
+					<h3 class="box-title">제품 상세보기</h3>
 				</div>
 				<!-- /.box-header -->
 
@@ -29,32 +29,31 @@
 
 				<div class="box-body">
 					<div class="form-group">
-						<label for="exampleInputEmail1">상품명</label> <input type="text"
+						<label for="exampleInputEmail1">제품명</label> <input type="text"
 							name='pname' class="form-control" value="${productVO.pname}"
 							readonly="readonly">
 					</div>
-					
-					<div class="form-group">
-						<label for="exampleInputEmail1">카테고리</label> <input type="text"
-							name='price' class="form-control" value="${productVO.category}"
-							readonly="readonly">
-					</div>					
 					<div class="form-group">
 						<label for="exampleInputPassword1">내용</label>
 						<textarea class="form-control" name="content" rows="3"
 							readonly="readonly">${productVO.content}</textarea>
 					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">가격</label> <input type="text"
+							name='price' class="form-control" value="${productVO.price}"
+							readonly="readonly">
+					</div>					
 					
 					<div class="form-group">
-						<label for="exampleInputEmail1">스타트업</label> <input type="text"
-							name="writer" class="form-control" value="${productVO.startup_id}"
+						<label for="exampleInputEmail1">작성자</label> <input type="text"
+							name="writer" class="form-control" value="${productVO.writer}"
 							readonly="readonly">
 					</div>
 				</div>
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-					<c:if test="${productVO.startup_id eq login.usid }">
+					<c:if test="${productVO.writer eq login.usid }">
 						<button type="submit" class="btn btn-warning">수정</button>
 						<button type="submit" class="btn btn-danger">삭제</button>
 					</c:if>	

@@ -29,8 +29,3 @@ CREATE SEQUENCE SEQ_PRODUCT INCREMENT BY 1 START WITH 1;
  select * from TBL_PRODUCT;
  
  DROP TABLE TBL_PRODUCT;
- 
- --페이징 테스트를 위해 데이터 INSERT
-INSERT INTO TBL_PRODUCT( pno, pname, category, content, startup_id, regdate)
-SELECT SEQ_PRODUCT.nextval, pname, category, content, startup_id, regdate FROM TBL_PRODUCT;
-commit;

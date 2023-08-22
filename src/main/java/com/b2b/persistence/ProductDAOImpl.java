@@ -48,4 +48,10 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
 	
+	@Override
+	public void updateViewCount(int pno) throws Exception {
+		session.update(namespace + ".updateViewCount", pno);
+	}
+
+
 }

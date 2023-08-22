@@ -25,10 +25,9 @@ public class ProductDAOTest {
 	public void testCreate() throws Exception{
 		
 		ProductVO vo = new ProductVO();
-		vo.setPname("새상품");
-		vo.setCategory("전자기기");
+		vo.setPname("새로운 상품");
+		vo.setCategory("카테고리");
 		vo.setContent("상품 설명");
-		vo.setstartup_id("중견기업");
 		
 		logger.info("testCreate: " + vo);
 		
