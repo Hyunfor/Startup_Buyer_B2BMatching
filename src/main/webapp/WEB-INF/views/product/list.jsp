@@ -15,7 +15,7 @@
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
-					<h3 class="box-title">제품 관리</h3>
+					<h3 class="box-title">상품 관리</h3>
 				</div>
 
 
@@ -27,22 +27,22 @@
 							---</option>
 						<option value="n"
 							<c:out value="${cri.searchType eq 'n'?'selected':''}"/>>
-							제품명</option>
+							상품명</option>
 						<option value="c"
 							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							내용</option>
+							카테고리</option>
 						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							작성자</option>
+							<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
+							스타트업</option>
 						<option value="nc"
 							<c:out value="${cri.searchType eq 'nc'?'selected':''}"/>>
-							제품명 OR 내용</option>
+							상품명 OR 내용</option>
 						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							내용 OR 작성자</option>
+							<c:out value="${cri.searchType eq 'cs'?'selected':''}"/>>
+							카테고리 OR 스타트업</option>
 						<option value="ncw"
-							<c:out value="${cri.searchType eq 'ncw'?'selected':''}"/>>
-							제품명 OR 내용 OR 작성자</option>
+							<c:out value="${cri.searchType eq 'ncs'?'selected':''}"/>>
+							제품명 OR 카테고리 OR 스타트업</option>
 					</select> <input type="text" name='keyword' id="keywordInput"
 						value='${cri.keyword }'>
 					<button id='searchBtn'>검색</button>
@@ -54,36 +54,36 @@
 
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">제품 목록</h3>
+					<h3 class="box-title">상품 목록</h3>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
-						    <th style="width: 10px">NO</th>
-							<th>제품명</th>
-							<th>가격</th>
-							<th>작성자</th>
+							<th style="width: 10px">NO</th>
+							<th>상품명</th>
+							<th>카테고리</th>
+							<th>내용</th>
+							<th>스타트업</th>
 							<th>등록일</th>
-							<th style="width: 60px">조회수</th>
 						</tr>
 
 						<c:forEach items="${list}" var="productVO" varStatus="var">
 
 							<tr>
 								<c:if test="${pageMaker.cri.page == 1 }">
-								<td>${var.count }</td>
+									<td>${var.count }</td>
 								</c:if>
 								<c:if test="${pageMaker.cri.page != 1 }">
-								<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+									<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 								</c:if>
 								<td><a
 									href='/product/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&pno=${productVO.pno}'>
 										${productVO.pname} </a></td>
-										<td>${productVO.price}</td>
-								<td>${productVO.writer}</td>
+								<td>${productVO.category}</td>
+								<td>${productVO.content}</td>
+								<td>${productVO.startup_id}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${productVO.regdate}" /></td>
-								<td><span class="badge bg-red">${productVO.viewcnt }</span></td>
 							</tr>
 
 						</c:forEach>

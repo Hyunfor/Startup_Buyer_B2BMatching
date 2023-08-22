@@ -23,8 +23,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductVO read(int pno) throws Exception {
-		// 상세보기 요청 - > 조회수 1 증가(조회수 업데이트)
-		dao.updateViewCount(pno);
 		return dao.read(pno);
 	}
 
