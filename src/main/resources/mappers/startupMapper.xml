@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.b2b.mapper.StartupMapper">
+
+	<insert id="create">
+
+		INSERT INTO START_UP (STARTUP_ID,STARTUPNAME,ESTABLISHED_YEAR,SIZES
+								,CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
+								,ITEMS,EMAIL,NAMES)	
+		VALUES (#{startup_id},#{startupName},#{established_Year},#{sizes}
+					,#{categorys},#{business},#{no_Of_Employess},#{city}
+					,#{items} ,#{email},#{names})
+
+
+	</insert>
+
+	<select id="read" resultType="com.b2b.domain.StartupVO">
+		SELECT STARTUP_ID, STARTUPNAME, ESTABLISHED_YEAR, SIZES,
+		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
+		,ITEMS,EMAIL,NAMES,REGDATE
+		FROM START_UP
+		WHERE STARTUP_ID = #{startup_id}
+	</select>
+
+	<update id="update">
+		UPDATE START_UP SET STARTUP_ID = #{startup_id}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{established_Year}, SIZES = #{sizes}
+			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{no_Of_Employess}, CITY = #{city}
+			  				ITEMS = #{items}, EMAIL = #{email}, NAMES = #{names}
+		
+		WHERE STARTUP_ID = #{startup_id}
+
+	</update>
+
+	<delete id="delete">
+		DELETE FROM START_UP WHERE STARTUP_ID = #{startup_id}
+	</delete>
+
+	<select id="list" resultType="com.b2b.domain.StartupVO">
+
+<![CDATA[
+ SELECT STARTUP_ID, STARTUPNAME, ESTABLISHED_YEAR, SIZES,
+		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
+		,ITEMS,EMAIL,NAMES,REGDATE
+	FROM START_UP
+    WHERE STARTUP_ID IS NOT NULL
+    ORDER BY STARTUP_ID DESC
+]]>
+	</select>
+	
+<sql id="search">
+
+
+		<if test="searchType != null">
+
+			<if test="searchType == 't'.toString()">
+				AND TITLE LIKE '%' || #{keyword} || '%'
+
+			</if>
+			<if test="searchType == 'c'.toString()">
+				AND CONTENT LIKE '%' || #{keyword} || '%'
+
+			</if>
+
+			<if test="searchType == 'w'.toString()">
+				AND WRITER LIKE '%' || #{keyword} || '%'
+
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				AND (TITLE LIKE '%' || #{keyword} || '%')
+				OR
+				(CONTENT LIKE '%' || #{keyword} || '%')
+
+			</if>
+
+			<if test="searchType == 'cw'.toString()">
+				AND (CONTENT LIKE '%' || #{keyword} || '%')
+				OR
+				(WRITER LIKE '%' || #{keyword} || '%')
+
+			</if>
+
+			<if test="searchType == 'tcw'.toString()">
+				AND (CONTENT LIKE '%' || #{keyword} || '%')
+				OR
+				(WRITER LIKE '%' || #{keyword} || '%')
+				OR
+				(TITLE LIKE '%' || #{keyword} || '%')
+
+
+			</if>
+
+		</if>
+
+
+	</sql>
+	
+	
+	
+	
+	
+
+
+	<select id="listSearchCriteria"
+		resultType="com.b2b.domain.StartupVO">
+
+<![CDATA[
+SELECT * FROM(
+ SELECT STARTUP_ID, STARTUPNAME, ESTABLISHED_YEAR, SIZES,
+		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
+		,ITEMS,EMAIL,NAMES,REGDATE
+		FROM(SELECT * FROM STARTUP_ID WHERE STARTUP_ID IS NOT NULL
+		]]>
+
+		<include refid="search"></include>
+		
+<![CDATA[	
+		ORDER BY BNO DESC))
+    	WHERE (RNUM >= #{pageStart} AND RNUM <=#{pageEnd})
+    	ORDER BY STARTUP_ID DESC, REGDATE DESC
+]]>
+	</select>
+	
+	
+
+	<select id="listSearchCountCriteria" resultType="int">
+	
+	<![CDATA[	
+		SELECT COUNT(*) FROM STARTUP_ID
+		WHERE STARTUP_ID IS NOT NULL
+		]]>
+
+		<include refid="search"></include>
+
+	</select>
+	
+	
+	
+	
+	
+
+	
+
+
+
+
+</mapper>
