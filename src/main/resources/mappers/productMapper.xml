@@ -5,24 +5,116 @@
 
 <mapper namespace="com.b2b.mapper.ProductMapper">
 
-	<insert id="create">
-		INSERT INTO TBL_PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID)
-			VALUES (SEQ_PRODUCT.nextval, #{pname}, #{category}, #{content}, #{startup_id})
+	<insert id="adCreate">
+		<selectKey keyProperty="pno" resultType="int" order="BEFORE">
+			SELECT
+			SEQ_NOTICE.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID)
+		VALUES (SEQ_PRODUCT.nextval, #{pname}, #{category}, #{content},
+		#{startup_id})
+		<!-- 발급키가 새어나오지 않도록 pno으로 리턴 -->
 	</insert>
-	
+
 	<select id="read" resultType="com.b2b.domain.ProductVO">
-		SELECT PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID, REGDATE
-			FROM TBL_PRODUCT
-			WHERE PNO = #{pno}
+		SELECT PNO, PNAME, CATEGORY,
+		CONTENT, STARTUP_ID, REGDATE
+		FROM PRODUCT
+		WHERE PNO = #{pno}
 	</select>
-	
-	<update id="update">
-		UPDATE TBL_PRODUCT SET PNAME = #{pname}, CATEGORY = #{category}, CONTENT = #{content}, STARTUP_ID = #{startup_id}
-			WHERE PNO = #{pno}
+
+	<update id="adUpdate">
+		UPDATE PRODUCT SET PNAME = #{pname}, CATEGORY =
+		#{category},
+		CONTENT = #{content}, STARTUP_ID = #{startup_id}
+		WHERE PNO
+		= #{pno}
 	</update>
-	
-	<delete id="delete">
-		DELETE FROM TBL_PRODUCT WHERE PNO = #{pno}
+
+	<delete id="adDelete">
+		DELETE FROM PRODUCT WHERE PNO = #{pno}
 	</delete>
+
+	<!-- 동적 SQL -->
+	<sql id="search">
+
+		<if test="searchType != null">
+
+			<if test="searchType == 'n'.toString()">
+				AND PNAME LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'c'.toString()">
+				AND CATEGORY LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 's'.toString()">
+				AND STARTUP_ID LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'nc'.toString()">
+				AND (PNAME LIKE '%' || #{keyword} || '%')
+				OR
+				(CATEGORY LIKE
+				'%' || #{keyword} || '%')
+			</if>
+			<if test="searchType == 'cs'.toString()">
+				AND (CATEGORY LIKE '%' || #{keyword} || '%')
+				OR
+				(STARTUP_ID LIKE '%' || #{keyword} || '%')
+			</if>
+			<if test="searchType == 'ncs'.toString()">
+				AND (PNAME LIKE '%' || #{keyword} || '%')
+				OR
+				(CATEGORY LIKE
+				'%' || #{keyword} || '%')
+				OR
+				(STARTUP_ID LIKE '%' || #{keyword} ||
+				'%')
+			</if>
+
+		</if>
+
+	</sql>
+
+	<select id="listSearch" resultType="com.b2b.domain.ProductVO">
+	<![CDATA[
+		SELECT * FROM( 
+			SELECT ROWNUM RNUM, PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID, REGDATE   
+				FROM (SELECT * FROM PRODUCT WHERE PNO > 0 
+		]]>
+		<include refid="search"></include>
+				
+	<![CDATA[			
+		ORDER BY PNO DESC))
+		WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+        ORDER BY PNO DESC, REGDATE DESC
+        ]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[	
+		SELECT COUNT(*) FROM PRODUCT
+		WHERE PNO > 0 
+	]]>
+		<include refid="search"></include>
+	</select>
+
+	<!-- 다중 파일 등록 -->
+	<insert id="insertFile">
+		INSERT INTO PRODUCT_IMG (PIMGE_NO,bIMG_NAME, PNO)
+		VALUES (SEQ_PRODUCT_IMG.NEXTVAL, #{img_name}, #{pno})
+	</insert>
+
+	<!-- 다중 파일 삭제 -->
+	<insert id="deleteFile">
+		DELETE FROM PRODUCT_IMG WHERE PNO = #{pno}
+	</insert>
+
+	<!-- 파일 목록 -->
+	<select id="fileList" resultType="com.b2b.domain.ProductIMGVO">
+		SELECT PIMAGE_NO,
+		SUBSTR(IMG_NAME, 50) AS IMG_NAME,
+		IMG_NAME AS FILE_LOCATION, PNO
+		FROM PRODUCT_IMG
+		WHERE PNO = #{pno}
+	</select>
 
 </mapper>
