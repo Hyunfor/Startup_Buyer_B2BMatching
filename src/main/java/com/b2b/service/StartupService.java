@@ -1,0 +1,24 @@
+package com.b2b.service;
+
+import java.util.List;
+
+import com.b2b.domain.SearchCriteria;
+import com.b2b.domain.StartupVO;
+
+public interface StartupService {
+	
+	public void register(StartupVO vo) throws Exception;
+
+	public StartupVO read(String startup_id) throws Exception;
+
+	public void modify(StartupVO vo) throws Exception;
+
+	public void remove(String startup_id) throws Exception;
+
+	public List<StartupVO> list() throws Exception;
+	
+	public List<StartupVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCountCriteria(SearchCriteria cri) throws Exception;
+
+}

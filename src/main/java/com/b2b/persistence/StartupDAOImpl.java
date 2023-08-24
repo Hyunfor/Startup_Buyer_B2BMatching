@@ -11,12 +11,13 @@ import com.b2b.domain.SearchCriteria;
 import com.b2b.domain.StartupVO;
 
 @Repository
-
 public class StartupDAOImpl implements StartupDAO {
+	
 	@Inject
 	private SqlSession session;
 	
 	private static final String namespace="com.b2b.mapper.StartupMapper";
+	
 
 	@Override
 	public void create(StartupVO vo) throws Exception {
