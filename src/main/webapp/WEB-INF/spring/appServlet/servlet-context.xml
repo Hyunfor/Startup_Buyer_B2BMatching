@@ -26,7 +26,35 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="LoginInterceptor"
+		class="com.b2b.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="AuthInterceptor"
+		class="com.b2b.interceptor.AuthInterceptor"></beans:bean>
 
+
+
+
+	<interceptors>
+
+		<interceptor>
+			<mapping path="/startup/loginPost" />
+			<mapping path="/buyer/loginPost" />
+			<beans:ref bean="LoginInterceptor" />
+		</interceptor>
+
+		<interceptor>
+
+			<mapping path="/web/startup/register" />
+			<mapping path="/web/startup/modifyPage" />
+			<mapping path="/web/startup/removePage" />
+			<mapping path="/web/buyer/register" />
+			<mapping path="/web/buyer/modifyPage" />
+			<mapping path="/web/buyer/removePage" />
+			<beans:ref bean="AuthInterceptor" />
+
+		</interceptor>
+
+	</interceptors>
 
 	<!--파일 업로드 관련 Beans 설정 -->
 	<beans:bean id="multipartResolver"

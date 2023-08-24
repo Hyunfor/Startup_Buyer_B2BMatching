@@ -44,7 +44,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			// 보던 화면(URL) session 객체 저장
 			saveDest(request);
 
-			response.sendRedirect("/user/login");
+			response.sendRedirect("home");
 			return false;
 
 		}
