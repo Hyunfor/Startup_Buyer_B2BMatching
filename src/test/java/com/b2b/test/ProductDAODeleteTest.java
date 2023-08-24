@@ -23,7 +23,7 @@ public class ProductDAODeleteTest {
 	@Test
 	public void testDelete() throws Exception {
 
-		dao.delete(1);
+		dao.adDelete(1);
 
 	}
 

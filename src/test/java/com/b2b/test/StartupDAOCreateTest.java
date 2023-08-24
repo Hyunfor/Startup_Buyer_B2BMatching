@@ -29,16 +29,16 @@ private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger
 		StartupVO vo = new StartupVO();
 		
 		vo.setStartup_id("JHS157672");
-		vo.setStartupName("ì •ê¸°ì—…");
+		vo.setStartupName("Á¤±â¾÷");
 		vo.setEstablished_Year("2023.08.23");
-		vo.setSizes("ëŒ€ê¸°ì—…");
-		vo.setCategorys("ì œì¡°ì—…");
-		vo.setBusiness("IT/í†µì‹ ì—…");
-		vo.setNo_Of_Employess("10000ëª…");
-		vo.setCity("ëŒ€ì „");
-		vo.setItems("í•¸ë“œí°");
+		vo.setSizes("´ë±â¾÷");
+		vo.setCategorys("Á¦Á¶¾÷");
+		vo.setBusiness("IT/Åë½Å¾÷");
+		vo.setNo_Of_Employees("10000¸í");
+		vo.setCity("´ëÀü");
+		vo.setItems("ÇÚµåÆù");
 		vo.setEmail("JHS15767@GMAIL.COM");
-		vo.setNames("ì •í˜œìˆœ");
+		vo.setNames("Á¤Çı¼ø");
 	
 		
 		
