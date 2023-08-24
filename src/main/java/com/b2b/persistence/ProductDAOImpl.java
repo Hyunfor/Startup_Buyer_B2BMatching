@@ -7,20 +7,23 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.b2b.domain.ProductIMGVO;
 import com.b2b.domain.ProductVO;
 import com.b2b.domain.SearchCriteria;
 
 @Repository
-public class ProductDAOImpl implements ProductDAO{
-	
+public class ProductDAOImpl implements ProductDAO {
+
 	@Inject
 	private SqlSession session;
-	
+
 	private static final String namespace = "com.b2b.mapper.ProductMapper";
 
 	@Override
-	public void create(ProductVO vo) throws Exception {
-		session.insert(namespace + ".create", vo);
+	public int adCreate(ProductVO vo) throws Exception {
+		// vo에 담아서 getPno 리턴
+		session.insert(namespace + ".adCreate", vo);
+		return vo.getPno();
 	}
 
 	@Override
@@ -29,15 +32,15 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public void update(ProductVO vo) throws Exception {
-		session.update(namespace + ".update", vo);
+	public void adUpdate(ProductVO vo) throws Exception {
+		session.update(namespace + ".adUpdate", vo);
 	}
 
 	@Override
-	public void delete(int pno) throws Exception {
-		session.delete(namespace + ".delete", pno);	
+	public void adDelete(int pno) throws Exception {
+		session.delete(namespace + ".adDelete", pno);
 	}
-	
+
 	@Override
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception {
 		return session.selectList(namespace + ".listSearch", cri);
@@ -47,11 +50,20 @@ public class ProductDAOImpl implements ProductDAO{
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
-	
+
 	@Override
-	public void updateViewCount(int pno) throws Exception {
-		session.update(namespace + ".updateViewCount", pno);
+	public void insertFile(ProductIMGVO fVo) throws Exception {
+		session.insert(namespace + ".insertFile", fVo);
 	}
 
+	@Override
+	public void deleteFile(int pno) throws Exception {
+		session.delete(namespace + ".deleteFile", pno);
+	}
+
+	@Override
+	public List<ProductIMGVO> fileList(int pno) throws Exception {
+		return session.selectList(namespace + ".fileList", pno);
+	}
 
 }

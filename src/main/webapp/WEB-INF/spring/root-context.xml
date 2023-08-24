@@ -18,7 +18,7 @@
 			value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="b2b2023"></property>
+		<property name="username" value="b2b_2023"></property>
 		<property name="password" value="1234"></property>
 	</bean>
 
