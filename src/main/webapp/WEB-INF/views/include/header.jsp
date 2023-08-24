@@ -62,7 +62,7 @@
         <ul>
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Startups</a></li>
+          <li><a class="nav-link scrollto" href="/startup/list">Startups</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Buyers</a></li>
           <li><a class="nav-link scrollto" href="/product/list">Products</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
