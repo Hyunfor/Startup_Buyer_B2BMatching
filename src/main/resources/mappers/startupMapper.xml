@@ -11,7 +11,7 @@
 								,CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
 								,ITEMS,EMAIL,NAMES)	
 		VALUES (#{startup_id},#{startupName},#{established_Year},#{sizes}
-					,#{categorys},#{business},#{no_Of_Employess},#{city}
+					,#{categorys},#{business},#{no_Of_Employees},#{city}
 					,#{items} ,#{email},#{names})
 
 
@@ -27,7 +27,7 @@
 
 	<update id="update">
 		UPDATE START_UP SET STARTUP_ID = #{startup_id}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{established_Year}, SIZES = #{sizes}
-			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{no_Of_Employess}, CITY = #{city}
+			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{no_Of_Employees}, CITY = #{city}
 			  				ITEMS = #{items}, EMAIL = #{email}, NAMES = #{names}
 		
 		WHERE STARTUP_ID = #{startup_id}

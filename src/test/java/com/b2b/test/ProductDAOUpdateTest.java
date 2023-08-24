@@ -29,11 +29,11 @@ public class ProductDAOUpdateTest {
 		vo.setPname("수정된 상품 이름");
 		vo.setCategory("수정된 카테고리");
 		vo.setContent("수정된 상품 설명");
-		vo.setstartup_id("변화된기업");
+		vo.setStartup_id("변화된기업");
 		
 		logger.info("testUpdate: " + vo);
 		
-		dao.update(vo);
+		dao.adUpdate(vo);
 		
 	}
 
