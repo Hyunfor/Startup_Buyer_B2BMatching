@@ -27,9 +27,4 @@
 		WHERE B_ID = #{b_id}
 	</update>
 
-	<delete id="delete">
-		DELETE FROM BUYER_USER WHERE B_ID = #{b_id}
-	</delete>
-
-	
 </mapper>

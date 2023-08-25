@@ -13,6 +13,4 @@ public interface StartUpUserService {
 
 	public void modify(StartUpUserVO vo) throws Exception;
 
-	public void remove(String usid) throws Exception;
-
 }

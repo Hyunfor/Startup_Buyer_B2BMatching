@@ -36,10 +36,4 @@ public class BuyerUserServiceImpl implements BuyerUserService {
 
 	}
 
-	@Override
-	public void remove(String usid) throws Exception {
-		dao.delete(usid);
-
-	}
-
 }

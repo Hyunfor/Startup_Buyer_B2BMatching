@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.b2b.mapper.BuyerMapper">
+
+	<insert id="create">
+		INSERT INTO BUYER (BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT)
+		VALUES (SEQ_BOARD.nextval, #{buyer_name}, #{email}, #{country},
+		#{category}, #{business}, #{items}, #{order_amount})
+	</insert>
+
+	<select id="read" resultType="com.b2b.domain.BuyerVO">
+		SELECT BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
+		FROM BUYER
+		WHERE BUTER_ID = #{buyer_id}
+	</select>
+
+	<update id="update">
+		UPDATE BUYER SET BUYER_NAME = #{buyer_name}, EMAIL = #{email},
+		COUNTRY = #{country}, CATEGORY = #{category}, BUSINESS = #{business}, ITEMS = #{items}, ORDER_AMOUNT = #{order_amount}
+		WHERE BUYER_ID = #{buyer_id}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM BUYER WHERE BUYER_ID = #{buyer_id}
+	</delete>
+
+	<select id="list" resultType="com.b2b.domain.BuyerVO">
+	<![CDATA[
+		SELECT BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
+    		FROM BUYER
+    		WHERE BUYER_ID > 0
+    	ORDER BY BUYER_ID DESC
+    	]]>
+	</select>
+
+	<select id="listCountCriteria" resultType="int">
+		SELECT COUNT(*) FROM
+		BUYER
+	</select>
+
+	<select id="listCriteria" resultType="com.b2b.domain.BuyerVO">
+	<![CDATA[
+	SELECT * FROM (
+			SELECT ROWNUM RNUM, BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
+    			FROM (SELECT * FROM BUYER ORDER BY BUYER_ID DESC)
+    			   )
+    			
+    WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+    ORDER BY BUYER_ID DESC, REGDATE DESC
+    	]]>
+	</select>
+
+	<sql id="search">
+
+		<if test="searchType !=null">
+			<if test="searchType == 'n'.toString()">
+				AND BUYER_NAME LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'c'.toString()">
+				AND CATEGORY LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'i'.toString()">
+				AND ITEMS LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'nc'.toString()">
+				AND (BUYER_NAME LIKE '%' || #{keyword} || '%')
+				OR
+				(CATEGORY LIKE
+				'%' ||
+				#{keyword} || '%')
+			</if>
+			<if test="searchType == 'ci'.toString()">
+				AND (CATEGORY LIKE '%' || #{keyword} || '%')
+				OR
+				(ITEMS LIKE
+				'%' ||
+				#{keyword} || '%')
+			</if>
+			<if test="searchType == 'nci'.toString()">
+				AND (BUYER_NAME LIKE '%' || #{keyword} || '%')
+				(CATEGORY LIKE
+				'%' ||
+				#{keyword} || '%')
+				OR
+				(ITEMS LIKE '%' || #{keyword} || '%')
+			</if>
+		</if>
+
+
+	</sql>
+
+	<select id="listSearch"
+		resultType="com.b2b.domain.BuyerVO">
+	<![CDATA[
+	SELECT * FROM (
+			SELECT ROWNUM RNUM, BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
+    			FROM (SELECT * FROM BUYER WHERE BUYER_ID > 0
+    			]]>
+		<include refid="search"></include>
+    			
+    <![CDATA[
+    			ORDER BY BUYER_ID DESC)
+    			   )
+    			
+    WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+    ORDER BY BUYER_ID DESC, REGDATE DESC
+    	]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[	
+		SELECT COUNT(*) FROM BUYER
+		WHERE BUYER_ID > 0
+	]]>
+		<include refid="search"></include>
+	</select>
+
+</mapper>

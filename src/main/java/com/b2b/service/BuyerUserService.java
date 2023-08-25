@@ -13,6 +13,4 @@ public interface BuyerUserService {
 
 	public void modify(BuyerUserVO vo) throws Exception;
 
-	public void remove(String usid) throws Exception;
-
 }

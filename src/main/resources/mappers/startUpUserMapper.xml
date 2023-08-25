@@ -27,9 +27,4 @@
 		WHERE S_ID = #{s_id}
 	</update>
 
-	<delete id="delete">
-		DELETE FROM STARTUP_USER WHERE S_ID = #{s_id}
-	</delete>
-
-	
 </mapper>

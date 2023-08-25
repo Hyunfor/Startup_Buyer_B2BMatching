@@ -37,10 +37,4 @@ public class BuyerUserDAOImpl implements BuyerUserDAO {
 		session.update(namespace + ".update", vo);
 
 	}
-
-	@Override
-	public void delete(String usid) throws Exception {
-		session.delete(namespace + ".delete", usid);
-
-	}
 }

@@ -59,25 +59,6 @@ public class BuyerUserController {
 
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET() throws Exception {
-
-		logger.info("register get...");
-
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(BuyerUserVO vo, RedirectAttributes rttr, Model model) throws Exception {
-
-		logger.info("register post...");
-
-		service.register(vo);
-		rttr.addFlashAttribute("msg", "SUCCESS");
-
-		return "redirect:/buyer/list";
-
-	}
-
 	@RequestMapping(value = "/memberRegister", method = RequestMethod.GET)
 	public void user_registerGET() throws Exception {
 
@@ -93,7 +74,7 @@ public class BuyerUserController {
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/login";
+		return "redirect:/buyerUser/login";
 
 	}
 
@@ -120,7 +101,7 @@ public class BuyerUserController {
 		if (buyerUser.getB_id().equals(vo.getB_id())) {
 
 			model.addAttribute(service.read(b_id));
-			return "/buyer/modifyPage";
+			return "/buyerUser/modifyPage";
 
 		} else {
 
@@ -132,7 +113,7 @@ public class BuyerUserController {
 
 			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
 
-			return "redirect:/buyer/readPage";
+			return "redirect:/buyerUser/readPage";
 
 		}
 
@@ -152,37 +133,7 @@ public class BuyerUserController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/list";
-
-	}
-
-	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("b_id") String b_id, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception {
-
-		BuyerUserVO buyerUser = (BuyerUserVO) session.getAttribute("login");
-
-		BuyerUserVO vo = service.read(b_id);
-
-		if (buyerUser.getB_id().equals(vo.getB_id())) {
-			service.remove(b_id);
-
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/buyer/list";
-
-		} else {
-
-			rttr.addFlashAttribute("b_id", "b_id");
-			rttr.addFlashAttribute("page", "cri.getPage");
-			rttr.addFlashAttribute("perPageNum", "cri.getperPageNum");
-			rttr.addFlashAttribute("searchType", "cri.getsearchType");
-			rttr.addFlashAttribute("keyword", "cri.getkeyword");
-
-			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
-
-			return "redirect:/buyer/readPage";
-
-		}
+		return "redirect:/buyerUser/list";
 
 	}
 
