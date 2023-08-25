@@ -13,70 +13,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.b2b.DTO.LoginDTO;
+import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.SearchCriteria;
-import com.b2b.domain.UserVO;
-import com.b2b.service.UserService;
-
-
+import com.b2b.domain.StartUpUserVO;
+import com.b2b.service.StartUpUserService;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/startup")
+public class StartUpUserController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StartUpUserController.class);
 
 	@Inject
-	private UserService service;
+	private StartUpUserService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET(@ModelAttribute("dto") LoginDTO dto) throws Exception {
+	public void loginGET(@ModelAttribute("dto") StartUpLoginDTO dto) throws Exception {
 
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(LoginDTO dto, Model model) throws Exception {
+	public void loginPOST(StartUpLoginDTO dto, Model model) throws Exception {
 
-		UserVO vo = service.login(dto);
+		StartUpUserVO vo = service.login(dto);
 
 		if (vo == null) {
 			return;
 		}
 
-		model.addAttribute("userVO", vo);
+		model.addAttribute("startUpUserVO", vo);
 
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 
-		Object userVO = session.getAttribute("login");
+		Object startUpUserVO = session.getAttribute("login");
 
-		if (userVO != null) {
+		if (startUpUserVO != null) {
 			session.removeAttribute("login");
 			session.invalidate();
 		}
 
 		return "redirect:/";
-
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET() throws Exception {
-
-		logger.info("register get...");
-
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(UserVO vo, RedirectAttributes rttr, Model model) throws Exception {
-
-		logger.info("register post...");
-
-		service.register(vo);
-		rttr.addFlashAttribute("msg", "SUCCESS");
-
-		return "redirect:/user/list";
 
 	}
 
@@ -88,45 +67,45 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/memberRegister", method = RequestMethod.POST)
-	public String user_registerPOST(UserVO vo, RedirectAttributes rttr, Model model) throws Exception {
+	public String user_registerPOST(StartUpUserVO vo, RedirectAttributes rttr, Model model) throws Exception {
 
 		logger.info("register post...");
 
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/user/login";
+		return "redirect:/startup/login";
 
 	}
 
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("usid") String usid, @ModelAttribute("cri") SearchCriteria cri, Model model)
+	public void read(@RequestParam("s_id") String s_id, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
 
 		logger.info("read get...");
 
-		model.addAttribute(service.read(usid));
+		model.addAttribute(service.read(s_id));
 
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	public String modifyPageGET(@RequestParam("usid") String usid, @ModelAttribute("cri") SearchCriteria cri,
+	public String modifyPageGET(@RequestParam("s_id") String s_id, @ModelAttribute("cri") SearchCriteria cri,
 			RedirectAttributes rttr, HttpSession session, Model model) throws Exception {
 
 		logger.info("modifyPage get...");
 
-		UserVO user = (UserVO) session.getAttribute("login");
+		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
-		UserVO vo = service.read(usid);
+		StartUpUserVO vo = service.read(s_id);
 
-		if (user.getUsid().equals(vo.getUsid())) {
+		if (startUpUser.getS_id().equals(vo.getS_id())) {
 
-			model.addAttribute(service.read(usid));
+			model.addAttribute(service.read(s_id));
 			return "/user/modifyPage";
 
 		} else {
 
-			rttr.addAttribute("usid", usid);
+			rttr.addAttribute("s_id", s_id);
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("searchType", cri.getSearchType());
@@ -134,14 +113,14 @@ public class UserController {
 
 			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
 
-			return "redirect:/user/readPage";
+			return "redirect:/startup/readPage";
 
 		}
 
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
-	public String modifyPagePOST(UserVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
+	public String modifyPagePOST(StartUpUserVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
 			throws Exception {
 
 		logger.info("modifyPage posts...");
@@ -154,27 +133,27 @@ public class UserController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/user/list";
+		return "redirect:/start/list";
 
 	}
 
 	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("usid") String usid, HttpSession session,
+	public String remove(@RequestParam("s_id") String s_id, HttpSession session,
 			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
-		UserVO user = (UserVO) session.getAttribute("login");
+		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
-		UserVO vo = service.read(usid);
+		StartUpUserVO vo = service.read(s_id);
 
-		if (user.getUsid().equals(vo.getUsid())) {
-			service.remove(usid);
+		if (startUpUser.getS_id().equals(vo.getS_id())) {
+			service.remove(s_id);
 
 			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/user/list";
+			return "redirect:/startup/list";
 
 		} else {
 
-			rttr.addFlashAttribute("usid", "usid");
+			rttr.addFlashAttribute("s_id", "s_id");
 			rttr.addFlashAttribute("page", "cri.getPage");
 			rttr.addFlashAttribute("perPageNum", "cri.getperPageNum");
 			rttr.addFlashAttribute("searchType", "cri.getsearchType");
@@ -182,7 +161,7 @@ public class UserController {
 
 			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
 
-			return "redirect:/usid/readPage";
+			return "redirect:/startup/readPage";
 
 		}
 

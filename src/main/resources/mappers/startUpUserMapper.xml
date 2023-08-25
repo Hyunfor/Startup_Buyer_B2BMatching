@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.b2b.mapper.StartUpUserMapper">
+
+	<select id="login" resultType="com.b2b.domain.StartUpUserVO">
+		SELECT S_NAME, S_ID, S_PW
+		FROM STARTUP_USER
+		WHERE S_ID = #{s_id} AND S_PW = #{s_pw}
+	</select>
+
+	<insert id="create">
+		INSERT INTO STARTUP_USER (S_NAME, S_ID, S_PW)
+		VALUES (#{s_name}, #{s_id}, #{s_pw})
+	</insert>
+
+	<select id="read" resultType="com.b2b.domain.StartUpUserVO">
+		SELECT S_NAME, S_ID, S_PW
+		FROM STARTUP_USER
+		WHERE S_ID = #{s_id}
+	</select>
+
+	<update id="update">
+		UPDATE STARTUP_USER SET S_NAME = #{s_name}, S_ID = #{s_id},
+		S_PW = #{s_pw}
+		WHERE S_ID = #{s_id}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM STARTUP_USER WHERE S_ID = #{s_id}
+	</delete>
+
+	
+</mapper>
