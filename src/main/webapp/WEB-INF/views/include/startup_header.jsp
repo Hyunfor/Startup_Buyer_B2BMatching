@@ -45,7 +45,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/startup" class="logo d-flex align-items-center">
+      <a href="/startupUser" class="logo d-flex align-items-center">
         <img src="/resources/admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">BizMatch - Startup</span>
       </a>
@@ -256,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/startup/logout">
+              <a class="dropdown-item d-flex align-items-center" href="/startupUser/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

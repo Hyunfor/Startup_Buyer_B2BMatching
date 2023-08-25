@@ -38,7 +38,7 @@
 		<div class="login-box-body">
 			<p class="login-box-msg">Register a new membership</p>
 
-			<form action="/buyer/memberRegister" role="form" method="post">
+			<form action="/buyerUser/memberRegister" role="form" method="post">
 				<div class="form-group has-feedback">
 					<div class="form-group">
 						<label for="exampleInputEmail1">이름</label> <input type="text"

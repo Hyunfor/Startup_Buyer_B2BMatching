@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Log in</title>
+    <title>Log in</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-<form action="/startup/loginPost" method="post">
+<form action="/startupUser/loginPost" method="post">
   <div class="form-group has-feedback">
     <input type="text" name="s_id" class="form-control" placeholder="Startup ID"/>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -55,7 +55,7 @@
 
 
         <a href="#">I forgot my password</a><br>
-        <a href="/startup/memberRegister" class="text-center">Register a new membership</a>
+        <a href="/startupUser/memberRegister" class="text-center">Register a new membership</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

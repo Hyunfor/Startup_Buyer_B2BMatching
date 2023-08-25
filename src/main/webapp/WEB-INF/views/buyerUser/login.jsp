@@ -30,7 +30,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-<form action="/buyer/loginPost" method="post">
+<form action="/buyerUser/loginPost" method="post">
   <div class="form-group has-feedback">
     <input type="text" name="b_id" class="form-control" placeholder="Buyer ID"/>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -55,7 +55,7 @@
 
 
         <a href="#">I forgot my password</a><br>
-        <a href="/buyer/memberRegister" class="text-center">Register a new membership</a>
+        <a href="/buyerUser/memberRegister" class="text-center">Register a new membership</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
