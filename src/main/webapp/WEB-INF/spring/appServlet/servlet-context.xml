@@ -37,8 +37,8 @@
 	<interceptors>
 
 		<interceptor>
-			<mapping path="/startup/loginPost" />
-			<mapping path="/buyer/loginPost" />
+			<mapping path="/startupUser/loginPost" />
+			<mapping path="/buyerUser/loginPost" />
 			<beans:ref bean="LoginInterceptor" />
 		</interceptor>
 

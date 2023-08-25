@@ -19,7 +19,7 @@ import com.b2b.domain.SearchCriteria;
 import com.b2b.service.BuyerUserService;
 
 @Controller
-@RequestMapping("/buyer")
+@RequestMapping("/buyerUser")
 public class BuyerUserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BuyerUserController.class);

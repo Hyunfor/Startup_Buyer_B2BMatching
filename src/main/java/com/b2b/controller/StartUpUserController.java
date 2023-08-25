@@ -19,7 +19,7 @@ import com.b2b.domain.StartUpUserVO;
 import com.b2b.service.StartUpUserService;
 
 @Controller
-@RequestMapping("/startup")
+@RequestMapping("/startupUser")
 public class StartUpUserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StartUpUserController.class);

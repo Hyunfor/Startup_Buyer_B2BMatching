@@ -45,10 +45,10 @@
       <div class="contact-info d-flex align-items-center">
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
-      <a href="startup/login"><i class="bi bi-box-arrow-in-right"></i><span> Startup Login </span></a>
+      <a href="startupUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Startup Login </span></a>
       </div>
        <div class="social-links d-none d-md-flex align-items-center">
-      <a href="buyer/login"><i class="bi bi-box-arrow-in-right"></i><span> Buyer Login </span></a>
+      <a href="buyerUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Buyer Login </span></a>
       </div>
     </div>
   </section>
