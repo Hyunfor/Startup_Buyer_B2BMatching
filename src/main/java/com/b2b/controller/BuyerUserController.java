@@ -156,34 +156,4 @@ public class BuyerUserController {
 
 	}
 
-	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("b_id") String b_id, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception {
-
-		BuyerUserVO buyerUser = (BuyerUserVO) session.getAttribute("login");
-
-		BuyerUserVO vo = service.read(b_id);
-
-		if (buyerUser.getB_id().equals(vo.getB_id())) {
-			service.remove(b_id);
-
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/buyer/list";
-
-		} else {
-
-			rttr.addFlashAttribute("b_id", "b_id");
-			rttr.addFlashAttribute("page", "cri.getPage");
-			rttr.addFlashAttribute("perPageNum", "cri.getperPageNum");
-			rttr.addFlashAttribute("searchType", "cri.getsearchType");
-			rttr.addFlashAttribute("keyword", "cri.getkeyword");
-
-			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
-
-			return "redirect:/buyer/readPage";
-
-		}
-
-	}
-
 }

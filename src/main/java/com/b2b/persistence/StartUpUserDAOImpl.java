@@ -38,9 +38,4 @@ public class StartUpUserDAOImpl implements StartUpUserDAO {
 
 	}
 
-	@Override
-	public void delete(String usid) throws Exception {
-		session.delete(namespace + ".delete", usid);
-
-	}
 }
