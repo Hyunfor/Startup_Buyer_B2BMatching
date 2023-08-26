@@ -13,6 +13,4 @@ public interface StartUpUserDAO {
 
 	public void update(StartUpUserVO vo) throws Exception;
 
-	public void delete(String usid) throws Exception;
-
 }

@@ -36,10 +36,4 @@ public class StartUpUserServiceImpl implements StartUpUserService {
 
 	}
 
-	@Override
-	public void remove(String usid) throws Exception {
-		dao.delete(usid);
-
-	}
-
 }

@@ -13,6 +13,4 @@ public interface BuyerUserDAO {
 	
 	public void update(BuyerUserVO vo) throws Exception;
 	
-	public void delete(String usid) throws Exception;
-	
 }

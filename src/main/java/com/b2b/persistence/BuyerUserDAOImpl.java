@@ -38,9 +38,4 @@ public class BuyerUserDAOImpl implements BuyerUserDAO {
 
 	}
 
-	@Override
-	public void delete(String usid) throws Exception {
-		session.delete(namespace + ".delete", usid);
-
-	}
 }

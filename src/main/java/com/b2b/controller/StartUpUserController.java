@@ -137,34 +137,4 @@ public class StartUpUserController {
 
 	}
 
-	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("s_id") String s_id, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception {
-
-		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
-
-		StartUpUserVO vo = service.read(s_id);
-
-		if (startUpUser.getS_id().equals(vo.getS_id())) {
-			service.remove(s_id);
-
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/startup/list";
-
-		} else {
-
-			rttr.addFlashAttribute("s_id", "s_id");
-			rttr.addFlashAttribute("page", "cri.getPage");
-			rttr.addFlashAttribute("perPageNum", "cri.getperPageNum");
-			rttr.addFlashAttribute("searchType", "cri.getsearchType");
-			rttr.addFlashAttribute("keyword", "cri.getkeyword");
-
-			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
-
-			return "redirect:/startup/readPage";
-
-		}
-
-	}
-
 }
