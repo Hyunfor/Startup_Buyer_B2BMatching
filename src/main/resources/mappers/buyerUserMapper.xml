@@ -6,30 +6,29 @@
 
 	<select id="login" resultType="com.b2b.domain.BuyerUserVO">
 		SELECT B_NAME, B_ID, B_PW
-		FROM BUYER_USER
+		FROM
+		BUYER_USER
 		WHERE B_ID = #{b_id} AND B_PW = #{b_pw}
 	</select>
 
 	<insert id="create">
 		INSERT INTO BUYER_USER (B_NAME, B_ID, B_PW)
-		VALUES (#{b_name}, #{b_id}, #{b_pw})
+		VALUES
+		(#{b_name}, #{b_id}, #{b_pw})
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.BuyerUserVO">
 		SELECT B_NAME, B_ID, B_PW
-		FROM BUYER_USER
+		FROM
+		BUYER_USER
 		WHERE B_ID = #{b_id}
 	</select>
 
 	<update id="update">
-		UPDATE BUYER_USER SET B_NAME = #{b_name}, B_ID = #{b_id},
+		UPDATE BUYER_USER SET B_NAME = #{b_name}, B_ID =
+		#{b_id},
 		B_PW = #{b_pw}
 		WHERE B_ID = #{b_id}
 	</update>
 
-	<delete id="delete">
-		DELETE FROM BUYER_USER WHERE B_ID = #{b_id}
-	</delete>
-
-	
 </mapper>
