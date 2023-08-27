@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.b2b.domain.SearchCriteria;
 import com.b2b.domain.StartupVO;
 import com.b2b.persistence.StartupDAO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class StartupServiceImpl implements StartupService  {
@@ -25,9 +26,9 @@ public class StartupServiceImpl implements StartupService  {
 	}
 
 	@Override
-	public StartupVO read(String startup_id) throws Exception {
+	public StartupVO read(String startupId) throws Exception {
 	
-		return dao.read(startup_id);
+		return dao.read(startupId);
 	}
 
 	@Override
@@ -38,21 +39,22 @@ public class StartupServiceImpl implements StartupService  {
 	}
 
 	@Override
-	public void remove(String startup_id) throws Exception {
+	public void remove(String startupId) throws Exception {
 		
-		dao.delete(startup_id);
+		dao.delete(startupId);
 	
 		
 	}
 
-	@Override
+	/*@Override
 	public List<StartupVO> list() throws Exception {
 	
 		return  dao.list();
-	}
+	}*/
 
 	@Override
 	public List<StartupVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+		
 	
 		return dao.listSearchCriteria(cri);
 	}

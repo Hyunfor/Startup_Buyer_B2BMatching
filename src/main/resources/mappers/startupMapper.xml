@@ -10,8 +10,8 @@
 		INSERT INTO START_UP (STARTUP_ID,STARTUPNAME,ESTABLISHED_YEAR,SIZES
 								,CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
 								,ITEMS,EMAIL,NAMES)	
-		VALUES (#{startup_id},#{startupName},#{established_Year},#{sizes}
-					,#{categorys},#{business},#{no_Of_Employees},#{city}
+		VALUES (#{startupId},#{startupName},#{establishedYear},#{sizes}
+					,#{categorys},#{business},#{noOfEmployees},#{city}
 					,#{items} ,#{email},#{names})
 
 
@@ -22,20 +22,20 @@
 		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
 		,ITEMS,EMAIL,NAMES,REGDATE
 		FROM START_UP
-		WHERE STARTUP_ID = #{startup_id}
+		WHERE STARTUP_ID = #{startupId}
 	</select>
 
 	<update id="update">
-		UPDATE START_UP SET STARTUP_ID = #{startup_id}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{established_Year}, SIZES = #{sizes}
-			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{no_Of_Employees}, CITY = #{city}
+		UPDATE START_UP SET STARTUP_ID = #{startupId}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{establishedYear}, SIZES = #{sizes}
+			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{noOfEmployees}, CITY = #{city}
 			  				ITEMS = #{items}, EMAIL = #{email}, NAMES = #{names}
 		
-		WHERE STARTUP_ID = #{startup_id}
+		WHERE STARTUP_ID = #{startupId}
 
 	</update>
 
 	<delete id="delete">
-		DELETE FROM START_UP WHERE STARTUP_ID = #{startup_id}
+		DELETE FROM START_UP WHERE STARTUP_ID = #{startupId}
 	</delete>
 
 	<select id="list" resultType="com.b2b.domain.StartupVO">
@@ -55,55 +55,55 @@
 
 		<if test="searchType != null">
 
-			<if test="searchType == 't'.toString()">
-				AND TITLE LIKE '%' || #{keyword} || '%'
+			<if test="searchType == 'n'.toString()">
+				AND STARTUPNAME LIKE '%' || #{keyword} || '%'
 
 			</if>
+			<if test="searchType == 's'.toString()">
+				AND SIZES LIKE '%' || #{keyword} || '%'
+
+			</if>
+
 			<if test="searchType == 'c'.toString()">
-				AND CONTENT LIKE '%' || #{keyword} || '%'
-
-			</if>
-
-			<if test="searchType == 'w'.toString()">
-				AND WRITER LIKE '%' || #{keyword} || '%'
-
-			</if>
-			<if test="searchType == 'tc'.toString()">
-				AND (TITLE LIKE '%' || #{keyword} || '%')
-				OR
-				(CONTENT LIKE '%' || #{keyword} || '%')
-
-			</if>
-
-			<if test="searchType == 'cw'.toString()">
-				AND (CONTENT LIKE '%' || #{keyword} || '%')
-				OR
-				(WRITER LIKE '%' || #{keyword} || '%')
-
-			</if>
-
-			<if test="searchType == 'tcw'.toString()">
-				AND (CONTENT LIKE '%' || #{keyword} || '%')
-				OR
-				(WRITER LIKE '%' || #{keyword} || '%')
-				OR
-				(TITLE LIKE '%' || #{keyword} || '%')
-
-
-			</if>
+				AND CITY LIKE '%' || #{keyword} || '%'
 
 		</if>
+		
+			<if test="searchType == 'i'.toString()">
+				AND ITEMS LIKE '%' || #{keyword} || '%'
 
+		</if>
+		
+		
+		
+		
+         </if>
 
 	</sql>
 	
 	
-	
-	
-	
-
-
 	<select id="listSearchCriteria"
+		resultType="com.b2b.domain.StartupVO">
+
+<![CDATA[
+SELECT * FROM(
+ SELECT ROWNUM RNUM, STARTUPNAME, NAMES, STARTUP_ID,  ESTABLISHED_YEAR, SIZES,
+		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
+		,ITEMS,EMAIL,REGDATE
+		FROM(SELECT * FROM START_UP WHERE STARTUP_ID IS NOT NULL
+		]]>
+
+		<include refid="search"></include>
+		
+<![CDATA[	
+		ORDER BY STARTUP_ID DESC))
+    	WHERE (RNUM >= #{pageStart} AND RNUM <=#{pageEnd})
+    	ORDER BY STARTUP_ID DESC, REGDATE DESC
+]]>
+	</select>
+
+
+	<!-- <select id="listSearchCriteria"
 		resultType="com.b2b.domain.StartupVO">
 
 <![CDATA[
@@ -121,7 +121,7 @@ SELECT * FROM(
     	WHERE (RNUM >= #{pageStart} AND RNUM <=#{pageEnd})
     	ORDER BY STARTUP_ID DESC, REGDATE DESC
 ]]>
-	</select>
+	</select> -->
 	
 	
 
