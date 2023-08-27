@@ -37,7 +37,7 @@ public class HomeController {
 	   }
 	   
 	   
-	   @RequestMapping(value = "/startup", method = RequestMethod.GET)
+	   @RequestMapping(value = "/startupUser", method = RequestMethod.GET)
 	   public String startupHome(Locale locale, Model model) {
 	      logger.info("Welcome home! The client locale is {}.", locale);
 	      
@@ -52,7 +52,7 @@ public class HomeController {
 	   }
 	   
 	   
-	   @RequestMapping(value = "/buyer", method = RequestMethod.GET)
+	   @RequestMapping(value = "/buyerUser", method = RequestMethod.GET)
 	   public String buyerHome(Locale locale, Model model) {
 	      logger.info("Welcome home! The client locale is {}.", locale);
 	      

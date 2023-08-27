@@ -47,7 +47,10 @@
       <div class="contact-info d-flex align-items-center">
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
-      <a href="#"><i class="bi bi-box-arrow-in-right"></i><span> Login </span></a>
+      <a href="startupUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Startup Login </span></a>
+      </div>
+       <div class="social-links d-none d-md-flex align-items-center">
+      <a href="buyerUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Buyer Login </span></a>
       </div>
     </div>
   </section>
@@ -65,7 +68,7 @@
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="/startup/list">Startups</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Buyers</a></li>
+          <li><a class="nav-link scrollto" href="/buyer/list">Buyers</a></li>
           <li><a class="nav-link scrollto" href="/product/list">Products</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>

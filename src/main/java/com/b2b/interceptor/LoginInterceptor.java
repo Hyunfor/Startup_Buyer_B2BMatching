@@ -22,14 +22,29 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
-
+		Object startUpUserVO = modelMap.get("startUpUserVO");
+		Object buyerUserVO = modelMap.get("buyerUserVO");
+		
 		// UserController 에서 Model 객체에 담긴 UserVO 확인
-		if (userVO != null) {
+		if (startUpUserVO != null) {
 
 			// Session 객체에 UserVO 정보 담기
 			Logger.info("new login success");
-			session.setAttribute(LOGIN, userVO);
+			session.setAttribute(LOGIN, startUpUserVO);
+
+			// 로그인 전 보고 있었던 화면(url) 확인
+			Object dest = session.getAttribute("dest");
+
+			// 로그인 전 보고 있었던 화면(url)으로 이동
+			response.sendRedirect(dest != null ? (String) dest : "/"); // 조건 ? true : false
+
+		}
+		
+		if (buyerUserVO != null) {
+
+			// Session 객체에 UserVO 정보 담기
+			Logger.info("new login success");
+			session.setAttribute(LOGIN, buyerUserVO);
 
 			// 로그인 전 보고 있었던 화면(url) 확인
 			Object dest = session.getAttribute("dest");

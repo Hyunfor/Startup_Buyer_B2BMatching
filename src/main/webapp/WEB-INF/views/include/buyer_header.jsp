@@ -45,7 +45,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/buyer" class="logo d-flex align-items-center">
+      <a href="/buyerUser" class="logo d-flex align-items-center">
         <img src="/resources/admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">BizMatch - Buyer</span>
       </a>
@@ -256,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/buyerUser/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
