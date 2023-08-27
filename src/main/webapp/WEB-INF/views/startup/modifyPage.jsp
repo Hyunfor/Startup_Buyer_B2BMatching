@@ -9,56 +9,68 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>기업등록</h1>
+      <h1>기업수정</h1>
     </div>
-   
-    
-    
     <section class="section">
       <div class="row">
         <div class="col-lg-10">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">기업 정보 등록</h5>
+              <h5 class="card-title">기업 정보 수정</h5>
 
               <!-- General Form Elements -->
+              
+              
+<form role="form" action="modifyPage" method="post">
+
+	<input type='hidden' name='startupId' value="${startupVO.startupId}"> 
+	<input type='hidden' name='page' value="${cri.page}">
+	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+	<input type='hidden' name='searchType' value="${cri.searchType}">
+	<input type='hidden' name='keyword' value="${cri.keyword}">
+
+</form>
              
-              <form role="form" method="post">
+              
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">기업명</label>
                   <div class="col-sm-10">
-                    <input type="text" name='startupName' class="form-control">
+                    <input type="text" name='startupName' class="form-control"
+                    value="${startupVO.startupName}" >
                     
                   </div>
                 </div>
+                
                   <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">대표명</label>
                   <div class="col-sm-10">
-                    <input type="text" name='names' class="form-control">
+                    <input type="text" name='names' class="form-control"
+                    value="${startupVO.names}">
                   </div>
                 </div>
+                
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">기업 이메일</label>
                   <div class="col-sm-10">
-                   <input type="text" name='startupId' class="form-control">
+                   <input type="text" name='startupId' class="form-control"
+                   value="${startupVO.startupId}" >
                   </div>
                 </div>
                
                  <div class="row mb-3">
                   <label for="inputDate" class="col-sm-2 col-form-label">설립일</label>
                   <div class="col-sm-10">
-                     <input type="date" name='establishedYear' class="form-control" >
+                     <input type="date" name='establishedYear' class="form-control"
+                     value="${startupVO.establishedYear}" >
                   </div>
-                </div> 
-                
-                
-               
+                </div>
                 
                   <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">규모</label>
                   <div class="col-sm-10">
-                   <input type="text" name='sizes' class="form-control">
+                   <input type="text" name='sizes' class="form-control"
+                   value="${startupVO.sizes}" >
                   </div>
                 </div>
            <!--      <div class="row mb-3">
@@ -76,40 +88,51 @@
                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">업종</label>
                   <div class="col-sm-10">
-                     <input type="text" name='categorys' class="form-control">
+                     <input type="text" name='categorys' class="form-control"
+                     value="${startupVO.categorys}" >
                   </div>
                 </div>
+                
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">업태</label>
                   <div class="col-sm-10">
-                   <input type="text" name='business' class="form-control">
+                   <input type="text" name='business' class="form-control"
+                   value="${startupVO.business}">
                   </div>
                 </div>
+                
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">직원수</label>
                   <div class="col-sm-10">
-                    <input type="text" name='noOfEmployees' class="form-control">
+                    <input type="text" name='noOfEmployees' class="form-control"
+                    value="${startupVO.noOfEmployees}">
                   </div>
                 </div>
+                
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">주소</label>
                   <div class="col-sm-10">
-                     <input type="text" name='city' class="form-control">
+                     <input type="text" name='city' class="form-control"
+                     value="${startupVO.city}">
                   </div>
                 </div>
+                
                    <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">주력상품</label>
                   <div class="col-sm-10">
-                    <input type="text" name='items' class="form-control">
+                    <input type="text" name='items' class="form-control"
+                    value="${startupVO.items}">
                   </div>
                 </div>
                 
                    <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-10">
-                    <input type="text" name='email' class="form-control">
+                    <input type="text" name='email' class="form-control"
+                    value="${startupVO.email}">
                   </div>
                 </div>
+                
               <!--    <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">사업자 등록증</label>
                   <div class="col-sm-10">
@@ -126,7 +149,31 @@
                 </div>
                
 
-              </form><!-- End General Form Elements -->
+              <!-- End General Form Elements -->
+
+<script>
+$(document).ready(
+	function() {
+
+		var formObj = $("form[role='form']");
+
+		console.log(formObj);
+
+		$(".btn-warning")
+				.on("click",function() {
+					self.location = "/startup/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
+							+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+				});
+
+		$(".btn-primary").on("click",
+				function() {
+					formObj.submit();
+				});
+	});
+</script>
+
+
+
 
             </div>
           </div>
@@ -141,8 +188,8 @@
 
 
 
- </main>
 
+</main>
 
 
 

@@ -9,11 +9,11 @@ public interface StartupDAO {
 
 	public void create(StartupVO vo) throws Exception;
 
-	public StartupVO read(String startup_id) throws Exception;
+	public StartupVO read(String startupId) throws Exception;
 
 	public void update(StartupVO vo) throws Exception;
 
-	public void delete(String startup_id) throws Exception;
+	public void delete(String startupId) throws Exception;
 
 	public List<StartupVO> list();
 

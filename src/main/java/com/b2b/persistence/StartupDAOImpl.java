@@ -26,8 +26,8 @@ public class StartupDAOImpl implements StartupDAO {
 	}
 
 	@Override
-	public StartupVO read(String startup_id) throws Exception {
-		return session.selectOne(namespace + ".read",startup_id);
+	public StartupVO read(String startupdId) throws Exception {
+		return session.selectOne(namespace + ".read",startupdId);
 		
 	}
 
@@ -37,8 +37,8 @@ public class StartupDAOImpl implements StartupDAO {
 	}
 
 	@Override
-	public void delete(String startup_id) throws Exception {
-		session.delete(namespace + ".delete", startup_id);
+	public void delete(String startupdId) throws Exception {
+		session.delete(namespace + ".delete", startupdId);
 		
 	}
 
@@ -50,6 +50,7 @@ public class StartupDAOImpl implements StartupDAO {
 
 	@Override
 	public List<StartupVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+		
 		return session.selectList(namespace + ".listSearchCriteria", cri);
 	}
 

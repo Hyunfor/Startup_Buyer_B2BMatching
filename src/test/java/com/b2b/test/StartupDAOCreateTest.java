@@ -28,13 +28,13 @@ private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger
 	public void testCreate() throws Exception{
 		StartupVO vo = new StartupVO();
 		
-		vo.setStartup_id("JHS157672345678");
+		vo.setStartupId("JHS157672345678");
 		vo.setStartupName("순기업");
-		vo.setEstablished_Year("2023.08.23");
+		vo.setEstablishedYear("2023/08/25");
 		vo.setSizes("소기업");
 		vo.setCategorys("도매업");
 		vo.setBusiness("IT/service");
-		vo.setNo_Of_Employees("100명");
+		vo.setNoOfEmployees("100명");
 		vo.setCity("대구");
 		vo.setItems("태블릿");
 		vo.setEmail("JHS15767@GMAIL.COM");

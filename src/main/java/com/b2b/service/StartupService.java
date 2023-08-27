@@ -9,13 +9,13 @@ public interface StartupService {
 	
 	public void register(StartupVO vo) throws Exception;
 
-	public StartupVO read(String startup_id) throws Exception;
+	public StartupVO read(String startupId) throws Exception;
 
 	public void modify(StartupVO vo) throws Exception;
 
-	public void remove(String startup_id) throws Exception;
+	public void remove(String startupId) throws Exception;
 
-	public List<StartupVO> list() throws Exception;
+	//public List<StartupVO> list() throws Exception;
 	
 	public List<StartupVO> listSearchCriteria(SearchCriteria cri) throws Exception;
 	
