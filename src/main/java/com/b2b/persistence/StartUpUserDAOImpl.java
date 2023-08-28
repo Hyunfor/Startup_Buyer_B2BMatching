@@ -28,8 +28,8 @@ public class StartUpUserDAOImpl implements StartUpUserDAO {
 	}
 
 	@Override
-	public StartUpUserVO read(String s_id) throws Exception {
-		return session.selectOne(namespace + ".read", s_id);
+	public StartUpUserVO read(String sId) throws Exception {
+		return session.selectOne(namespace + ".read", sId);
 	}
 
 	@Override

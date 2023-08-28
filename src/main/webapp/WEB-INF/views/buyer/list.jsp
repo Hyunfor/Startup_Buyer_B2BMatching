@@ -107,7 +107,7 @@
 				</tbody>
 
 
-				<c:forEach items="${list}" var="buyerUserVO" varStatus="var">
+				<c:forEach items="${list}" var="buyerVO" varStatus="var">
 
 					<tr>
 						<c:if test="${pageMaker.cri.page == 1 }">
@@ -120,23 +120,16 @@
 
 						<td><a
 							href='/buyer/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}'>
-								${startupVO.startupId} </a></td>
-						<td>${startupVO.startupName}</td>
-						<%-- <td><fmt:formatDate pattern="yyyy-MM-dd" 
-										value="${startupVO.establishedYear}" /></td> --%>
-						<td><fmt:parseDate value="${startupVO.establishedYear}"
-								pattern="yyyy-MM-dd">
-							</fmt:parseDate></td>
-						<td>${startupVO.sizes}</td>
-						<td>${startupVO.categorys}</td>
-						<td>${startupVO.business}</td>
-						<td>${startupVO.noOfEmployees}</td>
-						<td>${startupVO.city}</td>
-						<td>${startupVO.items}</td>
-						<td>${startupVO.email}</td>
-						<td>${startupVO.names}</td>
+								${buyerVO.buyerId} </a></td>
+						<td>${buyerVO.buyerName}</td>
+						<td>${buyerVO.email}</td>
+						<td>${buyerVO.country}</td>
+						<td>${buyerVO.category}</td>
+						<td>${buyerVO.business}</td>
+						<td>${buyerVO.items}</td>
+						<td>${buyerVO.orderAmount}</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${startupVO.regdate}" /></td>
+								value="${buyerVO.regdate}" /></td>
 
 					</tr>
 
@@ -251,4 +244,4 @@
 </script>
 
 
-<%@include file="../include/startup_footer.jsp"%>
+<%@include file="../include/buyer_footer.jsp"%>

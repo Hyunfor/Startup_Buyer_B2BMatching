@@ -9,7 +9,7 @@ public interface BuyerUserService {
 
 	public void register(BuyerUserVO vo) throws Exception;
 
-	public BuyerUserVO read(String b_id) throws Exception;
+	public BuyerUserVO read(String bId) throws Exception;
 
 	public void modify(BuyerUserVO vo) throws Exception;
 

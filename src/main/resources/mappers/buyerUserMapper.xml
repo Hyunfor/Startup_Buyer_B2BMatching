@@ -12,9 +12,9 @@
 	</select>
 
 	<insert id="create">
-		INSERT INTO BUYER_USER (B_NAME, B_ID, B_PW)
+		INSERT INTO BUYER_USER (B_NAME, B_NAME AS NAME, B_ID, B_PW)
 		VALUES
-		(#{b_name}, #{bId}, #{bPw})
+		(#{bName}, #{bId}, #{bPw})
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.BuyerUserVO">
@@ -25,7 +25,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE BUYER_USER SET B_NAME = #{b_name}, B_PW = #{bPw}
+		UPDATE BUYER_USER SET B_NAME = #{bName}, B_PW = #{bPw}
 		WHERE B_ID = #{bId}
 	</update>
 
