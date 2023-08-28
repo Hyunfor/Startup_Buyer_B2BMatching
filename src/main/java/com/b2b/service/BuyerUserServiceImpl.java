@@ -26,8 +26,8 @@ public class BuyerUserServiceImpl implements BuyerUserService {
 	}
 
 	@Override
-	public BuyerUserVO read(String b_id) throws Exception {
-		return dao.read(b_id);
+	public BuyerUserVO read(String bId) throws Exception {
+		return dao.read(bId);
 	}
 
 	@Override

@@ -26,8 +26,8 @@ public class StartUpUserServiceImpl implements StartUpUserService {
 	}
 
 	@Override
-	public StartUpUserVO read(String s_id) throws Exception {
-		return dao.read(s_id);
+	public StartUpUserVO read(String sId) throws Exception {
+		return dao.read(sId);
 	}
 
 	@Override
