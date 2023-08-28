@@ -21,8 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/startup/*")
-
-
 public class StartupController {
 	
 	

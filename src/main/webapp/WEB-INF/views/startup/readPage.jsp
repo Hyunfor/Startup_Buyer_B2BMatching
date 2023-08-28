@@ -145,10 +145,10 @@
                   <label class="col-sm-2 col-form-label">수정하기</label>
                   <div class="col-sm-10">
                     <c:if test="${UserVO.usid eq login.usid}">
-                    <button type="submit" class="btn btn-primary">수정</button>
                     <button type="submit" class="btn btn-danger">삭제</button>
+                     <button type="submit" class="btn btn-primary">수정</button>
                     </c:if>
-                    <button type="submit" class="btn btn-primary">목록</button>
+                    <button type="submit" class="btn btn-dark">목록</button>
                     
                     
                     
@@ -174,7 +174,7 @@
 
 		console.log(formObj);
 
-		$(".btn-warning").on("click", function() {
+		$(".btn-primary").on("click", function() {
 			formObj.attr("action", "/startup/modifyPage");
 			formObj.attr("method", "get");
 			formObj.submit();
@@ -185,7 +185,7 @@
 			formObj.submit();
 		});
 
-		$(".btn-primary").on("click", function() {
+		$(".btn-dark").on("click", function() {
 			formObj.attr("method", "get");
 			formObj.attr("action", "/startup/list");
 			formObj.submit();
