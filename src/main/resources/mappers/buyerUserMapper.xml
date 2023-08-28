@@ -5,30 +5,28 @@
 <mapper namespace="com.b2b.mapper.BuyerUserMapper">
 
 	<select id="login" resultType="com.b2b.domain.BuyerUserVO">
-		SELECT B_NAME, B_ID, B_PW
+		SELECT B_NAME, B_NAME AS NAME, B_ID, B_PW
 		FROM
 		BUYER_USER
-		WHERE B_ID = #{b_id} AND B_PW = #{b_pw}
+		WHERE B_ID = #{bId} AND B_PW = #{bPw}
 	</select>
 
 	<insert id="create">
 		INSERT INTO BUYER_USER (B_NAME, B_ID, B_PW)
 		VALUES
-		(#{b_name}, #{b_id}, #{b_pw})
+		(#{b_name}, #{bId}, #{bPw})
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.BuyerUserVO">
 		SELECT B_NAME, B_ID, B_PW
 		FROM
 		BUYER_USER
-		WHERE B_ID = #{b_id}
+		WHERE B_ID = #{bId}
 	</select>
 
 	<update id="update">
-		UPDATE BUYER_USER SET B_NAME = #{b_name}, B_ID =
-		#{b_id},
-		B_PW = #{b_pw}
-		WHERE B_ID = #{b_id}
+		UPDATE BUYER_USER SET B_NAME = #{b_name}, B_PW = #{bPw}
+		WHERE B_ID = #{bId}
 	</update>
 
 </mapper>

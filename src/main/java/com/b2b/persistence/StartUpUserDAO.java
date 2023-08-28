@@ -1,7 +1,7 @@
 package com.b2b.persistence;
 
-import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.dto.StartUpLoginDTO;
 
 public interface StartUpUserDAO {
 
@@ -9,7 +9,7 @@ public interface StartUpUserDAO {
 
 	public void create(StartUpUserVO vo) throws Exception;
 
-	public StartUpUserVO read(String usid) throws Exception;
+	public StartUpUserVO read(String s_id) throws Exception;
 
 	public void update(StartUpUserVO vo) throws Exception;
 

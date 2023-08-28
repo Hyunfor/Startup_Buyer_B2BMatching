@@ -29,28 +29,28 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if (startUpUserVO != null) {
 
 			// Session 객체에 UserVO 정보 담기
-			Logger.info("new login success");
+			Logger.info("new startUpUserVO login success");
 			session.setAttribute(LOGIN, startUpUserVO);
 
 			// 로그인 전 보고 있었던 화면(url) 확인
 			Object dest = session.getAttribute("dest");
 
 			// 로그인 전 보고 있었던 화면(url)으로 이동
-			response.sendRedirect(dest != null ? (String) dest : "/"); // 조건 ? true : false
+			response.sendRedirect(dest != null ? (String) dest : "/startup/list"); // 조건 ? true : false
 
 		}
 		
 		if (buyerUserVO != null) {
 
 			// Session 객체에 UserVO 정보 담기
-			Logger.info("new login success");
+			Logger.info("new buyerUserVO login success");
 			session.setAttribute(LOGIN, buyerUserVO);
 
 			// 로그인 전 보고 있었던 화면(url) 확인
 			Object dest = session.getAttribute("dest");
 
 			// 로그인 전 보고 있었던 화면(url)으로 이동
-			response.sendRedirect(dest != null ? (String) dest : "/"); // 조건 ? true : false
+			response.sendRedirect(dest != null ? (String) dest : "/buyer/list"); // 조건 ? true : false
 
 		}
 	}

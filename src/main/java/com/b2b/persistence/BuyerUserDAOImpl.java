@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.b2b.DTO.BuyerLoginDTO;
 import com.b2b.domain.BuyerUserVO;
+import com.b2b.dto.BuyerLoginDTO;
 
 @Repository
 public class BuyerUserDAOImpl implements BuyerUserDAO {
@@ -28,8 +28,8 @@ public class BuyerUserDAOImpl implements BuyerUserDAO {
 	}
 
 	@Override
-	public BuyerUserVO read(String usid) throws Exception {
-		return session.selectOne(namespace + ".read", usid);
+	public BuyerUserVO read(String b_id) throws Exception {
+		return session.selectOne(namespace + ".read", b_id);
 	}
 
 	@Override

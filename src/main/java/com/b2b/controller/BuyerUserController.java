@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.b2b.DTO.BuyerLoginDTO;
 import com.b2b.domain.BuyerUserVO;
 import com.b2b.domain.SearchCriteria;
+import com.b2b.dto.BuyerLoginDTO;
 import com.b2b.service.BuyerUserService;
 
 @Controller
@@ -33,15 +33,16 @@ public class BuyerUserController {
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(BuyerLoginDTO dto, Model model) throws Exception {
+	public void loginPOST(BuyerLoginDTO dto, HttpSession session, Model model) throws Exception {
 
 		BuyerUserVO vo = service.login(dto);
+		logger.info("buyerUserVO loginPost =======> " + vo);
 
 		if (vo == null) {
 			return;
 		}
 
-		model.addAttribute("BuyerUserVO", vo);
+		model.addAttribute("buyerUserVO", vo);
 
 	}
 
@@ -56,25 +57,6 @@ public class BuyerUserController {
 		}
 
 		return "redirect:/";
-
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET() throws Exception {
-
-		logger.info("register get...");
-
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(BuyerUserVO vo, RedirectAttributes rttr, Model model) throws Exception {
-
-		logger.info("register post...");
-
-		service.register(vo);
-		rttr.addFlashAttribute("msg", "SUCCESS");
-
-		return "redirect:/buyer/list";
 
 	}
 
@@ -93,7 +75,7 @@ public class BuyerUserController {
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/login";
+		return "redirect:/";
 
 	}
 
@@ -117,10 +99,10 @@ public class BuyerUserController {
 
 		BuyerUserVO vo = service.read(b_id);
 
-		if (buyerUser.getB_id().equals(vo.getB_id())) {
+		if (buyerUser.getbId().equals(vo.getbId())) {
 
 			model.addAttribute(service.read(b_id));
-			return "/buyer/modifyPage";
+			return "/buyerUser/modifyPage";
 
 		} else {
 
@@ -152,7 +134,7 @@ public class BuyerUserController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/list";
+		return "redirect:/buyerUser/list";
 
 	}
 

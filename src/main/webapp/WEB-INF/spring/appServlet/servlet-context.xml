@@ -28,11 +28,9 @@
 
 	<beans:bean id="LoginInterceptor"
 		class="com.b2b.interceptor.LoginInterceptor"></beans:bean>
+		
 	<beans:bean id="AuthInterceptor"
 		class="com.b2b.interceptor.AuthInterceptor"></beans:bean>
-
-
-
 
 	<interceptors>
 
@@ -43,7 +41,6 @@
 		</interceptor>
 
 		<interceptor>
-
 			<mapping path="/web/startup/register" />
 			<mapping path="/web/startup/modifyPage" />
 			<mapping path="/web/startup/removePage" />
@@ -67,9 +64,6 @@
 			value="C:\\resources\\upload"></beans:constructor-arg>
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.b2b.controller" />
-
-
+	<context:component-scan base-package="com.b2b.controller" />
 
 </beans:beans>

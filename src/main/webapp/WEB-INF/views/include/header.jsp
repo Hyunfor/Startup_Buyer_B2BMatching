@@ -45,15 +45,30 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-      </div>
-      <div class="social-links d-none d-md-flex align-items-center">
+      </div>    
+<div class="social-links d-none d-md-flex align-items-center">
+
+<c:if test="${empty login}">
       <a href="startupUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Startup Login </span></a>
-      </div>
-       <div class="social-links d-none d-md-flex align-items-center">
       <a href="buyerUser/login"><i class="bi bi-box-arrow-in-right"></i><span> Buyer Login </span></a>
-      </div>
-    </div>
-  </section>
+</c:if>
+ 
+<c:if test="${not empty login}">
+<c:choose>
+<c:when test="${login.name ne null}">${login.name}
+<c:if test="${login.getClass().name eq 'com.b2b.domain.StartUpUserVO'}">
+<a href="startupUser/logout"><i class="bi bi-box-arrow-in-left"></i><span> Startup Logout </span></a>
+</c:if>
+
+<c:if test="${login.getClass().name eq 'com.b2b.domain.BuyerUserVO'}">
+<a href="buyerUser/logout"><i class="bi bi-box-arrow-in-left"></i><span> Buyer Logout </span></a>
+</c:if>
+</c:when>
+</c:choose>
+</c:if>
+</div>
+</div>
+</section>
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
