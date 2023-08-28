@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.SearchCriteria;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.dto.StartUpLoginDTO;
 import com.b2b.service.StartUpUserService;
 
 @Controller
@@ -33,9 +33,13 @@ public class StartUpUserController {
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(StartUpLoginDTO dto, Model model) throws Exception {
+	public void loginPOST(StartUpLoginDTO dto, HttpSession session, Model model) throws Exception {
 
+		logger.info("dto =======> " + dto);
+		
 		StartUpUserVO vo = service.login(dto);
+		
+		logger.info("loginPost =======> " + vo);
 
 		if (vo == null) {
 			return;
@@ -74,7 +78,7 @@ public class StartUpUserController {
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/startup/login";
+		return "redirect:/";
 
 	}
 
@@ -98,10 +102,10 @@ public class StartUpUserController {
 
 		StartUpUserVO vo = service.read(s_id);
 
-		if (startUpUser.getS_id().equals(vo.getS_id())) {
+		if (startUpUser.getsId().equals(vo.getsId())) {
 
 			model.addAttribute(service.read(s_id));
-			return "/user/modifyPage";
+			return "/starupUser/modifyPage";
 
 		} else {
 
@@ -113,7 +117,7 @@ public class StartUpUserController {
 
 			rttr.addFlashAttribute("msg", "잘못된 접근입니다");
 
-			return "redirect:/startup/readPage";
+			return "redirect:/startupUser/readPage";
 
 		}
 
@@ -133,7 +137,7 @@ public class StartUpUserController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/start/list";
+		return "redirect:/startupUser/readPage";
 
 	}
 

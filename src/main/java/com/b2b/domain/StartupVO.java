@@ -2,8 +2,6 @@ package com.b2b.domain;
 
 import java.util.Date;
 
-import javax.xml.crypto.Data;
-
 public class StartupVO {
 
 	

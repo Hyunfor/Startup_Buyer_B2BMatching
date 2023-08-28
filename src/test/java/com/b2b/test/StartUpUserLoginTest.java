@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.dto.StartUpLoginDTO;
 import com.b2b.persistence.StartUpUserDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)

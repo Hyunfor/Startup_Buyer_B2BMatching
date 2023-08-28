@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.dto.StartUpLoginDTO;
 
 @Repository
 public class StartUpUserDAOImpl implements StartUpUserDAO {
@@ -28,8 +28,8 @@ public class StartUpUserDAOImpl implements StartUpUserDAO {
 	}
 
 	@Override
-	public StartUpUserVO read(String usid) throws Exception {
-		return session.selectOne(namespace + ".read", usid);
+	public StartUpUserVO read(String s_id) throws Exception {
+		return session.selectOne(namespace + ".read", s_id);
 	}
 
 	@Override

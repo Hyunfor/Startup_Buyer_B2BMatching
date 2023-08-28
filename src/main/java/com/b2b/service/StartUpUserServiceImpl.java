@@ -4,8 +4,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.b2b.DTO.StartUpLoginDTO;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.dto.StartUpLoginDTO;
 import com.b2b.persistence.StartUpUserDAO;
 
 @Service
@@ -26,8 +26,8 @@ public class StartUpUserServiceImpl implements StartUpUserService {
 	}
 
 	@Override
-	public StartUpUserVO read(String usid) throws Exception {
-		return dao.read(usid);
+	public StartUpUserVO read(String s_id) throws Exception {
+		return dao.read(s_id);
 	}
 
 	@Override

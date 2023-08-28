@@ -4,30 +4,30 @@ import java.util.Date;
 
 public class BuyerVO {
 
-	private int buyer_id;
-	private String buyer_name;
+	private int buyerId;
+	private String buyerName;
 	private String email;
 	private String country;
 	private String category;
 	private String business;
 	private String items;
-	private String order_amount;
+	private String orderAmount;
 	private Date regdate;
 
-	public int getBuyer_id() {
-		return buyer_id;
+	public int getBuyerId() {
+		return buyerId;
 	}
 
-	public void setBuyer_id(int buyer_id) {
-		this.buyer_id = buyer_id;
+	public void setBuyerId(int buyerId) {
+		this.buyerId = buyerId;
 	}
 
-	public String getBuyer_name() {
-		return buyer_name;
+	public String getBuyerName() {
+		return buyerName;
 	}
 
-	public void setBuyer_name(String buyer_name) {
-		this.buyer_name = buyer_name;
+	public void setBuyerName(String buyerName) {
+		this.buyerName = buyerName;
 	}
 
 	public String getEmail() {
@@ -70,12 +70,12 @@ public class BuyerVO {
 		this.items = items;
 	}
 
-	public String getOrder_amount() {
-		return order_amount;
+	public String getOrderAmount() {
+		return orderAmount;
 	}
 
-	public void setOrder_amount(String order_amount) {
-		this.order_amount = order_amount;
+	public void setOrderAmount(String orderAmount) {
+		this.orderAmount = orderAmount;
 	}
 
 	public Date getRegdate() {
@@ -88,9 +88,9 @@ public class BuyerVO {
 
 	@Override
 	public String toString() {
-		return "BuyerVO [buyer_id=" + buyer_id + ", buyer_name=" + buyer_name + ", email=" + email + ", country="
-				+ country + ", category=" + category + ", business=" + business + ", items=" + items + ", order_amount="
-				+ order_amount + ", regdate=" + regdate + "]";
+		return "BuyerVO [buyerId=" + buyerId + ", buyerName=" + buyerName + ", email=" + email + ", country=" + country
+				+ ", category=" + category + ", business=" + business + ", items=" + items + ", orderAmount="
+				+ orderAmount + ", regdate=" + regdate + "]";
 	}
-
+	
 }
