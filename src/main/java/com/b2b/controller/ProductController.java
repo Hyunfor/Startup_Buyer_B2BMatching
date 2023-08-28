@@ -96,7 +96,7 @@ public class ProductController {
 		// 2-1) 게시글 정보 가져오기
 		ProductVO vo = service.read(pno);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (startUpUser.getsId().equals(vo.getStartup_id())) {
+		if (startUpUser.getsId().equals(vo.getStartupId())) {
 			// 정보 일치 - > 게시글 수정
 			// 목록화면으로 이동
 			service.modify(vo);
@@ -152,7 +152,7 @@ public class ProductController {
 		// 2-1) 게시글 정보 가져오기
 		ProductVO vo = service.read(pno);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (startUpUser.getsId().equals(vo.getStartup_id())) {
+		if (startUpUser.getsId().equals(vo.getStartupId())) {
 			// 정보 일치 - > 게시글 삭제
 			service.remove(pno);
 
