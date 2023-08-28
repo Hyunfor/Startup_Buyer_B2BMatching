@@ -81,7 +81,7 @@ public class BuyerController {
 		// 2-1) 게시글 정보 가져오기
 		BuyerVO vo = service.read(buyer_id);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (buyerUser.getB_id().equals(vo.getBuyer_id())) {
+		if (buyerUser.getbId().equals(vo.getBuyerId())) {
 			// 정보 일치 - > 게시글 수정
 			// 목록화면으로 이동
 			service.modify(vo);
@@ -136,7 +136,7 @@ public class BuyerController {
 		// 2-1) 게시글 정보 가져오기
 		BuyerVO vo = service.read(buyer_id);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (buyerUser.getB_id().equals(vo.getBuyer_id())) {
+		if (buyerUser.getbId().equals(vo.getBuyerId())) {
 			// 정보 일치 - > 게시글 삭제
 			service.remove(buyer_id);
 

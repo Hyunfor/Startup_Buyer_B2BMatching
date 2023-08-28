@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.b2b.domain.PageMaker;
 import com.b2b.domain.ProductVO;
 import com.b2b.domain.SearchCriteria;
-import com.b2b.domain.UserVO;
+import com.b2b.domain.StartUpUserVO;
 import com.b2b.service.ProductService;
 
 @Controller
@@ -90,13 +90,13 @@ public class ProductController {
 		// 수정 하려면 로그인한 정보와 게시글의 작성자가 일치
 
 		// 1) 로그인 정보 가져오기
-		UserVO user = (UserVO) session.getAttribute("login");
+		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
 		// 2) 게시글 작성자 정보와 비교
 		// 2-1) 게시글 정보 가져오기
 		ProductVO vo = service.read(pno);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (user.getUsid().equals(vo.getStartup_id())) {
+		if (startUpUser.getsId().equals(vo.getStartup_id())) {
 			// 정보 일치 - > 게시글 수정
 			// 목록화면으로 이동
 			service.modify(vo);
@@ -146,13 +146,13 @@ public class ProductController {
 		// 삭제 하려면 로그인한 정보와 게시글의 작성자가 일치
 
 		// 1) 로그인 정보 가져오기
-		UserVO user = (UserVO) session.getAttribute("login");
+		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
 		// 2) 게시글 작성자 정보와 비교
 		// 2-1) 게시글 정보 가져오기
 		ProductVO vo = service.read(pno);
 		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (user.getUsid().equals(vo.getStartup_id())) {
+		if (startUpUser.getsId().equals(vo.getStartup_id())) {
 			// 정보 일치 - > 게시글 삭제
 			service.remove(pno);
 

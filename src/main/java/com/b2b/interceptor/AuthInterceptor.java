@@ -10,7 +10,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
-	private static final String LOGIN = "login";
 	private static final Logger Logger = LoggerFactory.getLogger(AuthInterceptor.class);
 
 	private void saveDest(HttpServletRequest request) {
@@ -38,7 +37,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute(LOGIN) == null) {
+		if (session.getAttribute("login") == null) {
 			Logger.info("current user is not logined");
 
 			// 보던 화면(URL) session 객체 저장

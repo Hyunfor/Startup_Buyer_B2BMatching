@@ -32,7 +32,7 @@
 <body class="login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="/resources/index2.html"><b>MIS</b> Spring Project</a>
+			<a href="/resources/index2.html"><b>Biz</b> Matching</a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">

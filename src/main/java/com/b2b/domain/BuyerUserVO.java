@@ -2,37 +2,46 @@ package com.b2b.domain;
 
 public class BuyerUserVO {
 
-	private String b_name;
-	private String b_id;
-	private String b_pw;
+	private String bName;
+	private String bId;
+	private String bPw;
+	private String name;
 
-	public String getB_name() {
-		return b_name;
+	public String getbName() {
+		return bName;
 	}
 
-	public void setB_name(String b_name) {
-		this.b_name = b_name;
+	public void setbName(String bName) {
+		this.bName = bName;
 	}
 
-	public String getB_id() {
-		return b_id;
+	public String getbId() {
+		return bId;
 	}
 
-	public void setB_id(String b_id) {
-		this.b_id = b_id;
+	public void setbId(String bId) {
+		this.bId = bId;
 	}
 
-	public String getB_pw() {
-		return b_pw;
+	public String getbPw() {
+		return bPw;
 	}
 
-	public void setB_pw(String b_pw) {
-		this.b_pw = b_pw;
+	public void setbPw(String bPw) {
+		this.bPw = bPw;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "BuyerUserVO [b_name=" + b_name + ", b_id=" + b_id + ", b_pw=" + b_pw + "]";
+		return "BuyerUserVO [bName=" + bName + ", bId=" + bId + ", bPw=" + bPw + ", name=" + name + "]";
 	}
 
 }

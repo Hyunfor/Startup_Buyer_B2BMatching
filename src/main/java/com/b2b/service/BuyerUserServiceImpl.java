@@ -4,8 +4,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.b2b.DTO.BuyerLoginDTO;
 import com.b2b.domain.BuyerUserVO;
+import com.b2b.dto.BuyerLoginDTO;
 import com.b2b.persistence.BuyerUserDAO;
 
 @Service
@@ -26,8 +26,8 @@ public class BuyerUserServiceImpl implements BuyerUserService {
 	}
 
 	@Override
-	public BuyerUserVO read(String usid) throws Exception {
-		return dao.read(usid);
+	public BuyerUserVO read(String b_id) throws Exception {
+		return dao.read(b_id);
 	}
 
 	@Override

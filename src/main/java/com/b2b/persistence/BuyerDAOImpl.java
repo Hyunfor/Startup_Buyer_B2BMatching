@@ -16,7 +16,7 @@ public class BuyerDAOImpl implements BuyerDAO {
 	@Inject
 	private SqlSession session;
 
-	private static final String namespace = "com.mis.mapper.BuyerMapper";
+	private static final String namespace = "com.b2b.mapper.BuyerMapper";
 
 	@Override
 	public void create(BuyerVO vo) throws Exception {
