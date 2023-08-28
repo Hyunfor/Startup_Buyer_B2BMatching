@@ -83,33 +83,33 @@ public class StartUpUserController {
 	}
 
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("s_id") String s_id, @ModelAttribute("cri") SearchCriteria cri, Model model)
+	public void read(@RequestParam("sId") String sId, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
 
 		logger.info("read get...");
 
-		model.addAttribute(service.read(s_id));
+		model.addAttribute(service.read(sId));
 
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	public String modifyPageGET(@RequestParam("s_id") String s_id, @ModelAttribute("cri") SearchCriteria cri,
+	public String modifyPageGET(@RequestParam("sId") String sId, @ModelAttribute("cri") SearchCriteria cri,
 			RedirectAttributes rttr, HttpSession session, Model model) throws Exception {
 
 		logger.info("modifyPage get...");
 
 		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
-		StartUpUserVO vo = service.read(s_id);
+		StartUpUserVO vo = service.read(sId);
 
 		if (startUpUser.getsId().equals(vo.getsId())) {
 
-			model.addAttribute(service.read(s_id));
+			model.addAttribute(service.read(sId));
 			return "/starupUser/modifyPage";
 
 		} else {
 
-			rttr.addAttribute("s_id", s_id);
+			rttr.addAttribute("sId", sId);
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("searchType", cri.getSearchType());

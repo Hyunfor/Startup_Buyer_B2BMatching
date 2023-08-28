@@ -46,8 +46,8 @@
 											<div class="form-group col-md-6">
 												<label for="startup_id" class="col-form-label">스타트업<span
 													class="must-mark">*</span></label> <input type="text"
-													class="form-control" name="startup_id" id="startup_id"
-													value="${productVO.startup_id}" disabled="disabled">
+													class="form-control" name="startupId" id="startupId"
+													value="${productVO.startupId}" disabled="disabled">
 											</div>
 
 											<div class="form-group col-md-6">

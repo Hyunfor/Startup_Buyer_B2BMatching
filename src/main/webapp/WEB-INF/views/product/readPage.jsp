@@ -42,8 +42,8 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="inputEmail4" class="col-form-label">스타트업</label>
-											<input type="text" name="startup_id" id="startup_id"
-												value="${productVO.startup_id}" class="form-control"
+											<input type="text" name="startupId" id="startupId"
+												value="${productVO.startupId}" class="form-control"
 												disabled="disabled">
 										</div>
 
@@ -158,6 +158,45 @@
 				</form>
 			</div>
 			<!-- container -->
+			
+			<!-- 댓글창 -->
+			<div class="card">
+				<div class="card-body">
+					<h4 class="mt-0 mb-3">Comments</h4>
+					<form role="form" method="get">
+						<input type="hidden" value="${login.usId}" id="newUserNo">
+						<textarea class="form-control form-control-light mb-2"
+							placeholder="Write message" id="newReplyText" rows="3"></textarea>
+						<div class="text-right">
+							<div class="btn-group mb-2">
+								<button type="button"
+									class="btn btn-link btn-sm text-muted font-18"></button>
+							</div>
+							<div class="btn-group mb-2 ml-2">
+								<a class="btn btn-outline-primary btn-rounded comentAddBtn"
+									style="font-weight: bold;">댓글 등록</a>
+							</div>
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="inbox-widget">
+								<h5 class="mt-0">댓글 목록</h5>
+								<div class="card">
+									<ul id="comments">
+									</ul>
+								</div>
+								<div style="text-align: right;"></div>
+							</div>
+
+						</div>
+
+						<!-- end card-body-->
+					</form>
+				</div>
+				<!-- end card-->
+			</div>
+			<!-- end col -->
+			
 
 		</div>
 		<!-- content -->
@@ -196,6 +235,91 @@
 				return img_name.match(pattern);
 
 			}
+			
+			// 댓글 입력처리 수행
+			$.ajax({
+				type : "post",
+				url : "/comments/",
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "POST"
+				},
+				dataType : "text",
+				data : JSON.stringify({
+					pno : pno,
+					usId : usId,
+					CommentsText : CommentsText
+				}),
+				success : function(result) {
+					if (result === "SUCCESS") {
+						alert("댓글이 등록되었습니다.");
+						$("#newCommentsText").val(""); //댓글 입력창 공백처리
+						getReplies(); //댓글 목록 호출
+					}
+				}
+			});
+		});
+
+		function deleteComment(commentNo) {
+
+			$.ajax({
+				type : 'delete',
+				url : '/comment/' + commentNo,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "DELETE"
+				},
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						alert("삭제 되었습니다.");
+						getComments();
+					}
+				}
+			});
+
+		}
+
+		function getComments() {
+
+			$
+					.getJSON(
+							"/comments/all/" + pno,
+							function(data) {
+								var str = "";
+
+								$(data)
+										.each(
+												function() {
+
+													var strbutton = "";
+													str += "<li data-commentNo='" + this.commentNo + ">"
+															+ "<div class='card'>"
+															+ this.uname
+															+ "<br>"
+															+ this.CommentsText
+															+ "<br>"
+
+													if (usId == this.usId
+															|| usId == writeUser)//댓글 정보와 로그인 정보 같을 경우 OR 게시글의 주인 인 경우 댓글 삭제 가능
+													{
+														strbutton += "<div class='card'>"
+																+ "  <a href='#' onclick='deleteComments("
+																+ this.commentNo
+																+ ")'>삭제</a>"
+																+ "</div>";
+													}
+
+													str += strbutton;
+													str += "</div></li>";
+												});
+
+								$("#comments").html(str);
+
+							});
+
+		}
 		</script>
 	</div>
 </section>

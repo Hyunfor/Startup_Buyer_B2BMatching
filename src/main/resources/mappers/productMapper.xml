@@ -10,15 +10,15 @@
 			SELECT
 			SEQ_NOTICE.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID)
+		INSERT INTO PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUPID)
 		VALUES (SEQ_PRODUCT.nextval, #{pname}, #{category}, #{content},
-		#{startup_id})
+		#{startupId})
 		<!-- 발급키가 새어나오지 않도록 pno으로 리턴 -->
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.ProductVO">
 		SELECT PNO, PNAME, CATEGORY,
-		CONTENT, STARTUP_ID, REGDATE
+		CONTENT, STARTUPID, REGDATE
 		FROM PRODUCT
 		WHERE PNO = #{pno}
 	</select>
@@ -26,7 +26,7 @@
 	<update id="adUpdate">
 		UPDATE PRODUCT SET PNAME = #{pname}, CATEGORY =
 		#{category},
-		CONTENT = #{content}, STARTUP_ID = #{startup_id}
+		CONTENT = #{content}, STARTUPID = #{startupId}
 		WHERE PNO
 		= #{pno}
 	</update>
@@ -47,7 +47,7 @@
 				AND CATEGORY LIKE '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 's'.toString()">
-				AND STARTUP_ID LIKE '%' || #{keyword} || '%'
+				AND STARTUPID LIKE '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 'nc'.toString()">
 				AND (PNAME LIKE '%' || #{keyword} || '%')
@@ -58,7 +58,7 @@
 			<if test="searchType == 'cs'.toString()">
 				AND (CATEGORY LIKE '%' || #{keyword} || '%')
 				OR
-				(STARTUP_ID LIKE '%' || #{keyword} || '%')
+				(STARTUPID LIKE '%' || #{keyword} || '%')
 			</if>
 			<if test="searchType == 'ncs'.toString()">
 				AND (PNAME LIKE '%' || #{keyword} || '%')
@@ -66,7 +66,7 @@
 				(CATEGORY LIKE
 				'%' || #{keyword} || '%')
 				OR
-				(STARTUP_ID LIKE '%' || #{keyword} ||
+				(STARTUPID LIKE '%' || #{keyword} ||
 				'%')
 			</if>
 
@@ -77,7 +77,7 @@
 	<select id="listSearch" resultType="com.b2b.domain.ProductVO">
 	<![CDATA[
 		SELECT * FROM( 
-			SELECT ROWNUM RNUM, PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID, REGDATE   
+			SELECT ROWNUM RNUM, PNO, PNAME, CATEGORY, CONTENT, STARTUPID, REGDATE   
 				FROM (SELECT * FROM PRODUCT WHERE PNO > 0 
 		]]>
 		<include refid="search"></include>

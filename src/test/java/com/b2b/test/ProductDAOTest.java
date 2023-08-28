@@ -28,8 +28,8 @@ public class ProductDAOTest {
 		vo.setPname("새상품");
 		vo.setCategory("전자기기");
 		vo.setContent("상품 설명");
-		vo.setStartup_id("중견기업");
-		
+		vo.setStartupId("중견기업");
+	
 		logger.info("testCreate: " + vo);
 		
 		dao.adCreate(vo);
