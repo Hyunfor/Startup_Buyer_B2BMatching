@@ -26,8 +26,8 @@ public class StartUpUserLoginTest {
 		public void loginTest() {
 			
 			StartUpLoginDTO dto = new StartUpLoginDTO();
-			dto.setS_id("user00");
-			dto.setS_pw("user00");
+			dto.setsId("user00");
+			dto.setsPw("user00");
 			
 			try {
 				

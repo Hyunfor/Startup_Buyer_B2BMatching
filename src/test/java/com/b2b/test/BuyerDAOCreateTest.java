@@ -25,13 +25,13 @@ public class BuyerDAOCreateTest {
 	public void testCreate() throws Exception {
 		BuyerVO vo = new BuyerVO();
 
-		vo.setBuyer_name("이름");
+		vo.setBuyerName("이름");
 		vo.setEmail("2023.08.23");
 		vo.setCountry("국가");
 		vo.setCategory("업종");
 		vo.setBusiness("업태");
 		vo.setItems("아이템");
-		vo.setOrder_amount("주문량");
+		vo.setOrderAmount("주문량");
 
 		logger.info("testCreate: " + vo);
 		dao.create(vo);
