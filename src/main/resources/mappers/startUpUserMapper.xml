@@ -5,30 +5,30 @@
 <mapper namespace="com.b2b.mapper.StartUpUserMapper">
 
 	<select id="login" resultType="com.b2b.domain.StartUpUserVO">
-		SELECT S_NAME, S_ID, S_PW
+		SELECT S_NAME, S_NAME AS NAME, S_ID, S_PW
 		FROM STARTUP_USER
-		WHERE S_ID = #{s_id} AND S_PW = #{s_pw}
+		WHERE S_ID = #{sId} AND S_PW = #{sPw}
 	</select>
 
 	<insert id="create">
 		INSERT INTO STARTUP_USER (S_NAME, S_ID, S_PW)
-		VALUES (#{s_name}, #{s_id}, #{s_pw})
+		VALUES (#{sName}, #{sId}, #{sPw})
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.StartUpUserVO">
 		SELECT S_NAME, S_ID, S_PW
 		FROM STARTUP_USER
-		WHERE S_ID = #{s_id}
+		WHERE S_ID = #{sId}
 	</select>
 
 	<update id="update">
-		UPDATE STARTUP_USER SET S_NAME = #{s_name}, S_ID = #{s_id},
-		S_PW = #{s_pw}
-		WHERE S_ID = #{s_id}
+		UPDATE STARTUP_USER SET S_NAME = #{sName}, S_ID = #{sId},
+		S_PW = #{sPw}
+		WHERE S_ID = #{sId}
 	</update>
 
 	<delete id="delete">
-		DELETE FROM STARTUP_USER WHERE S_ID = #{s_id}
+		DELETE FROM STARTUP_USER WHERE S_ID = #{sId}
 	</delete>
 
 	

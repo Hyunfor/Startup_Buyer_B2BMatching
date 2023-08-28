@@ -1,7 +1,7 @@
 package com.b2b.service;
 
-import com.b2b.DTO.BuyerLoginDTO;
 import com.b2b.domain.BuyerUserVO;
+import com.b2b.dto.BuyerLoginDTO;
 
 public interface BuyerUserService {
 
@@ -9,7 +9,7 @@ public interface BuyerUserService {
 
 	public void register(BuyerUserVO vo) throws Exception;
 
-	public BuyerUserVO read(String usid) throws Exception;
+	public BuyerUserVO read(String b_id) throws Exception;
 
 	public void modify(BuyerUserVO vo) throws Exception;
 

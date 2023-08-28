@@ -2,37 +2,40 @@ package com.b2b.domain;
 
 public class StartUpUserVO {
 
-	private String s_name;
-	private String s_id;
-	private String s_pw;
-
-	public String getS_name() {
-		return s_name;
+	private String sName;
+	private String sId;
+	private String sPw;
+	private String name;
+	
+	public String getsName() {
+		return sName;
 	}
-
-	public void setS_name(String s_name) {
-		this.s_name = s_name;
+	public void setsName(String sName) {
+		this.sName = sName;
 	}
-
-	public String getS_id() {
-		return s_id;
+	public String getsId() {
+		return sId;
 	}
-
-	public void setS_id(String s_id) {
-		this.s_id = s_id;
+	public void setsId(String sId) {
+		this.sId = sId;
 	}
-
-	public String getS_pw() {
-		return s_pw;
+	public String getsPw() {
+		return sPw;
 	}
-
-	public void setS_pw(String s_pw) {
-		this.s_pw = s_pw;
+	public void setsPw(String sPw) {
+		this.sPw = sPw;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Override
 	public String toString() {
-		return "StartUpUserVO [s_name=" + s_name + ", s_id=" + s_id + ", s_pw=" + s_pw + "]";
+		return "StartUpUserVO [sName=" + sName + ", sId=" + sId + ", sPw=" + sPw + ", name=" + name + "]";
 	}
 
+	
+	
 }
