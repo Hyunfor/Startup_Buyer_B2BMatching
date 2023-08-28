@@ -28,8 +28,8 @@ public class BuyerUserDAOImpl implements BuyerUserDAO {
 	}
 
 	@Override
-	public BuyerUserVO read(String b_id) throws Exception {
-		return session.selectOne(namespace + ".read", b_id);
+	public BuyerUserVO read(String bId) throws Exception {
+		return session.selectOne(namespace + ".read", bId);
 	}
 
 	@Override

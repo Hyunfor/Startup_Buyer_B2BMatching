@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<jsp:include page="../include/startup_header.jsp" />
+<jsp:include page="../include/buyer_header.jsp" />
 
 
 <main id="main" class="main">
@@ -24,7 +24,7 @@
               
 <form role="form" action="modifyPage" method="post">
 
-	<input type='hidden' name='startupId' value="${startupVO.startupId}"> 
+	<input type='hidden' name='buyerId' value="${buyerVO.buyerId}"> 
 	<input type='hidden' name='page' value="${cri.page}">
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 	<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -34,10 +34,10 @@
              
               
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">기업명</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">바이어명</label>
                   <div class="col-sm-10">
                     <input type="text" name='startupName' class="form-control"
-                    value="${startupVO.startupName}" >
+                    value="${buyerVO.buyerName}" >
                     
                   </div>
                 </div>

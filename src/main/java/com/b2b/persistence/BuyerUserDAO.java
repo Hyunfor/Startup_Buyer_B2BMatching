@@ -9,7 +9,7 @@ public interface BuyerUserDAO {
 	
 	public void create(BuyerUserVO vo) throws Exception;
 	
-	public BuyerUserVO read(String b_id) throws Exception;
+	public BuyerUserVO read(String bId) throws Exception;
 	
 	public void update(BuyerUserVO vo) throws Exception;
 	

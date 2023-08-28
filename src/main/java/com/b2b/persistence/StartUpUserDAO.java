@@ -9,7 +9,7 @@ public interface StartUpUserDAO {
 
 	public void create(StartUpUserVO vo) throws Exception;
 
-	public StartUpUserVO read(String s_id) throws Exception;
+	public StartUpUserVO read(String sId) throws Exception;
 
 	public void update(StartUpUserVO vo) throws Exception;
 

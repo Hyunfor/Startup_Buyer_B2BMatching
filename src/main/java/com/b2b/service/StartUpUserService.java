@@ -9,7 +9,7 @@ public interface StartUpUserService {
 
 	public void register(StartUpUserVO vo) throws Exception;
 
-	public StartUpUserVO read(String s_id) throws Exception;
+	public StartUpUserVO read(String sId) throws Exception;
 
 	public void modify(StartUpUserVO vo) throws Exception;
 
