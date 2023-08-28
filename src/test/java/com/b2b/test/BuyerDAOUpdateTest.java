@@ -25,14 +25,14 @@ public class BuyerDAOUpdateTest {
 
 		BuyerVO vo = new BuyerVO();
 
-		vo.setBuyer_id(1);
-		vo.setBuyer_name("이름");
+		vo.setBuyerId(1);
+		vo.setBuyerName("이름");
 		vo.setEmail("2023.08.23");
 		vo.setCountry("국가");
 		vo.setCategory("업종");
 		vo.setBusiness("업태");
 		vo.setItems("아이템");
-		vo.setOrder_amount("주문량");
+		vo.setOrderAmount("주문량");
 
 		logger.info("testUpdate: " + vo);
 		dao.create(vo);

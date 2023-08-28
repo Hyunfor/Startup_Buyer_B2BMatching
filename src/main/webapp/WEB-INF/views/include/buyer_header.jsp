@@ -283,7 +283,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="list">
           <i class="bi bi-person"></i>
           <span>기업 관리</span>
         </a>
