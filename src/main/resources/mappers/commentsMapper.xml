@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.b2b.mapper.CommetsMapper">
+
+	<!-- 댓글 추가 -->
+	<insert id="create" parameterType="com.b2b.domain.CommentsVO">
+		INSERT INTO COMMENTS
+		(COMMENTNO, PNO, STARTUPID, BUYERID, COMMENTS, REGDATE)
+		VALUES
+		(#{commentNo}, #{pno}, #{startupId}, #{buyerId}, #{comments},
+		#{regdate})
+	</insert>
+
+	<!-- 댓글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM COMMENTS WHERE
+		COMMENTNO = #{commentNo}
+	</delete>
+
+	<delete id="deleteAll">
+		DELETE FROM COMMENTS WHERE PRODUCT = #{commentNo}
+	</delete>
+
+	<select id="listByProduct" resultType="com.b2b.domain.CommentsVO">
+		SELECT COMMENTNO, PNO, STARTUPID, BUYERID, COMMENTS, REGDATE
+		FROM COMMENTS WHERE PNO = #{pno}
+	</select>
+
+</mapper>

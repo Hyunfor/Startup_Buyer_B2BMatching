@@ -11,7 +11,7 @@ public class ProductVO {
 	private String category;
 	private String content;
 	private Date regdate;
-	private String startup_id;
+	private String startupId;
 	private String[] files;
 	//상세보기 file 여러개 가져오기
 	private ArrayList<ProductIMGVO> fileList;
@@ -46,11 +46,11 @@ public class ProductVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getStartup_id() {
-		return startup_id;
+	public String getStartupId() {
+		return startupId;
 	}
-	public void setStartup_id(String startup_id) {
-		this.startup_id = startup_id;
+	public void setStartupId(String startupId) {
+		this.startupId = startupId;
 	}
 	public String[] getFiles() {
 		return files;
@@ -68,7 +68,7 @@ public class ProductVO {
 	@Override
 	public String toString() {
 		return "ProductVO [pno=" + pno + ", pname=" + pname + ", category=" + category + ", content=" + content
-				+ ", regdate=" + regdate + ", startup_id=" + startup_id + ", files=" + Arrays.toString(files)
+				+ ", regdate=" + regdate + ", startupId=" + startupId + ", files=" + Arrays.toString(files)
 				+ ", fileList=" + fileList + "]";
 	}
 

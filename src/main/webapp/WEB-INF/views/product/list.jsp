@@ -81,7 +81,7 @@
 										${productVO.pname} </a></td>
 								<td>${productVO.category}</td>
 								<td>${productVO.content}</td>
-								<td>${productVO.startup_id}</td>
+								<td>${productVO.startupId}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${productVO.regdate}" /></td>
 							</tr>
