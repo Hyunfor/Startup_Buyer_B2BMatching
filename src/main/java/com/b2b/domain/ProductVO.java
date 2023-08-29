@@ -13,7 +13,7 @@ public class ProductVO {
 	private Date regdate;
 	private String startupId;
 	private String[] files;
-	//ÏÉÅÏÑ∏Î≥¥Í∏∞ file Ïó¨Îü¨Í∞ú Í∞ÄÏ†∏Ïò§Í∏∞
+	//ªÛºº∫∏±‚ file ø©∑Ø∞≥ ∞°¡Æø¿±‚
 	private ArrayList<ProductIMGVO> fileList;
 	
 	public int getPno() {
@@ -64,12 +64,11 @@ public class ProductVO {
 	public void setFileList(ArrayList<ProductIMGVO> fileList) {
 		this.fileList = fileList;
 	}
-	
 	@Override
 	public String toString() {
 		return "ProductVO [pno=" + pno + ", pname=" + pname + ", category=" + category + ", content=" + content
 				+ ", regdate=" + regdate + ", startupId=" + startupId + ", files=" + Arrays.toString(files)
 				+ ", fileList=" + fileList + "]";
 	}
-
+	
 }

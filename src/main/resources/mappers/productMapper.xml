@@ -8,27 +8,23 @@
 	<insert id="adCreate">
 		<selectKey keyProperty="pno" resultType="int" order="BEFORE">
 			SELECT
-			SEQ_NOTICE.NEXTVAL FROM DUAL
+			SEQ_PRODUCT.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUPID)
-		VALUES (SEQ_PRODUCT.nextval, #{pname}, #{category}, #{content},
-		#{startupId})
+		INSERT INTO PRODUCT (PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID)
+		VALUES (#{pno}, #{pname}, #{category}, #{content}, #{startupId})
 		<!-- 발급키가 새어나오지 않도록 pno으로 리턴 -->
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.ProductVO">
 		SELECT PNO, PNAME, CATEGORY,
-		CONTENT, STARTUPID, REGDATE
+		CONTENT, STARTUP_ID, REGDATE
 		FROM PRODUCT
 		WHERE PNO = #{pno}
 	</select>
 
 	<update id="adUpdate">
-		UPDATE PRODUCT SET PNAME = #{pname}, CATEGORY =
-		#{category},
-		CONTENT = #{content}, STARTUPID = #{startupId}
-		WHERE PNO
-		= #{pno}
+		UPDATE PRODUCT SET PNAME = #{pname}, CATEGORY = #{category}, CONTENT = #{content}
+		WHERE PNO = #{pno}
 	</update>
 
 	<delete id="adDelete">
@@ -47,7 +43,7 @@
 				AND CATEGORY LIKE '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 's'.toString()">
-				AND STARTUPID LIKE '%' || #{keyword} || '%'
+				AND STARTUP_ID LIKE '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 'nc'.toString()">
 				AND (PNAME LIKE '%' || #{keyword} || '%')
@@ -58,7 +54,7 @@
 			<if test="searchType == 'cs'.toString()">
 				AND (CATEGORY LIKE '%' || #{keyword} || '%')
 				OR
-				(STARTUPID LIKE '%' || #{keyword} || '%')
+				(STARTUP_ID LIKE '%' || #{keyword} || '%')
 			</if>
 			<if test="searchType == 'ncs'.toString()">
 				AND (PNAME LIKE '%' || #{keyword} || '%')
@@ -66,7 +62,7 @@
 				(CATEGORY LIKE
 				'%' || #{keyword} || '%')
 				OR
-				(STARTUPID LIKE '%' || #{keyword} ||
+				(STARTUP_ID LIKE '%' || #{keyword} ||
 				'%')
 			</if>
 
@@ -77,7 +73,7 @@
 	<select id="listSearch" resultType="com.b2b.domain.ProductVO">
 	<![CDATA[
 		SELECT * FROM( 
-			SELECT ROWNUM RNUM, PNO, PNAME, CATEGORY, CONTENT, STARTUPID, REGDATE   
+			SELECT ROWNUM RNUM, PNO, PNAME, CATEGORY, CONTENT, STARTUP_ID, REGDATE   
 				FROM (SELECT * FROM PRODUCT WHERE PNO > 0 
 		]]>
 		<include refid="search"></include>
@@ -97,10 +93,10 @@
 		<include refid="search"></include>
 	</select>
 
-	<!-- 다중 파일 등록 -->
+	<!-- 다중 파일 등록  SEQ_PRODUCT_IMG.NEXTVAL -->
 	<insert id="insertFile">
-		INSERT INTO PRODUCT_IMG (PIMGE_NO,bIMG_NAME, PNO)
-		VALUES (SEQ_PRODUCT_IMG.NEXTVAL, #{img_name}, #{pno})
+		INSERT INTO PRODUCT_IMG (PIMAGE_NO, IMG_NAME, PNO)
+		VALUES (SEQ_PRODUCT_IMG.NEXTVAL, #{imgName}, #{pno})
 	</insert>
 
 	<!-- 다중 파일 삭제 -->

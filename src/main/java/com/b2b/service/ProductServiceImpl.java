@@ -19,22 +19,22 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void register(ProductVO vo) throws Exception {
-		// 1.TextArea ì¤„ë°”ê¿ˆ ì²˜ë¦¬ - ìœ ì €ì—ê²Œ ë°›ì„ë•Œ HTMLë¡œ ë³€í™˜í•´ì„œ DBì— ì ì‹œ ë‹´ì•˜ë‹¤ê°€ êº¼ë‚¼ë•Œ ë‹¤ì‹œ ë³€í™˜
+		// 1.TextArea ÁÙ¹Ù²Ş Ã³¸® - À¯Àú¿¡°Ô ¹ŞÀ»¶§ HTML·Î º¯È¯ÇØ¼­ DB¿¡ Àá½Ã ´ã¾Ò´Ù°¡ ²¨³¾¶§ ´Ù½Ã º¯È¯
 		String content = vo.getContent().replace("\\r\\n", "<br>");
 		vo.setContent(content);
 
-		// 2. ìƒí’ˆ ê¸°ë³¸ ë‚´ìš© ì €ì¥(ì²¨ë¶€íŒŒì¼ ì œì™¸) - > PKì¸ pno ë°›ì•„ì˜¤ê¸°
+		// 2. »óÇ° ±âº» ³»¿ë ÀúÀå(Ã·ºÎÆÄÀÏ Á¦¿Ü) - > PKÀÎ pno ¹Ş¾Æ¿À±â
 		int pno = dao.adCreate(vo);
 
-		// 3.ì²¨ë¶€íŒŒì¼ ë“±ë¡
-		// 3-1) ì²¨ë¶€íŒŒì¼ ì¡´ì¬ ìœ ë¬´ í™•ì¸
+		// 3.Ã·ºÎÆÄÀÏ µî·Ï
+		// 3-1) Ã·ºÎÆÄÀÏ Á¸Àç À¯¹« È®ÀÎ
 		if (vo.getFiles() != null) {
 
-			// 3-2) ë‹¤ì¤‘ ì²¨ë¶€íŒŒì¼ ì €ì¥
+			// 3-2) ´ÙÁß Ã·ºÎÆÄÀÏ ÀúÀå
 			for (int i = 0; i < vo.getFiles().length; i++) {
 				ProductIMGVO fVo = new ProductIMGVO();
 				fVo.setPno(pno);
-				fVo.setImg_name(vo.getFiles()[i]);
+				fVo.setImgName(vo.getFiles()[i]);
 
 				dao.insertFile(fVo);
 			}
@@ -48,25 +48,25 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void modify(ProductVO vo) throws Exception {
-		// 1.TextArea ì¤„ë°”ê¿ˆ ì²˜ë¦¬ - ìœ ì €ì—ê²Œ ë°›ì„ë•Œ HTMLë¡œ ë³€í™˜í•´ì„œ DBì— ì ì‹œ ë‹´ì•˜ë‹¤ê°€ êº¼ë‚¼ë•Œ ë‹¤ì‹œ ë³€í™˜
+		// 1.TextArea ÁÙ¹Ù²Ş Ã³¸® - À¯Àú¿¡°Ô ¹ŞÀ»¶§ HTML·Î º¯È¯ÇØ¼­ DB¿¡ Àá½Ã ´ã¾Ò´Ù°¡ ²¨³¾¶§ ´Ù½Ã º¯È¯
 		String content = vo.getContent().replace("\\r\\n", "<br>");
 		vo.setContent(content);
 
-		// 2. ìƒí’ˆ ê¸°ë³¸ ë‚´ìš© ìˆ˜ì •(ì²¨ë¶€íŒŒì¼ ì œì™¸)
+		// 2. »óÇ° ±âº» ³»¿ë ¼öÁ¤(Ã·ºÎÆÄÀÏ Á¦¿Ü)
 		dao.adUpdate(vo);
 
-		// 3. ê¸°ì¡´ì˜ ì²¨ë¶€íŒŒì¼ì„ ì „ë¶€ ì‚­ì œ
+		// 3. ±âÁ¸ÀÇ Ã·ºÎÆÄÀÏÀ» ÀüºÎ »èÁ¦
 		dao.deleteFile(vo.getPno());
 
-		// 4.ì²¨ë¶€íŒŒì¼ ë“±ë¡
-		// 4-1) ì²¨ë¶€íŒŒì¼ ì¡´ì¬ ìœ ë¬´ í™•ì¸
+		// 4.Ã·ºÎÆÄÀÏ µî·Ï
+		// 4-1) Ã·ºÎÆÄÀÏ Á¸Àç À¯¹« È®ÀÎ
 		if (vo.getFiles() != null) {
 
-			// 4-2) ë‹¤ì¤‘ ì²¨ë¶€íŒŒì¼ ì €ì¥
+			// 4-2) ´ÙÁß Ã·ºÎÆÄÀÏ ÀúÀå
 			for (int i = 0; i < vo.getFiles().length; i++) {
 				ProductIMGVO fVo = new ProductIMGVO();
 				fVo.setPno(vo.getPno());
-				fVo.setImg_name(vo.getFiles()[i]);
+				fVo.setImgName(vo.getFiles()[i]);
 
 				dao.insertFile(fVo);
 			}
@@ -75,10 +75,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void remove(int pno) throws Exception {
-		// 1.ì²¨ë¶€íŒŒì¼ ì‚­ì œ
+		// 1.Ã·ºÎÆÄÀÏ »èÁ¦
 		dao.deleteFile(pno);
 
-		// 2. ìƒí’ˆ ì‚­ì œ
+		// 2. »óÇ° »èÁ¦
 		dao.adDelete(pno);
 	}
 
@@ -93,8 +93,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductIMGVO> fileList(int pimage_no) throws Exception {
-		return dao.fileList(pimage_no);
+	public List<ProductIMGVO> fileList(int pno) throws Exception {
+		return dao.fileList(pno);
 	}
 
 }

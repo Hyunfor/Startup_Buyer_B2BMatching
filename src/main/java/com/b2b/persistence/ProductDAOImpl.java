@@ -21,7 +21,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public int adCreate(ProductVO vo) throws Exception {
-		// voì— ë‹´ì•„ì„œ getPno ë¦¬í„´
+		// vo¿¡ ´ã¾Æ¼­ getPno ¸®ÅÏ
 		session.insert(namespace + ".adCreate", vo);
 		return vo.getPno();
 	}

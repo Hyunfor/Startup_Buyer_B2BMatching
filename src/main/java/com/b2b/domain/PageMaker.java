@@ -5,16 +5,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMaker {
 
-	// í˜ì´ì§•ì„ ìœ„í•œ ê²Œì‹œê¸€ ë°ì´í„° ì²˜ë¦¬ - > Criteria
-	// í™”ë©´ì— í˜ì´ì§• ì •ë³´ ì²˜ë¦¬ - > PageMaker
+	// ÆäÀÌÂ¡À» À§ÇÑ °Ô½Ã±Û µ¥ÀÌÅÍ Ã³¸® - > Criteria
+	// È­¸é¿¡ ÆäÀÌÂ¡ Á¤º¸ Ã³¸® - > PageMaker
 
-	private int totalCount; // ê²Œì‹œê¸€ ì „ì²´ ìˆ˜
+	private int totalCount; // °Ô½Ã±Û ÀüÃ¼ ¼ö
 	private int startPage;
 	private int endPage;
-	private boolean prev; // ì´ì „ í˜ì´ì§€ ìœ ë¬´
-	private boolean next; // ë‹¤ìŒ í˜ì´ì§€ ìœ ë¬´
+	private boolean prev; // ÀÌÀü ÆäÀÌÁö À¯¹«
+	private boolean next; // ´ÙÀ½ ÆäÀÌÁö À¯¹«
 
-	private int displayPageNum = 10; // í™”ë©´ì— í˜ì´ì§€ ë§í¬(í˜ì´ì§€ ë„¤ë¹„ê²Œì´í„°)
+	private int displayPageNum = 10; // È­¸é¿¡ ÆäÀÌÁö ¸µÅ©(ÆäÀÌÁö ³×ºñ°ÔÀÌÅÍ)
 
 	private Criteria cri;
 
@@ -25,24 +25,24 @@ public class PageMaker {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 
-		// ì „ì²´ ê²Œì‹œê¸€ ìˆ˜ê°€ ì„¤ì •ë˜ë©´ í˜ì´ì§•ì„ ê³„ì‚°
+		// ÀüÃ¼ °Ô½Ã±Û ¼ö°¡ ¼³Á¤µÇ¸é ÆäÀÌÂ¡À» °è»ê
 		calcData();
 	}
 
 	private void calcData() {
 
-		// 1) í˜ì´ì§• ë²„íŠ¼ ì‹œì‘ê³¼ ë
+		// 1) ÆäÀÌÂ¡ ¹öÆ° ½ÃÀÛ°ú ³¡
 		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
 		startPage = (endPage - displayPageNum) + 1;
 
-		// 2) í˜ì´ì§€ ë²„íŠ¼ì´ 10ê°œ ì´ìƒì¸ ê²½ìš°
+		// 2) ÆäÀÌÁö ¹öÆ°ÀÌ 10°³ ÀÌ»óÀÎ °æ¿ì
 		int tempEndPage = (int) Math.ceil(totalCount / (double) cri.getPerPageNum());
 
 		if (endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
 
-		// 3) prev, next ë²„íŠ¼ ê³„ì‚°
+		// 3) prev, next ¹öÆ° °è»ê
 		prev = startPage == 1 ? false : true;
 		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
 
@@ -96,27 +96,23 @@ public class PageMaker {
 		this.cri = cri;
 	}
 
-	// í˜ì´ì§• ë²„íŠ¼ì—ì„œ ì‚¬ìš©í•  ì´ë™ ë§í¬(QuerySrting) ë§Œë“¤ê¸° - > jspì—ì„œ ì§ì ‘ í˜¸ì¶œ
+	// ÆäÀÌÂ¡ ¹öÆ°¿¡¼­ »ç¿ëÇÒ ÀÌµ¿ ¸µÅ©(QuerySrting) ¸¸µé±â - > jsp¿¡¼­ Á÷Á¢ È£Ãâ
 	public String makeQuery(int page) {
 
-		UriComponents uricomponents = UriComponentsBuilder.newInstance()
-				.queryParam("page", page)
-				.queryParam("perPageNum", cri.getPerPageNum())
-				.build();
+		UriComponents uricomponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum()).build();
 
 		return uricomponents.toUriString();
 
 	}
 
-	// í˜ì´ì§• ë²„íŠ¼ì—ì„œ ì‚¬ìš©í•  ì´ë™ ë§í¬(QuerySrting)+ ê²€ìƒ‰(SearchType, keyword) ë§Œë“¤ê¸° - > jspì—ì„œ ì§ì ‘ í˜¸ì¶œ
+	// ÆäÀÌÂ¡ ¹öÆ°¿¡¼­ »ç¿ëÇÒ ÀÌµ¿ ¸µÅ©(QuerySrting)+ °Ë»ö(SearchType, keyword) ¸¸µé±â - > jsp¿¡¼­ Á÷Á¢ È£Ãâ
 	public String makeSearch(int page) {
 
-		UriComponents uricomponents = UriComponentsBuilder.newInstance()
-				.queryParam("page", page)
+		UriComponents uricomponents = UriComponentsBuilder.newInstance().queryParam("page", page)
 				.queryParam("perPageNum", cri.getPerPageNum())
-				.queryParam("searchType", ((SearchCriteria)cri).getSearchType()) // SerchCriteriaë¡œ í˜•ë³€í™˜ í›„ ìƒì†
-				.queryParam("keyword", ((SearchCriteria)cri).getKeyword())
-				.build();
+				.queryParam("searchType", ((SearchCriteria) cri).getSearchType()) // SerchCriteria·Î Çüº¯È¯ ÈÄ »ó¼Ó
+				.queryParam("keyword", ((SearchCriteria) cri).getKeyword()).build();
 
 		return uricomponents.toUriString();
 

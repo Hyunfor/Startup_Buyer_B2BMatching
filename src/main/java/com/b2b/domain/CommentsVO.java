@@ -6,11 +6,10 @@ public class CommentsVO {
 	
 	private int commentNo;
     private int pno;
-    private String startupId;
-    private String buyerId;
+    private String id;
+    private String name;
     private String comments;
     private Date regdate;
-    
 	public int getCommentNo() {
 		return commentNo;
 	}
@@ -23,17 +22,17 @@ public class CommentsVO {
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getStartupId() {
-		return startupId;
+	public String getId() {
+		return id;
 	}
-	public void setStartupId(String startupId) {
-		this.startupId = startupId;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getBuyerId() {
-		return buyerId;
+	public String getName() {
+		return name;
 	}
-	public void setBuyerId(String buyerId) {
-		this.buyerId = buyerId;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getComments() {
 		return comments;
@@ -49,8 +48,9 @@ public class CommentsVO {
 	}
 	@Override
 	public String toString() {
-		return "CommentsVO [commentNo=" + commentNo + ", pno=" + pno + ", startupId=" + startupId + ", buyerId="
-				+ buyerId + ", comments=" + comments + ", regdate=" + regdate + "]";
+		return "CommentsVO [commentNo=" + commentNo + ", pno=" + pno + ", id=" + id + ", name=" + name + ", comments="
+				+ comments + ", regdate=" + regdate + "]";
 	}
     
+
 }

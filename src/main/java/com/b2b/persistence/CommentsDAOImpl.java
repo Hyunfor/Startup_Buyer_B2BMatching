@@ -15,7 +15,7 @@ public class CommentsDAOImpl implements CommentsDAO {
 	@Inject
 	private SqlSession session;
 
-	private static final String namespace = "com.b2b.mapper.CommetsMapper";
+	private static final String namespace = "com.b2b.mapper.CommentsMapper";
 
 	@Override
 	public void create(CommentsVO comments) {

@@ -2,29 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.b2b.mapper.CommetsMapper">
+<mapper namespace="com.b2b.mapper.CommentsMapper">
 
 	<!-- 댓글 추가 -->
 	<insert id="create" parameterType="com.b2b.domain.CommentsVO">
 		INSERT INTO COMMENTS
-		(COMMENTNO, PNO, STARTUPID, BUYERID, COMMENTS, REGDATE)
+		(COMMENT_NO, PNO, ID, NAME, COMMENTS, REGDATE)
 		VALUES
-		(#{commentNo}, #{pno}, #{startupId}, #{buyerId}, #{comments},
-		#{regdate})
+		(SEQ_COMMENTS.NEXTVAL, #{pno}, #{id}, #{name}, #{comments}, SYSDATE)
 	</insert>
 
 	<!-- 댓글 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM COMMENTS WHERE
-		COMMENTNO = #{commentNo}
+		COMMENT_NO = #{commentNo}
 	</delete>
 
 	<delete id="deleteAll">
-		DELETE FROM COMMENTS WHERE PRODUCT = #{commentNo}
+		DELETE FROM COMMENTS WHERE PNO = #{pno}
 	</delete>
 
 	<select id="listByProduct" resultType="com.b2b.domain.CommentsVO">
-		SELECT COMMENTNO, PNO, STARTUPID, BUYERID, COMMENTS, REGDATE
+		SELECT COMMENT_NO, PNO, ID, NAME, COMMENTS, REGDATE
 		FROM COMMENTS WHERE PNO = #{pno}
 	</select>
 

@@ -12,7 +12,7 @@ public interface CommentsDAO {
 	
 	public void deleteAll(int pno) throws Exception;
 
-	// ëŒ“ê¸€ ë¦¬ìŠ¤íŠ¸
+	// ´ñ±Û ¸®½ºÆ®
 	public List<CommentsVO> listByProduct(int pno);
 
 }

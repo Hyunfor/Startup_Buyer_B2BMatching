@@ -8,30 +8,30 @@ import com.b2b.domain.SearchCriteria;
 
 public interface ProductDAO {
 
-	// ë“±ë¡ - ê²Œì‹œê¸€ì— ì†Œì†ëœ ì²¨ë¶€íŒŒì¼ ë“±ë¡ì„ ìœ„í•œ int(noticeNo) ë¦¬í„´)
+	// µî·Ï - °Ô½Ã±Û¿¡ ¼Ò¼ÓµÈ Ã·ºÎÆÄÀÏ µî·ÏÀ» À§ÇÑ int(noticeNo) ¸®ÅÏ)
 	public int adCreate(ProductVO vo) throws Exception;
 
-	// ìƒì„¸ë³´ê¸°
+	// »ó¼¼º¸±â
 	public ProductVO read(int pno) throws Exception;
 
-	// ìˆ˜ì • - ì–´ë–¤ê²Œ ìˆ˜ì •ëœê±´ì§€ í™•ì¸ ë¶ˆê°€ëŠ¥. ì „ì²´ ê²Œì‹œê¸€ì„ ì‹¹ ì§€ìš°ê³  ìƒˆë¡œ ë“±ë¡ì‹œí‚´.
+	// ¼öÁ¤ - ¾î¶²°Ô ¼öÁ¤µÈ°ÇÁö È®ÀÎ ºÒ°¡´É. ÀüÃ¼ °Ô½Ã±ÛÀ» ½Ï Áö¿ì°í »õ·Î µî·Ï½ÃÅ´.
 	public void adUpdate(ProductVO vo) throws Exception;
 
 	public void adDelete(int pno) throws Exception;
 
-	// ê²€ìƒ‰ ê°€ëŠ¥í•œ ëª©ë¡
+	// °Ë»ö °¡´ÉÇÑ ¸ñ·Ï
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception;
 
-	// ê²€ìƒ‰ ê°€ëŠ¥í•œ ëª©ë¡ - í˜ì´ì§•, ì¹´ìš´íŠ¸
+	// °Ë»ö °¡´ÉÇÑ ¸ñ·Ï - ÆäÀÌÂ¡, Ä«¿îÆ®
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
-	// 1. íŒŒì¼ ë“±ë¡
+	// 1. ÆÄÀÏ µî·Ï
 	public void insertFile(ProductIMGVO fVo) throws Exception;
 
-	// 2. íŒŒì¼ ì‚­ì œ
+	// 2. ÆÄÀÏ »èÁ¦
 	public void deleteFile(int pno) throws Exception;
 
-	// 3. íŒŒì¼ ëª©ë¡
+	// 3. ÆÄÀÏ ¸ñ·Ï
 	public List<ProductIMGVO> fileList(int pno) throws Exception;
 
 }
