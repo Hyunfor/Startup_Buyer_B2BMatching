@@ -2,8 +2,8 @@ package com.b2b.domain;
 
 public class SearchCriteria extends Criteria {
 
-	private String searchType; // ì œëª©, ë‚´ìš©, ì œëª© or ë‚´ìš©
-	private String keyword; // ê²€ìƒ‰ì–´
+	private String searchType; // Á¦¸ñ, ³»¿ë, Á¦¸ñ or ³»¿ë
+	private String keyword; // °Ë»ö¾î
 
 	public String getSearchType() {
 		return searchType;

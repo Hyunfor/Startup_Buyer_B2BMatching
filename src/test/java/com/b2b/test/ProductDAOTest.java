@@ -25,11 +25,11 @@ public class ProductDAOTest {
 	public void testCreate() throws Exception{
 		
 		ProductVO vo = new ProductVO();
-		vo.setPname("ìƒˆìƒí’ˆ");
-		vo.setCategory("ì „ìê¸°ê¸°");
-		vo.setContent("ìƒí’ˆ ì„¤ëª…");
-		vo.setStartupId("ì¤‘ê²¬ê¸°ì—…");
-	
+		vo.setPname("»õ»óÇ°");
+		vo.setCategory("ÀüÀÚ±â±â");
+		vo.setContent("»óÇ° ¼³¸í");
+		vo.setStartup_Id("Áß°ß±â¾÷");
+		
 		logger.info("testCreate: " + vo);
 		
 		dao.adCreate(vo);

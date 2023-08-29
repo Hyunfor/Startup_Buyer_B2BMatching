@@ -2,12 +2,12 @@ package com.b2b.domain;
 
 public class Criteria {
 	
-	private int page; // ì‹œì‘ í˜ì´ì§€
-	private int perPageNum; // í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private int page; // ½ÃÀÛ ÆäÀÌÁö
+	private int perPageNum; // È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
 	
-	private int startPage; // MyBatisì—ì„œ ì‚¬ìš©í•  ì‹œì‘ í˜ì´ì§€ ì •ë³´
+	private int startPage; // MyBatis¿¡¼­ »ç¿ëÇÒ ½ÃÀÛ ÆäÀÌÁö Á¤º¸
 	
-	// ì´ˆê¸°ë°ì´í„° ì„¤ì •ì„ ìœ„í•œ ìƒì„±ì - > 1í˜ì´ì§€ ë¶€í„°, ë³´ì—¬ì¤„ í˜ì´ì§€ëŠ” 10í˜ì´ì§€ì”© 
+	// ÃÊ±âµ¥ÀÌÅÍ ¼³Á¤À» À§ÇÑ »ı¼ºÀÚ - > 1ÆäÀÌÁö ºÎÅÍ, º¸¿©ÁÙ ÆäÀÌÁö´Â 10ÆäÀÌÁö¾¿  
 	public Criteria() {
 		
 		this.page = 1;
@@ -21,7 +21,7 @@ public class Criteria {
 
 	public void setPage(int page) {
 		
-		// í˜ì´ì§•ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬
+		// ÆäÀÌÂ¡¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®
 		if(page <= 0) {
 			this.page = 1;
 			return;
@@ -46,17 +46,17 @@ public class Criteria {
 		this.startPage = startPage;
 	}
 	
-	// MyBatisì—ì„œ ì‚¬ìš©í•  method
+	// MyBatis¿¡¼­ »ç¿ëÇÒ method
 	public int getPageEnd() {
 		
-		// ì‹œì‘í•˜ëŠ” í˜ì´ì§€ì— + 9ë¥¼ í•´ì„œ í˜ì´ì§•ì‹œì— ë§ì¶°ì£¼ê¸°
+		// ½ÃÀÛÇÏ´Â ÆäÀÌÁö¿¡ + 9¸¦ ÇØ¼­ ÆäÀÌÂ¡½Ã¿¡ ¸ÂÃçÁÖ±â
 		return this.startPage + 9;
 		
 	}
 	
 	public int getPageStart() {
 		
-		// í˜ì´ì§• ì‹œì‘ row ê³„ì‚° - > 1page-> 1row, 2page-> 11row, 3page -> 21row, 4page - > 31page ...
+		// ÆäÀÌÂ¡ ½ÃÀÛ row °è»ê - > 1page-> 1row, 2page-> 11row, 3page -> 21row, 4page - > 31page ...
 		this.startPage = (this.page * this.perPageNum) - 9;
 		
 		return this.startPage;

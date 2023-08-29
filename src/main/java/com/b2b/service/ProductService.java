@@ -16,13 +16,13 @@ public interface ProductService {
 
 	public void remove(int pno) throws Exception;
 
-	// ê²€ìƒ‰ ê°€ëŠ¥í•œ ëª©ë¡
+	// °Ë»ö °¡´ÉÇÑ ¸ñ·Ï
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception;
 
-	// ê²€ìƒ‰ ê°€ëŠ¥í•œ ëª©ë¡ ---> í˜ì´ì§• , ì¹´ìš´íŠ¸
+	// °Ë»ö °¡´ÉÇÑ ¸ñ·Ï ---> ÆäÀÌÂ¡ , Ä«¿îÆ®
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
-	// íŒŒì¼ ëª©ë¡
-	public List<ProductIMGVO> fileList(int pimage_no) throws Exception;
+	// ÆÄÀÏ ¸ñ·Ï
+	public List<ProductIMGVO> fileList(int pno) throws Exception;
 
 }
