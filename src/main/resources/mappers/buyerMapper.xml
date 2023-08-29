@@ -13,17 +13,17 @@
 	<select id="read" resultType="com.b2b.domain.BuyerVO">
 		SELECT BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
 		FROM BUYER
-		WHERE BUTER_ID = #{buyer_id}
+		WHERE BUYER_ID = #{buyerId}
 	</select>
 
 	<update id="update">
 		UPDATE BUYER SET BUYER_NAME = #{buyer_name}, EMAIL = #{email},
 		COUNTRY = #{country}, CATEGORY = #{category}, BUSINESS = #{business}, ITEMS = #{items}, ORDER_AMOUNT = #{order_amount}
-		WHERE BUYER_ID = #{buyer_id}
+		WHERE BUYER_ID = #{buyerId}
 	</update>
 
 	<delete id="delete">
-		DELETE FROM BUYER WHERE BUYER_ID = #{buyer_id}
+		DELETE FROM BUYER WHERE BUYER_ID = #{buyerId}
 	</delete>
 
 	<select id="list" resultType="com.b2b.domain.BuyerVO">

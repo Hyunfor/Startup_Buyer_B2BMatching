@@ -51,9 +51,9 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <a href="/" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">BizMatch</span>
+                  <span class="d-none d-lg-block">BizMatch - Buyer</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -67,19 +67,19 @@
                   </div>
                     
                     <div class="col-12">
-                      <label for="bName" class="form-label">회원 이름</label>
+                      <label for="bName" class="form-label">Name</label>
                         <input type="text" name="bName" class="form-control" id="bName" required>
                         <div class="invalid-feedback">Please choose a username.</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="bId" class="form-label">회원 이메일(아이디)</label>
+                      <label for="bId" class="form-label">Buyer ID</label>
                       <input type="text" name="bId" class="form-control" id="bId" required>
                       <div class="invalid-feedback">Please enter a valid ID.</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="bPw" class="form-label">비밀번호</label>
+                      <label for="bPw" class="form-label">Password</label>
                       <input type="password" name="bPw" class="form-control" id="bPw" required>
                       <div class="invalid-feedback">Please enter your password.</div>
                     </div>
@@ -95,7 +95,7 @@
                       <button class="btn btn-primary w-100" type="submit">Create Account</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="buyerUser/login">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="/buyerUser/login">Log in</a></p>
                     </div>
                   </form>
 

@@ -36,84 +36,33 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">바이어명</label>
                   <div class="col-sm-10">
-                    <input type="text" name='startupName' class="form-control"
+                    <input type="text" name='buyerName' class="form-control"
                     value="${buyerVO.buyerName}" >
                     
                   </div>
-                </div>
-                
-                  <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">대표명</label>
-                  <div class="col-sm-10">
-                    <input type="text" name='names' class="form-control"
-                    value="${startupVO.names}">
-                  </div>
-                </div>
+                </div>                               
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">기업 이메일</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">바이어 이메일</label>
                   <div class="col-sm-10">
-                   <input type="text" name='startupId' class="form-control"
-                   value="${startupVO.startupId}" >
+                   <input type="text" name='email' class="form-control"
+                   value="${buyerVO.email}" >
                   </div>
                 </div>
                
                  <div class="row mb-3">
-                  <label for="inputDate" class="col-sm-2 col-form-label">설립일</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">국가</label>
                   <div class="col-sm-10">
-                     <input type="date" name='establishedYear' class="form-control"
-                     value="${startupVO.establishedYear}" >
+                     <input type="text" name='country' class="form-control"
+                     value="${buyerVO.country}" >
                   </div>
                 </div>
                 
                   <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">규모</label>
-                  <div class="col-sm-10">
-                   <input type="text" name='sizes' class="form-control"
-                   value="${startupVO.sizes}" >
-                  </div>
-                </div>
-           <!--      <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">규모</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected="">기업 규모 선택</option>
-                      <option value="1">소기업</option>
-                      <option value="2">중소기업</option>
-                      <option value="3">중견기업</option>
-                      <option value="4">대기업</option>
-                    </select>
-                  </div>
-                </div> -->
-               <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">업종</label>
                   <div class="col-sm-10">
-                     <input type="text" name='categorys' class="form-control"
-                     value="${startupVO.categorys}" >
-                  </div>
-                </div>
-                
-                    <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">업태</label>
-                  <div class="col-sm-10">
-                   <input type="text" name='business' class="form-control"
-                   value="${startupVO.business}">
-                  </div>
-                </div>
-                
-                    <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">직원수</label>
-                  <div class="col-sm-10">
-                    <input type="text" name='noOfEmployees' class="form-control"
-                    value="${startupVO.noOfEmployees}">
-                  </div>
-                </div>
-                
-                    <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">주소</label>
-                  <div class="col-sm-10">
-                     <input type="text" name='city' class="form-control"
-                     value="${startupVO.city}">
+                   <input type="text" name='category' class="form-control"
+                   value="${buyerVO.category}" >
                   </div>
                 </div>
                 
@@ -121,25 +70,17 @@
                   <label for="inputText" class="col-sm-2 col-form-label">주력상품</label>
                   <div class="col-sm-10">
                     <input type="text" name='items' class="form-control"
-                    value="${startupVO.items}">
+                    value="${buyerVO.items}">
                   </div>
                 </div>
                 
                    <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">이메일</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">잠재주문량</label>
                   <div class="col-sm-10">
-                    <input type="text" name='email' class="form-control"
-                    value="${startupVO.email}">
+                    <input type="text" name='orderAmount' class="form-control"
+                    value="${buyerVO.orderAmount}">
                   </div>
                 </div>
-                
-              <!--    <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">사업자 등록증</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" type="file" id="formFile">
-                  </div>
-                </div> -->
- 
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">등록하기</label>
@@ -204,4 +145,4 @@ $(document).ready(
 
 
 
-<%@include file="../include/startup_footer.jsp"%>
+<%@include file="../include/buyer_footer.jsp"%>

@@ -45,7 +45,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/buyerUser" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <img src="/resources/admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">BizMatch - Buyer</span>
       </a>
@@ -283,7 +283,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="list">
+        <a class="nav-link collapsed" href="/buyer/adminList">
           <i class="bi bi-person"></i>
           <span>기업 관리</span>
         </a>

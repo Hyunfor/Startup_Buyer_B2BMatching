@@ -23,8 +23,8 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public BuyerVO read(int buyer_id) throws Exception {
-		return dao.read(buyer_id);
+	public BuyerVO read(int buyerId) throws Exception {
+		return dao.read(buyerId);
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public void remove(int buyer_id) throws Exception {
-		dao.delete(buyer_id);
+	public void remove(int buyerId) throws Exception {
+		dao.delete(buyerId);
 
 	}
 
