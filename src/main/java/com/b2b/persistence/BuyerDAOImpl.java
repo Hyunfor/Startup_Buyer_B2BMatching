@@ -25,8 +25,8 @@ public class BuyerDAOImpl implements BuyerDAO {
 	}
 
 	@Override
-	public BuyerVO read(int buyer_id) throws Exception {
-		return session.selectOne(namespace + ".read", buyer_id);
+	public BuyerVO read(int buyerId) throws Exception {
+		return session.selectOne(namespace + ".read", buyerId);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class BuyerDAOImpl implements BuyerDAO {
 	}
 
 	@Override
-	public void delete(int buyer_id) throws Exception {
-		session.delete(namespace + ".delete", buyer_id);
+	public void delete(int buyerId) throws Exception {
+		session.delete(namespace + ".delete", buyerId);
 
 	}
 
@@ -54,6 +54,11 @@ public class BuyerDAOImpl implements BuyerDAO {
 	@Override
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return session.selectOne(namespace + ".listSearchCount", cri);
+	}
+
+	@Override
+	public List<BuyerVO> adminList() throws Exception {
+		return session.selectList(namespace + ".adminList");
 	}
 
 

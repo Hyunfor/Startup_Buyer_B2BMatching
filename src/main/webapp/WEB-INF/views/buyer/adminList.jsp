@@ -3,11 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<jsp:include page="../include/header.jsp" />
+<jsp:include page="../include/buyer_header.jsp" />
 
 <main id="main" class="main">
 
 <div class="pagetitle">
+	<h1>기업관리</h1>
 
 </div>
 <!-- End Page Title -->
@@ -57,6 +58,7 @@
         <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
          -->
 						<button id='searchBtn' class="btn btn-dark">검색</button>
+						<button id='newBtn' class="btn btn-primary">기업 등록</button>
 					</div>
 				</div>
 			</div>
@@ -68,6 +70,7 @@
 	<div class="card">
 		<div class="card-body">
 			<h5 class="card-title">기업정보 테이블</h5>
+			
 
 			<!-- Primary Color Bordered Table -->
 			<table class="table table-bordered border-primary">
@@ -92,7 +95,7 @@
 				</tbody>
 
 
-				<c:forEach items="${list}" var="buyerVO" varStatus="var">
+				<c:forEach items="${adminList}" var="buyerVO" varStatus="var">
 
 					<tr>
 						<c:if test="${pageMaker.cri.page == 1 }">
@@ -228,4 +231,4 @@
 </script>
 
 
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/buyer_footer.jsp"%>

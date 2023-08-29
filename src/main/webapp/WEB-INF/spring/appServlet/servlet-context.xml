@@ -41,12 +41,12 @@
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/web/startup/register" />
-			<mapping path="/web/startup/modifyPage" />
-			<mapping path="/web/startup/removePage" />
-			<mapping path="/web/buyer/register" />
-			<mapping path="/web/buyer/modifyPage" />
-			<mapping path="/web/buyer/removePage" />
+			<mapping path="/startup/register" />
+			<mapping path="/startup/modifyPage" />
+			<mapping path="/startup/removePage" />
+			<mapping path="/buyer/register" />
+			<mapping path="/buyer/modifyPage" />
+			<mapping path="/buyer/removePage" />
 			<beans:ref bean="AuthInterceptor" />
 
 		</interceptor>

@@ -9,11 +9,11 @@ public interface BuyerService {
 	
 	public void register(BuyerVO vo) throws Exception;
 
-	public BuyerVO read(int buyer_id) throws Exception;
+	public BuyerVO read(int buyerId) throws Exception;
 
 	public void modify(BuyerVO vo) throws Exception;
 
-	public void remove(int buyer_id) throws Exception;
+	public void remove(int buyerId) throws Exception;
 
 	public List<BuyerVO> listSearch(SearchCriteria cri) throws Exception;
 

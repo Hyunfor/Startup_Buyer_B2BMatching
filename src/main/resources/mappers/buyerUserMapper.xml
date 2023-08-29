@@ -12,7 +12,7 @@
 	</select>
 
 	<insert id="create">
-		INSERT INTO BUYER_USER (B_NAME, B_NAME AS NAME, B_ID, B_PW)
+		INSERT INTO BUYER_USER (B_NAME, B_ID, B_PW)
 		VALUES
 		(#{bName}, #{bId}, #{bPw})
 	</insert>
