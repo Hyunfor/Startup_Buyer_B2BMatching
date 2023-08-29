@@ -26,10 +26,10 @@ public class ProductDAOUpdateTest {
 		
 		ProductVO vo = new ProductVO();
 		vo.setPno(1);
-		vo.setPname("ìˆ˜ì •ëœ ìƒí’ˆ ì´ë¦„");
-		vo.setCategory("ìˆ˜ì •ëœ ì¹´í…Œê³ ë¦¬");
-		vo.setContent("ìˆ˜ì •ëœ ìƒí’ˆ ì„¤ëª…");
-		vo.setStartupId("ë³€í™”ëœê¸°ì—…");
+		vo.setPname("¼öÁ¤µÈ »óÇ° ÀÌ¸§");
+		vo.setCategory("¼öÁ¤µÈ Ä«Å×°í¸®");
+		vo.setContent("¼öÁ¤µÈ »óÇ° ¼³¸í");
+		vo.setStartup_Id("º¯È­µÈ±â¾÷");
 		
 		logger.info("testUpdate: " + vo);
 		

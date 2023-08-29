@@ -30,7 +30,7 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputEmail4" class="col-form-label">스타트업</label> <input
-								type="text" name="startupId" id="startupId" value="${login.usid}"
+								type="text" name="startupId" id="startupId" value="${login.sId}"
 								class="form-control" readonly>
 						</div>
 

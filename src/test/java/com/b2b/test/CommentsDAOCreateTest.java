@@ -27,11 +27,11 @@ public class CommentsDAOCreateTest {
 	public void testCreate() throws Exception {
 
 		CommentsVO vo = new CommentsVO();
-		vo.setPno(20); // ìƒí’ˆ ë²ˆí˜¸
+		vo.setPno(20); // »óÇ° ¹øÈ£
 		vo.setCommentNo(4);
-		vo.setStartupId("ì¤‘ê²¬ê¸°ì—…"); // ìŠ¤íƒ€íŠ¸ì—… ID
-		vo.setBuyerId("buyer04"); // ë°”ì´ì–´ ID
-		vo.setComments("ìƒí’ˆì— ëŒ€í•œ ëŒ“ê¸€ ë‚´ìš©");
+		vo.setStartup_Id("Áß°ß±â¾÷"); // ½ºÅ¸Æ®¾÷ ID
+		vo.setBuyerId("buyer04"); // ¹ÙÀÌ¾î ID
+		vo.setComments("»óÇ°¿¡ ´ëÇÑ ´ñ±Û ³»¿ë");
 		vo.setRegdate(new Date());
 
 		logger.info("testCreate: " + vo);

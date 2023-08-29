@@ -17,7 +17,7 @@ public interface StartupDAO {
 
 	public List<StartupVO> list();
 
-	// ê²€ìƒ‰ê¸°ëŠ¥ + í˜ì´ì§• ê¸°ëŠ¥
+	// °Ë»ö±â´É + ÆäÀÌÂ¡ ±â´É
 	public List<StartupVO> listSearchCriteria(SearchCriteria cri) throws Exception;
 
 	public int listSearchCountCriteria(SearchCriteria cri) throws Exception;

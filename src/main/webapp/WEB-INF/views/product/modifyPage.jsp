@@ -23,9 +23,9 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<form role='form' name="frm" method="post">
-							<input type='hidden' name='noticeNo' value="${noticeVO.noticeNo}">
-							<input type='hidden' name='page' value="${cri.page}"> <input
-								type='hidden' name='perPageNum' value="${cri.perPageNum}">
+							<input type='hidden' name='productNo' value="${productVO.pno}">
+							<input type='hidden' name='page' value="${cri.page}"> 
+							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 							<input type='hidden' name='searchType' value="${cri.searchType}">
 							<input type='hidden' name='keyword' value="${cri.keyword}">
 
@@ -44,7 +44,7 @@
 										<!-- end row -->
 										<div class="row">
 											<div class="form-group col-md-6">
-												<label for="startup_id" class="col-form-label">스타트업<span
+												<label for="startupId" class="col-form-label">스타트업<span
 													class="must-mark">*</span></label> <input type="text"
 													class="form-control" name="startupId" id="startupId"
 													value="${productVO.startupId}" disabled="disabled">
@@ -53,7 +53,7 @@
 											<div class="form-group col-md-6">
 												<label for="category" class="col-form-label">카테고리<span
 													class="must-mark">*</span></label> <input type="text"
-													name="category" id="category" class="form-control"
+													name="category" id="category" class="form-control" value="${productVO.category}"
 													placeholder="카테고리를 입력하세요">
 											</div>
 										</div>
@@ -89,11 +89,9 @@
 
 											<ul class="dropzone-previews clearfix uploadedList">
 
-												<c:forEach items="${noticeFileVO}" var="fVo"
-													varStatus="status">
-													<c:set var="noticeFileName" value="${fVo.noticeFileName}" />
-													<c:set var="noticeFileNo"
-														value="${fn:toLowerCase(noticeFileName)}" />
+												<c:forEach items="${fileList}" var="fVo" varStatus="status">
+													<c:set var="imgName" value="${fVo.imgName}" />
+													<c:set var="pimageNo" value="${fn:toLowerCase(imgName)}" />
 
 
 													<li class="dropzone-previews mt-3">
@@ -101,55 +99,10 @@
 															class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 															<div class="p-2">
 																<div class="row align-items-center">
-																	<c:forTokens var="token" items="${noticeFileNo}"
-																		delims="." varStatus="status">
-																		<c:if test="${status.last}">
-																			<c:choose>
-																				<c:when test="${token eq 'hwp'}">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/hwp.png"
-																						alt="${noticeFileName}" />
-																				</c:when>
-																				<c:when test="${token eq 'xls' || token eq 'xlsx' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/excelIcon.png" />
-																				</c:when>
-																				<c:when
-																					test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/displayFile?fileName=${fVo.fileLocation}">
-																				</c:when>
-																				<c:when test="${token eq 'pdf'}">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/pdf.png"
-																						alt="${noticeFileName}" />
-																				</c:when>
-																				<c:when test="${token eq 'ppt' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/ppt.png"
-																						alt="${noticeFileName}" />
-																				</c:when>
-																				<c:otherwise>
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/file.svg"
-																						alt="${noticeFileName}" />
-																				</c:otherwise>
-																			</c:choose>
-																		</c:if>
-																	</c:forTokens>
-
 																	<div class="col pl-0">
-																		<a href="/displayFile?fileName=${fVo.fileLocation}"
-																			text-muted font-weight-bold data-dz-name="">
-																			${fVo.noticeFileName}</a>
-																	</div>
-																	<div class="col-auto">
+																<img alt="${fVo.imgName}" src="/displayFile?fileName=${fVo.fileLocation}">
+																</div>
+																<div class="col-auto">
 																		<a href="${fVo.fileLocation}"
 																			class="btn btn-default btn-xs pull-right delbtn"><i
 																			class="far fa-trash-alt"></i></a>
@@ -165,7 +118,7 @@
 										<div class="row mt-4">
 											<div class="col-sm-6">
 												<a
-													href="/notice/list?searchType=${cri.searchType}&keyword=${cri.keyword}&page=${cri.page}&perPageNum=${cri.perPageNum}"
+													href="/product/list?searchType=${cri.searchType}&keyword=${cri.keyword}&page=${cri.page}&perPageNum=${cri.perPageNum}"
 													class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
 													<i class="mdi mdi-arrow-left"></i> 목록으로 돌아가기
 												</a>

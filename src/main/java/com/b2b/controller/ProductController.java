@@ -28,7 +28,7 @@ public class ProductController {
 	@Inject
 	private ProductService service;
 
-	// ìƒí’ˆ ë“±ë¡
+	// »óÇ° µî·Ï
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET() throws Exception {
 
@@ -36,13 +36,13 @@ public class ProductController {
 
 	}
 
-	// ìƒí’ˆë“±ë¡ ì •ë³´ ë“±ë¡
+	// »óÇ°µî·Ï Á¤º¸ µî·Ï
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPOST(ProductVO vo, RedirectAttributes rttr) throws Exception {
 
 		logger.info("register post ...");
 
-		// ìƒí’ˆ ë“±ë¡
+		// »óÇ° µî·Ï
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
@@ -50,81 +50,87 @@ public class ProductController {
 
 	}
 
-	// ìƒí’ˆ ëª©ë¡
+	// »óÇ° ¸ñ·Ï
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
 		logger.info("list get ...");
 
-		// ì„ íƒëœ í˜ì´ì§€ì˜ ê²Œì‹œê¸€ ì •ë³´ë¥¼ 10ê°œ ê°€ì ¸ì˜¤ê¸°
+		// ¼±ÅÃµÈ ÆäÀÌÁöÀÇ °Ô½Ã±Û Á¤º¸¸¦ 10°³ °¡Á®¿À±â
 		model.addAttribute("list", service.listSearch(cri));
 
-		// í˜ì´ì§€ ë„¤ë¹„ê²Œì´ì…˜ ì¶”ê°€
+		// ÆäÀÌÁö ³×ºñ°ÔÀÌ¼Ç Ãß°¡
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 
-		// í˜ì´ì§• ì •ë³´ í™”ë©´ ì „ë‹¬
+		// ÆäÀÌÂ¡ Á¤º¸ È­¸é Àü´Ş
 		model.addAttribute("pageMaker", pageMaker);
 
 	}
 
-	// ìƒì„¸ë³´ê¸°
+	// »ó¼¼º¸±â
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
 	public void read(@RequestParam("pno") int pno, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
 
-		// 1) ìƒí’ˆ ê¸€
+		// 1) »óÇ° ±Û
 		model.addAttribute(service.read(pno));
 
-		// 2)ì²¨ë¶€ íŒŒì¼
+		// 2)Ã·ºÎ ÆÄÀÏ
 		model.addAttribute("ProductIMGVO", service.fileList(pno));
 
 	}
 
-	// ìƒí’ˆ ìˆ˜ì •
-	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	// »óÇ° ¼öÁ¤
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modifyPageGET(@RequestParam("pno") int pno, HttpSession session,
 			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
 
-		// ìˆ˜ì • í•˜ë ¤ë©´ ë¡œê·¸ì¸í•œ ì •ë³´ì™€ ê²Œì‹œê¸€ì˜ ì‘ì„±ìê°€ ì¼ì¹˜
+		// ¼öÁ¤ ÇÏ·Á¸é ·Î±×ÀÎÇÑ Á¤º¸¿Í °Ô½Ã±ÛÀÇ ÀÛ¼ºÀÚ°¡ ÀÏÄ¡
 
-		// 1) ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+		// 1) ·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
 		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
-		// 2) ê²Œì‹œê¸€ ì‘ì„±ì ì •ë³´ì™€ ë¹„êµ
-		// 2-1) ê²Œì‹œê¸€ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+		// 2) °Ô½Ã±Û ÀÛ¼ºÀÚ Á¤º¸¿Í ºñ±³
+		// 2-1) °Ô½Ã±Û Á¤º¸ °¡Á®¿À±â
 		ProductVO vo = service.read(pno);
-		// 2-2) ê²Œì‹œê¸€ ì •ë³´ì™€ ì‘ì„±ì ì •ë³´ ë¹„êµ
+		// 2-2) °Ô½Ã±Û Á¤º¸¿Í ÀÛ¼ºÀÚ Á¤º¸ ºñ±³
 		if (startUpUser.getsId().equals(vo.getStartupId())) {
-			// ì •ë³´ ì¼ì¹˜ - > ê²Œì‹œê¸€ ìˆ˜ì •
-			// ëª©ë¡í™”ë©´ìœ¼ë¡œ ì´ë™
-			service.modify(vo);
+			// Á¤º¸ ÀÏÄ¡ - > °Ô½Ã±Û ¼öÁ¤ÆäÀÌÁö·Î ÀÌµ¿
+			// »óÇ° Á¤º¸
+			model.addAttribute(vo);
+			
+			// »óÇ° ÀÌ¹ÌÁö Ã·ºÎÆÄÀÏ
+			model.addAttribute("fileList", service.fileList(vo.getPno()));
+			
+			
 			return "/product/modifyPage";
+			
 		} else {
 
-			// ì •ë³´ ë¶ˆì¼ì¹˜ - > ìƒì„¸í˜ì´ì§€ë¡œ ê°•ì œ ì´ë™
+			// Á¤º¸ ºÒÀÏÄ¡ - > »ó¼¼ÆäÀÌÁö·Î °­Á¦ ÀÌµ¿
 			rttr.addAttribute("pno", pno);
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("searchType", cri.getSearchType());
 			rttr.addAttribute("keyword", cri.getKeyword());
 
-			rttr.addFlashAttribute("msg", "ì˜ëª»ëœ ì ‘ê·¼ ì…ë‹ˆë‹¤.");
+			rttr.addFlashAttribute("msg", "Àß¸øµÈ Á¢±Ù ÀÔ´Ï´Ù.");
 
 			return "redirect:/product/readPage";
 
 		}
 	}
 
-	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPagePOST(ProductVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
 			throws Exception {
 
-		// ìƒí’ˆê¸€ ìˆ˜ì • + ì²¨ë¶€íŒŒì¼ë„ ì¬ì—…ë¡œë“œ
+		// »óÇ°±Û ¼öÁ¤ + Ã·ºÎÆÄÀÏµµ Àç¾÷·Îµå
 		service.modify(vo);
 
-		// ìˆ˜ì • í›„ í˜ì´ì§• ë° ê²€ìƒ‰ ê¸°ëŠ¥ ìœ ì§€
+		// ¼öÁ¤ ÈÄ ÆäÀÌÂ¡ ¹× °Ë»ö ±â´É À¯Áö
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
@@ -136,39 +142,39 @@ public class ProductController {
 
 	}
 
-	// ì‚­ì œí•˜ê¸° - > POSTë¡œ êµ¬í˜„ - > ì‚­ì œ í›„ redirectì²˜ë¦¬
-	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	// »èÁ¦ÇÏ±â - > POST·Î ±¸Çö - > »èÁ¦ ÈÄ redirectÃ³¸®
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@RequestParam("pno") int pno, HttpSession session, @ModelAttribute("cri") SearchCriteria cri,
 			RedirectAttributes rttr) throws Exception {
 
 		logger.info("remove get ...");
 
-		// ì‚­ì œ í•˜ë ¤ë©´ ë¡œê·¸ì¸í•œ ì •ë³´ì™€ ê²Œì‹œê¸€ì˜ ì‘ì„±ìê°€ ì¼ì¹˜
+		// »èÁ¦ ÇÏ·Á¸é ·Î±×ÀÎÇÑ Á¤º¸¿Í °Ô½Ã±ÛÀÇ ÀÛ¼ºÀÚ°¡ ÀÏÄ¡
 
-		// 1) ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+		// 1) ·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
 		StartUpUserVO startUpUser = (StartUpUserVO) session.getAttribute("login");
 
-		// 2) ê²Œì‹œê¸€ ì‘ì„±ì ì •ë³´ì™€ ë¹„êµ
-		// 2-1) ê²Œì‹œê¸€ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+		// 2) °Ô½Ã±Û ÀÛ¼ºÀÚ Á¤º¸¿Í ºñ±³
+		// 2-1) °Ô½Ã±Û Á¤º¸ °¡Á®¿À±â
 		ProductVO vo = service.read(pno);
-		// 2-2) ê²Œì‹œê¸€ ì •ë³´ì™€ ì‘ì„±ì ì •ë³´ ë¹„êµ
+		// 2-2) °Ô½Ã±Û Á¤º¸¿Í ÀÛ¼ºÀÚ Á¤º¸ ºñ±³
 		if (startUpUser.getsId().equals(vo.getStartupId())) {
-			// ì •ë³´ ì¼ì¹˜ - > ê²Œì‹œê¸€ ì‚­ì œ
+			// Á¤º¸ ÀÏÄ¡ - > °Ô½Ã±Û »èÁ¦
 			service.remove(pno);
 
-			// ëª©ë¡í™”ë©´ìœ¼ë¡œ ì´ë™
+			// ¸ñ·ÏÈ­¸éÀ¸·Î ÀÌµ¿
 			rttr.addFlashAttribute("msg", "SUCCESS");
 			return "redirect:/product/list";
 		} else {
 
-			// ì •ë³´ ë¶ˆì¼ì¹˜ - > ìƒì„¸í˜ì´ì§€ë¡œ ê°•ì œ ì´ë™
+			// Á¤º¸ ºÒÀÏÄ¡ - > »ó¼¼ÆäÀÌÁö·Î °­Á¦ ÀÌµ¿
 			rttr.addAttribute("pno", pno);
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("searchType", cri.getSearchType());
 			rttr.addAttribute("keyword", cri.getKeyword());
 
-			rttr.addFlashAttribute("msg", "ì˜ëª»ëœ ì ‘ê·¼ ì…ë‹ˆë‹¤.");
+			rttr.addFlashAttribute("msg", "Àß¸øµÈ Á¢±Ù ÀÔ´Ï´Ù.");
 
 			return "redirect:/product/list";
 		}
