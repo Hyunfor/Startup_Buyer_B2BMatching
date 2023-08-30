@@ -2,94 +2,109 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-	rel="stylesheet">
-<jsp:include page="../include/header.jsp" />
 
-<!-- Main content -->
-<section class="content">
+<jsp:include page="../include/startup_header.jsp" />
+
+
+<main id="main" class="main">
+
+<div class="pagetitle">
+	<h1>상품등록</h1>
+</div>
+
+
+
+<section class="section">
 	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">상품 등록하기</h3>
-				</div>
-				<!-- /.box-header -->
+		<div class="col-lg-10">
 
-				<form role="form" name="frm" method="post">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">상품 정보 등록</h5>
 
-					<div class="form-group col-xs-12">
-						<label for="inputAddress2" class="col-form-label">상품명<span
-							class="must-mark">*</span></label> <input type="text" name="pname"
-							id="pname" class="form-control">
-					</div>
+					<!-- General Form Elements -->
 
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4" class="col-form-label">스타트업</label> <input
-								type="text" name="startupId" id="startupId" value="${login.sId}"
-								class="form-control" readonly>
-						</div>
+					<form role="form" method="post">
+						<div class="row mb-3">
+							<label for="inputAddress2" class="col-form-label">상품명<span
+								class="must-mark">*</span></label>
+							<div class="col-sm-10">
+								<input type="text" name="pname" id="pname" class="form-control">
 
-						<div class="form-group col-md-6">
-							<label for="category" class="col-form-label">카테고리<span
-								class="must-mark">*</span></label> <input type="text" name="category"
-								id="category" class="form-control" placeholder="카테고리를 입력하세요">
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<label for="inputAddress2" class="col-form-label">상세내용</label>
-						<textarea class="form-control" name="content" id="content"
-							rows="15"></textarea>
-					</div>
-
-					<div class="form-group">
-						<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
-					</div>
-
-
-					<div id='mydropzone' class="dropzone">
-
-						<input type="file" id="fileUpload" name="fileUpload"
-							style="visibility: hidden;" />
-
-						<div class="fileDrop">
-							<input type="hidden" id="uploadCount">
-							<div class="dz-message needsclick">
-								<i class="h1 text-muted dripicons-cloud-upload"></i>
-								<h3>Drop files here or click to upload.</h3>
-								<span class="text-muted font-13">첨부파일을 업로드하려면 여기에 첨부파일
-									파일을 끌어 넣거나 클릭해주세요</span>
 							</div>
 						</div>
-					</div>
-					<div>
-						<ul class="dropzone-previews clearfix uploadedList">
-						</ul>
-					</div>
-					<!-- --- 버튼 -->
-					<div style="text-align: right;">
-						<button type="button" class="btn btn-primary" id="btn_submit"
-							style="font-size: 14px;">등록</button>
-						<button type="button" onclick="location.href='list'"
-							class="btn btn-light" style="font-size: 14px;">취소</button>
-					</div>
-				</form>
+						<div class="row mb-3">
+							<label for="inputEmail4" class="col-form-label">스타트업</label>
+							<div class="col-sm-10">
+								<input type="text" name="startupId" id="startupId"
+									value="${login.sId}" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="category" class="col-form-label">카테고리<span
+								class="must-mark">*</span></label>
+							<div class="col-sm-10">
+								<input type="text" name="category" id="category"
+									class="form-control" placeholder="카테고리를 입력하세요">
+							</div>
+						</div>
 
-				<!-- end table-responsive-->
+						<div class="row mb-3">
+							<label for="inputAddress2" class="col-form-label">상세내용</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" name="content" id="content"
+									rows="15"></textarea>
+							</div>
+						</div>
+
+						<div class="row mb-3">
+							<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
+							<div class="col-sm-10"></div>
+						</div>
+
+						<div id='mydropzone' class="dropzone">
+
+							<input type="file" id="fileUpload" name="fileUpload"
+							style="visibility: hidden;" />
+
+							<div class="fileDrop">
+								<input type="hidden" id="uploadCount">
+								<div class="dz-message needsclick">
+									<i class="h1 text-muted dripicons-cloud-upload"></i>
+									<h3>Drop files here or click to upload.</h3>
+									<span class="text-muted font-13">첨부파일을 업로드하려면 여기에 첨부파일
+										파일을 끌어 넣거나 클릭해주세요</span>
+								</div>
+
+							</div>
+							
+						</div>
+						
+						<div>
+							<ul class="dropzone-previews clearfix uploadedList">
+							</ul>
+						</div>
+
+						<div class="row mb-3">
+							<label class="col-sm-2 col-form-label">등록하기</label>
+							<div class="col-sm-10">
+								<button type="submit" class="btn btn-primary">등록</button>
+								<button type="button" onclick="location.href='adminList'"
+									class="btn btn-light" style="font-size: 14px;">취소</button>
+							</div>
+						</div>
+
+
+					</form>
+					<!-- End General Form Elements -->
+
+				</div>
 			</div>
-			<!-- end card body-->
 
 		</div>
-		<!-- end card -->
-	</div>
 
-	<!-- SD PROJECT JS -->
+
+	</div>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -160,54 +175,33 @@
 
 
 	<script>
-		$(document)
-				.ready(
-						function() {
-							var formObj = $("form[role='form']");
+		$(document).ready(function() {
+			var formObj = $("form[role='form']");
+				formObj.submit(function(event) {
+				event.preventDefault();
+			
+			//유효성 검사
+			var val = validate();
+			if (val) {var that = $(this);
+			var str = "";
 
-							formObj
-									.submit(function(event) {
-										event.preventDefault();
-										//유효성 검사
+			$(".uploadedList .delbtn").each(function(index) {
+				str += "<input type='hidden' name='files'"
+				+ " value='" + $( this).attr("href") + "'> ";
+				});
 
-										var val = validate();
+				that.append(str);
+				console.log(str);
+				that.get(0).submit();
+					}//if문 종료
+				});
+				
+			$(".btn-cancel").on("click",function() {
+				self.location = "list&page=${cri.page}&perPageNum=${cri.perPageNum}"
+					+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
+					});
+				});
 
-										if (val) {
-
-											var that = $(this);
-
-											var str = "";
-
-											$(".uploadedList .delbtn")
-													.each(
-															function(index) {
-																str += "<input type='hidden' name='files'"
-																		+ " value='"
-																		+ $(
-																				this)
-																				.attr(
-																						"href")
-																		+ "'> ";
-															});
-
-											that.append(str);
-											console.log(str);
-
-											that.get(0).submit();
-
-										}//if문 종료
-
-									});
-
-							$(".btn-cancel")
-									.on(
-											"click",
-											function() {
-												self.location = "list&page=${cri.page}&perPageNum=${cri.perPageNum}"
-														+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
-											});
-
-						});
 
 		$('#mydropzone').click(function(event) {
 
@@ -383,6 +377,8 @@
 	</script>
 
 </section>
-<!-- /.content -->
 
-<%@include file="../include/footer.jsp"%>
+</main>
+
+
+<%@include file="../include/startup_footer.jsp"%>

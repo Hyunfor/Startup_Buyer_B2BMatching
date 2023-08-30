@@ -45,6 +45,11 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO read(int pno) throws Exception {
 		return dao.read(pno);
 	}
+	
+	@Override
+	public ProductVO readPage(int startUpId) throws Exception {
+		return dao.readPage(startUpId);
+	}
 
 	@Override
 	public void modify(ProductVO vo) throws Exception {
