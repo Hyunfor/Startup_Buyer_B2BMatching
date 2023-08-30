@@ -29,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/resources/admin/assets/css/style.css" rel="stylesheet">
+  <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -295,7 +296,7 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/buyer/matchingList">
               <i class="bi bi-arrow-repeat"></i><span>스타트업 매칭</span>
             </a>
           </li>        

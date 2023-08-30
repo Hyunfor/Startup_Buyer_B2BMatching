@@ -49,4 +49,9 @@ public class BuyerServiceImpl implements BuyerService {
 		return dao.listSearchCount(cri);
 	}
 
+	@Override
+	public BuyerVO readPage(int buyerId) throws Exception {
+		return dao.readPage(buyerId);
+	}
+
 }

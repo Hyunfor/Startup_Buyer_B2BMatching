@@ -60,6 +60,15 @@ public class BuyerDAOImpl implements BuyerDAO {
 	public List<BuyerVO> adminList() throws Exception {
 		return session.selectList(namespace + ".adminList");
 	}
+	
+	@Override
+	public List<BuyerVO> matchingList() throws Exception {
+		return session.selectList(namespace + ".matchingList");
+	}
 
+	@Override
+	public BuyerVO readPage(int buyerId) throws Exception {
+		return session.selectOne(namespace + ".readPage", buyerId);
+	}
 
 }
