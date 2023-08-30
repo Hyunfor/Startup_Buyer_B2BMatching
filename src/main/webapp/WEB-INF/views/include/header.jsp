@@ -82,8 +82,8 @@
         <ul>
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="/startup/list">Startups</a></li>
-          <li><a class="nav-link scrollto" href="/buyer/list">Buyers</a></li>
+          <li><a class="nav-link scrollto" href="/startupCommon/list">Startups</a></li>
+          <li><a class="nav-link scrollto" href="/buyerCommon/list">Buyers</a></li>
           <li><a class="nav-link scrollto" href="/productCommon/list">Products</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>

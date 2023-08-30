@@ -285,7 +285,7 @@
       </li><!-- End Dashboard Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/product/list">
+        <a class="nav-link collapsed" href="/product/adminList">
           <!-- <i class="bi bi-person"></i> -->
           <i class="bi bi-menu-button-wide"></i>
           <span>상품 관리</span>
