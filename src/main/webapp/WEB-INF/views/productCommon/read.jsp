@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<jsp:include page="../include/startup_header.jsp" />
+<jsp:include page="../include/header.jsp" />
 
 
 <main id="main" class="main">
@@ -146,20 +146,11 @@
 					<div style="text-align: right;">
 
 						<div class="row mb-3">
-							<div class="col-sm-10"> 
-							<!--
-								<c:if test="${StartUpUserVO.sId eq login.sId}">
-									<button type="submit" class="btn btn-dark">목록</button>
-									<button type="submit" class="btn btn-danger">삭제</button>
-									<button type="submit" class="btn btn-primary">수정</button>
-								</c:if>
-							-->		
-							
-									<button type="submit" class="btn btn-dark">목록</button>
-									<button type="submit" class="btn btn-danger">삭제</button>
-									<button type="submit" class="btn btn-primary">수정</button>
-									
+							<div class="col-sm-10">
+								<button type="submit" class="btn btn-dark">목록</button>
+
 								<!-- End General Form Elements -->
+
 							</div>
 						</div>
 
@@ -237,25 +228,13 @@
 		var formObj = $("form[role='form']");
 
 		console.log(formObj);
-
-		/* 수정버튼 */
-		$(".btn-primary").on("click", function() {
-			formObj.attr("action", "/product/modifyPage");
-			formObj.attr("method", "get");
-			formObj.submit();
-		});
+		
 		//목록버튼
 		$(".btn-dark").on("click", function() {
 			formObj.attr("method", "get");
-			formObj.attr("action", "/product/adminList");
+			formObj.attr("action", "/productCommon/list");
 			formObj.submit();
 		});
-		/* 삭제버튼 */
-		$(".btn-danger").on("click", function() {
-			formObj.attr("action", "/product/remove");
-			formObj.submit();
-		});
-
 		getComments();
 
 	});
@@ -358,4 +337,4 @@
 <!-- /.content -->
 
 
-<%@include file="../include/startup_footer.jsp"%>
+<%@include file="../include/footer.jsp"%>

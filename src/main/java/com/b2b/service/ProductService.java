@@ -10,7 +10,11 @@ public interface ProductService {
 
 	public void register(ProductVO vo) throws Exception;
 
+	// 일반 유저 입장 - 상세보기
 	public ProductVO read(int pno) throws Exception;
+	
+	// 스타트업 관리자 페이지 입장 - 상세보기
+	public ProductVO readPage(int startUpId) throws Exception;
 
 	public void modify(ProductVO vo) throws Exception;
 
