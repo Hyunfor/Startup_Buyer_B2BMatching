@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.b2b.domain.SearchCriteria;
+import com.b2b.domain.StartupFileVO;
 import com.b2b.domain.StartupVO;
 
 @Repository
@@ -57,6 +58,24 @@ public class StartupDAOImpl implements StartupDAO {
 	@Override
 	public int listSearchCountCriteria(SearchCriteria cri) throws Exception {
 		return session.selectOne(namespace + ".listSearchCountCriteria", cri);
+	}
+
+	@Override
+	public void insertFile(StartupFileVO fVo) throws Exception {
+		session.insert(namespace + ".insertFile" ,fVo);
+		
+	}
+
+	@Override
+	public void deleteFile(String startupId) throws Exception {
+		session.delete(namespace + ".deleteFile" ,startupId);
+		
+	}
+
+	@Override
+	public List<StartupFileVO> fileList(String startupId) throws Exception {
+		
+		return session.selectList(namespace +".fileList",startupId);
 	}
 
 

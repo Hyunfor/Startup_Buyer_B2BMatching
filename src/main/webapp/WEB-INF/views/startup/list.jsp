@@ -84,7 +84,6 @@
                     <th scope="col">직원 수</th>
                     <th scope="col">주소</th>
                     <th scope="col">주력상품</th>
-                    <th scope="col">이메일</th>
                     <th scope="col">대표자 명</th>
                     <th scope="col">등록일자</th>
                     
@@ -118,8 +117,7 @@
 								<td>${startupVO.business}</td>
 								<td>${startupVO.noOfEmployees}</td>
 								<td>${startupVO.city}</td>
-								<td>${startupVO.items}</td>
-								<td>${startupVO.email}</td>
+								<td>${startupVO.items}</td>				
 								<td>${startupVO.names}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${startupVO.regdate}" /></td>
