@@ -3,12 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<jsp:include page="../include/buyer_header.jsp" />
+<jsp:include page="../include/startup_header.jsp" />
 
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>기업관리</h1>
+	<h1>바이어 매칭</h1>
 
 </div>
 <!-- End Page Title -->
@@ -231,4 +231,4 @@
 </script>
 
 
-<%@include file="../include/buyer_footer.jsp"%>
+<%@include file="../include/startup_footer.jsp"%>

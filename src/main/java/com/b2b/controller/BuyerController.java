@@ -43,25 +43,10 @@ public class BuyerController {
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/list";
+		return "redirect:/buyer/adminList";
 
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
-
-		logger.info("list get ...");
-
-		model.addAttribute("list", service.listSearch(cri));
-
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listSearchCount(cri));
-
-		model.addAttribute("pageMaker", pageMaker);
-
-	}
-	
 	@RequestMapping(value = "/adminList", method = RequestMethod.GET)
 	public void adminListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
@@ -77,44 +62,64 @@ public class BuyerController {
 
 	}
 
+	@RequestMapping(value = "/matchingList", method = RequestMethod.GET)
+	public void matchingListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+		logger.info("list get ...");
+
+		model.addAttribute("matchingList", service.listSearch(cri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listSearchCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+
+	}
+
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("buyerId") int buyerId, @ModelAttribute("cri") SearchCriteria cri, Model model)
-			throws Exception {
+	public void read(@RequestParam("buyerId") int buyerId, HttpSession session,
+			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
 
 		model.addAttribute(service.read(buyerId));
 
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	public String modifyPageGET(@RequestParam("buyer_id") int buyer_id, HttpSession session,
+	public String modifyPageGET(@RequestParam("buyerId") int buyerId, HttpSession session,
 			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
+
+		// 수정 할 수 있으려면, 로그인한 정보와 글의 작성자 정보가 일치
 
 		// 1) 로그인 정보 가져오기
 		BuyerUserVO buyerUser = (BuyerUserVO) session.getAttribute("login");
 
-		// 2) 게시글 작성자 정보와 비교
-		// 2-1) 게시글 정보 가져오기
-		BuyerVO vo = service.read(buyer_id);
-		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (buyerUser.getbId().equals(vo.getBuyerId())) {
-			// 정보 일치 - > 게시글 수정
-			// 목록화면으로 이동
-			service.modify(vo);
-			return "/buyer/modifyPage";
-		} else {
+		// 2) 게시글의 작성자 정보와 비교
+		// 2-1) 게시글 정보를 가져오기
+		BuyerVO vo = service.read(buyerId);
 
-			// 정보 불일치 - > 상세페이지로 강제 이동
-			rttr.addAttribute("buyer_id", buyer_id);
+		// 2-2) 게시글 정보와 작성자 정보 비교
+		if (buyerUser.getbName().equals(vo.getBuyerName())) {
+
+			// 정보 일치 -> 수정 페이지로 이동
+			model.addAttribute(vo);
+
+			return "/buyer/modifyPage";
+
+		} else {
+			// 정보 불일치 -> 상세페이지로 강제 이동
+			rttr.addAttribute("buyerId", buyerId);
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("searchType", cri.getSearchType());
 			rttr.addAttribute("keyword", cri.getKeyword());
 
-			rttr.addFlashAttribute("msg", "잘못된 접근 입니다.");
+			rttr.addFlashAttribute("msg", "로그인 정보가 일치하지 않아 수정 불가능 합니다.");
 
 			return "redirect:/buyer/readPage";
 
 		}
+
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
@@ -123,7 +128,6 @@ public class BuyerController {
 
 		service.modify(vo);
 
-		// 수정 후 페이징 및 검색 기능 유지
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
@@ -131,46 +135,24 @@ public class BuyerController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/list";
+		return "redirect:/buyer/adminList";
 
 	}
 
-	// 삭제하기 - > POST로 구현 - > 삭제 후 redirect처리
 	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("buyer_id") int buyer_id, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+	public String removePOST(@RequestParam("buyerId") int buyerId, @ModelAttribute("cri") SearchCriteria cri,
+			RedirectAttributes rttr) throws Exception {
 
-		logger.info("remove get ...");
+		service.remove(buyerId);
 
-		// 삭제 하려면 로그인한 정보와 게시글의 작성자가 일치
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 
-		// 1) 로그인 정보 가져오기
-		BuyerUserVO buyerUser = (BuyerUserVO) session.getAttribute("login");
+		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		// 2) 게시글 작성자 정보와 비교
-		// 2-1) 게시글 정보 가져오기
-		BuyerVO vo = service.read(buyer_id);
-		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (buyerUser.getbId().equals(vo.getBuyerId())) {
-			// 정보 일치 - > 게시글 삭제
-			service.remove(buyer_id);
-
-			// 목록화면으로 이동
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/buyer/list";
-		} else {
-
-			// 정보 불일치 - > 상세페이지로 강제 이동
-			rttr.addAttribute("buyer_id", buyer_id);
-			rttr.addAttribute("page", cri.getPage());
-			rttr.addAttribute("perPageNum", cri.getPerPageNum());
-			rttr.addAttribute("searchType", cri.getSearchType());
-			rttr.addAttribute("keyword", cri.getKeyword());
-
-			rttr.addFlashAttribute("msg", "잘못된 접근 입니다.");
-
-			return "redirect:/buyer/list";
-		}
+		return "redirect:/buyer/adminList";
 
 	}
 

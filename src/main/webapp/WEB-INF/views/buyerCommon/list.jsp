@@ -104,7 +104,7 @@
 						</c:if>
 
 						<td><a
-							href='/buyer/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}'>
+							href='/buyerCommon/read${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}'>
 								${buyerVO.buyerName} </a></td>
 						<td>${buyerVO.email}</td>
 						<td>${buyerVO.country}</td>
