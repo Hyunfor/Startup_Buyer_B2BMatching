@@ -125,13 +125,7 @@
                   </div>
                 </div>
                 
-                   <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">이메일</label>
-                  <div class="col-sm-10">
-                    <input type="text" name='email' class="form-control"
-                    value="${startupVO.email}" readonly="readonly">
-                  </div>
-                </div>
+               
                 
               <!--    <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">사업자 등록증</label>
@@ -144,7 +138,7 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">수정하기</label>
                   <div class="col-sm-10">
-                    <c:if test="${UserVO.usid eq login.usid}">
+                    <c:if test="${StartupVO.startupId eq login.sId}">
                     <button type="submit" class="btn btn-danger">삭제</button>
                      <button type="submit" class="btn btn-primary">수정</button>
                     </c:if>

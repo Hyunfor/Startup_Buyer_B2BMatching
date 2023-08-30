@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.b2b.domain.SearchCriteria;
+import com.b2b.domain.StartupFileVO;
 import com.b2b.domain.StartupVO;
 import com.b2b.persistence.StartupDAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,6 +64,12 @@ public class StartupServiceImpl implements StartupService  {
 	public int listSearchCountCriteria(SearchCriteria cri) throws Exception {
 		
 		return dao.listSearchCountCriteria(cri);
+	}
+
+	@Override
+	public List<StartupFileVO> fileList(String startupId) throws Exception {
+		
+		return dao.fileList(startupId);
 	}
 	
 	

@@ -9,10 +9,10 @@
 
 		INSERT INTO START_UP (STARTUP_ID,STARTUPNAME,ESTABLISHED_YEAR,SIZES
 								,CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
-								,ITEMS,EMAIL,NAMES)	
+								,ITEMS,NAMES)	
 		VALUES (#{startupId},#{startupName},#{establishedYear},#{sizes}
 					,#{categorys},#{business},#{noOfEmployees},#{city}
-					,#{items} ,#{email},#{names})
+					,#{items},#{names})
 
 
 	</insert>
@@ -20,7 +20,7 @@
 	<select id="read" resultType="com.b2b.domain.StartupVO">
 		SELECT STARTUP_ID, STARTUPNAME, ESTABLISHED_YEAR, SIZES,
 		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
-		,ITEMS,EMAIL,NAMES,REGDATE
+		,ITEMS,NAMES,REGDATE
 		FROM START_UP
 		WHERE STARTUP_ID = #{startupId}
 	</select>
@@ -28,7 +28,7 @@
 	<update id="update">
 		UPDATE START_UP SET STARTUP_ID = #{startupId}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{establishedYear}, SIZES = #{sizes}
 			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{noOfEmployees}, CITY = #{city}
-			  				ITEMS = #{items}, EMAIL = #{email}, NAMES = #{names}
+			  				ITEMS = #{items},NAMES = #{names}
 		
 		WHERE STARTUP_ID = #{startupId}
 
@@ -43,7 +43,7 @@
 <![CDATA[
  SELECT STARTUP_ID, STARTUPNAME, ESTABLISHED_YEAR, SIZES,
 		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
-		,ITEMS,EMAIL,NAMES,REGDATE
+		,ITEMS,NAMES,REGDATE
 	FROM START_UP
     WHERE STARTUP_ID IS NOT NULL
     ORDER BY STARTUP_ID DESC
@@ -89,7 +89,7 @@
 SELECT * FROM(
  SELECT ROWNUM RNUM, STARTUPNAME, NAMES, STARTUP_ID,  ESTABLISHED_YEAR, SIZES,
 		CATEGORYS,BUSINESS,NO_OF_EMPLOYEES,CITY
-		,ITEMS,EMAIL,REGDATE
+		,ITEMS,REGDATE
 		FROM(SELECT * FROM START_UP WHERE STARTUP_ID IS NOT NULL
 		]]>
 
@@ -136,6 +136,25 @@ SELECT * FROM(
 
 	</select>
 	
+	
+<!-- 다중 파일 등록 -->
+
+<insert id="insertFile">
+
+INSERT INTO STARTUP_FILE (STARTUP_FILE_NO, STARTUP_FILE_NAME, STARTUP_ID)
+VALUES (SEQ_STARTUP_FILE.NEXTVAL,#{startupFileName}, #{startupId})
+
+</insert>
+
+<!-- 다중 파일 삭제 -->
+
+<delete id="deleteFile">
+
+DELETE FROM STARTUP_FILE WHERE STARTUP_ID = #{startupId}
+
+</delete>
+
+
 	
 	
 	

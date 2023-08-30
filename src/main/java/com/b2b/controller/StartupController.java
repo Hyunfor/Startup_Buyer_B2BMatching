@@ -100,6 +100,9 @@ public class StartupController {
 			Model model) throws Exception {
 
 		model.addAttribute(service.read(startupId));
+		
+		//2)첨부 파일
+		model.addAttribute("startupFileVO", service.fileList(startupId));
 
 	}
 
@@ -120,6 +123,9 @@ public class StartupController {
 		if (startUpUser.getsId().equals(vo.getStartupId())) {
 			// 정보일치 -> 게시글 수정페이지 이동
 			model.addAttribute(service.read(startupId));
+			//2)첨부 파일
+			model.addAttribute("startupFileVO", service.fileList(startupId));
+			
 			return "/startup/modifyPage";
 
 		} else {
@@ -152,5 +158,29 @@ public class StartupController {
 
 		return "redirect:/startup/list";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

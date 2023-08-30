@@ -125,13 +125,7 @@
                   </div>
                 </div>
                 
-                   <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">이메일</label>
-                  <div class="col-sm-10">
-                    <input type="text" name='email' class="form-control"
-                    value="${startupVO.email}">
-                  </div>
-                </div>
+              
                 
               <!--    <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">사업자 등록증</label>

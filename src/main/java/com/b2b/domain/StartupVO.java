@@ -1,5 +1,7 @@
 package com.b2b.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class StartupVO {
@@ -17,6 +19,9 @@ public class StartupVO {
 	private String items;
 	private String email;
 	private Date regdate;
+	private String[] files;
+	//상세보기 file 여러개 가져오기
+	private ArrayList<StartupFileVO> fileList;
 	public String getStartupName() {
 		return startupName;
 	}
@@ -89,13 +94,27 @@ public class StartupVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+	public ArrayList<StartupFileVO> getFileList() {
+		return fileList;
+	}
+	public void setFileList(ArrayList<StartupFileVO> fileList) {
+		this.fileList = fileList;
+	}
 	@Override
 	public String toString() {
 		return "StartupVO [startupName=" + startupName + ", names=" + names + ", startupId=" + startupId
 				+ ", establishedYear=" + establishedYear + ", sizes=" + sizes + ", categorys=" + categorys
 				+ ", business=" + business + ", noOfEmployees=" + noOfEmployees + ", city=" + city + ", items=" + items
-				+ ", email=" + email + ", regdate=" + regdate + "]";
+				+ ", email=" + email + ", regdate=" + regdate + ", files=" + Arrays.toString(files) + ", fileList="
+				+ fileList + "]";
 	}
+	
 	
 	
 	
