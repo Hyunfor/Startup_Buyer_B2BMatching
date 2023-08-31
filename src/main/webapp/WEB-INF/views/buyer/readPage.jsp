@@ -24,37 +24,42 @@
 
 					<form role="form" action="modifyPage" method="post">
 
-						<input type='hidden' name='pno' value="${buyerVO.buyerId}" id='buyerId'>
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
-						<input type='hidden' name='searchType' value="${cri.searchType}">
+						<input type='hidden' name='pno' value="${buyerVO.buyerId}"
+							id='buyerId'> <input type='hidden' name='page'
+							value="${cri.page}"> <input type='hidden'
+							name='perPageNum' value="${cri.perPageNum}"> <input
+							type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
-
 					</form>
 
-			<div class="alert alert-light border-light alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">${buyerVO.buyerName}</h4>
-                <hr>
-                <h4 class="alert-heading">${buyerVO.email}</h4>
-                <hr>
-                <p>${buyerVO.country}</p>
-                <p>${buyerVO.category}</p>
-                <p>${buyerVO.business}</p>
-                <p>${buyerVO.items}</p>
-                <p>${buyerVO.orderAmount}</p>
-              </div>
-              
-              
-           
-			
-</div>
 
-						<div class="row mb-3">
-							<div class="text-center"> 
-									<button type="submit" class="btn btn-primary">수정</button>
-						</div>
-					</div>	
-				
+					<div
+						class="alert alert-light border-light alert-dismissible fade show"
+						role="alert">
+						<h4 class="alert-heading">기업명 &nbsp;-&nbsp;${buyerVO.buyerName}</h4>
+						<hr>
+						<h4 class="alert-heading">바이어 ID (Email) &nbsp;-&nbsp;${buyerVO.email}</h4>
+						<hr>
+						<p>국가 &nbsp;-&nbsp;${buyerVO.country}</p>
+						<p>업종 &nbsp;-&nbsp;${buyerVO.category}</p>
+						<p>업태 &nbsp;-&nbsp;${buyerVO.business}</p>
+						<p>주력상품 &nbsp;-&nbsp;${buyerVO.items}</p>
+						<p>잠재주문량 &nbsp;-&nbsp;${buyerVO.orderAmount}</p>
+						<p>등록일자 &nbsp;-&nbsp;${buyerVO.regdate}</p>
+						
+					</div>
+
+
+
+
+				</div>
+
+				<div class="row mb-3">
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">수정</button>
+					</div>
+				</div>
+
 
 				<!-- end card-body-->
 
@@ -81,20 +86,9 @@
 			formObj.attr("action", "/buyer/modifyPage");
 			formObj.attr("method", "get");
 			formObj.submit();
-		});
-		//목록버튼
-		$(".btn-secondary").on("click", function() {
-			formObj.attr("method", "get");
-			formObj.attr("action", "/product/adminList");
-			formObj.submit();
-		});
-		/* 삭제버튼 */
-		$(".btn-danger").on("click", function() {
-			formObj.attr("action", "/product/remove");
-			formObj.submit();
+		
 		});
 
-		getComments();
 
 	});
 
@@ -107,93 +101,6 @@
 	}
 </script>
 
-<script>
-	var pno = $("#pno").val(); // pno 변수에 서버에서 전달받은 값 할당 
-	var id = $("#newUserNo").val(); // bId 변수에 서버에서 전달받은 값 할당 
-	var name = $("#newUserName").val(); // bId 변수에 서버에서 전달받은 값 할당 
-
-	$(".comentAddBtn").on("click", function() {
-
-		var CommentsText = $("#newReplyText").val();
-
-		// 댓글 입력처리 수행
-		$.ajax({
-			type : "post",
-			url : "/comments/",
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			dataType : "text",
-			data : JSON.stringify({
-				pno : pno,
-				id : id,
-				name : name,
-				comments : CommentsText
-			}),
-			success : function(result) {
-				if (result === "SUCCESS") {
-					alert("댓글이 등록되었습니다.");
-					$("#newReplyText").val(""); //댓글 입력창 공백처리
-					getComments(); //댓글 목록 호출
-				}
-			}
-		});
-
-	});
-
-	function deleteComments(commentNo) {
-
-		$.ajax({
-			type : 'delete',
-			url : '/comments/' + commentNo,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "DELETE"
-			},
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("삭제 되었습니다.");
-					getComments();
-				}
-			}
-		});
-
-	}
-
-	function getComments() {
-		$.getJSON("/comments/all/" + pno, function(data) {
-			var str = "";
-
-			$(data).each(
-					function() {
-						var strbutton = "";
-						str += "<li class='list-group-item' data-commentNo='" + this.commentNo + "'>"
-						
-								+ "<i class='bi bi-star me-1 text-success'>" + this.name + "</i>"
-								+ this.comments + "   "
-
-						if (id == this.id)//댓글 정보와 로그인 정보 같을 경우 댓글 삭제 가능
-						{
-							strbutton += "<i class'bi bi-trash'>"
-									+ "  <a href='#' onclick='deleteComments("
-									+ this.commentNo + ")'>삭제</a>" + "</i>";
-						}
-
-						str += strbutton;
-						str += "</li>";
-					});
-
-			$("#comments").html(str);
-
-		});
-
-	}
-</script>
-
-<!-- /.content -->
 
 
-<%@include file="../include/startup_footer.jsp"%>
+<%@include file="../include/buyer_footer.jsp"%>
