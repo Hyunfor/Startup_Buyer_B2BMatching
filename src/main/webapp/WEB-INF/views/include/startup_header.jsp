@@ -29,7 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/resources/admin/assets/css/style.css" rel="stylesheet">
-
+   <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -305,7 +305,7 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/startup/matchingList">
               <i class="bi bi-arrow-repeat"></i><span>바이어 매칭</span>
             </a>
           </li>        

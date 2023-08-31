@@ -4,12 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<jsp:include page="../include/buyer_header.jsp" />			
+<jsp:include page="../include/header.jsp" />			
 
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>기업상세보기</h1>
 </div>
 <section class="section">
 	<div class="row">
@@ -102,8 +101,6 @@
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="col-sm-10">
-								<button type="submit" class="btn btn-warning">수정</button>
-								<button type="submit" class="btn btn-danger">삭제</button>
 							<button type="submit" class="btn btn-primary">목록</button>
 
 
@@ -170,7 +167,7 @@
 																		formObj
 																				.attr(
 																						"action",
-																						"/buyer/adminList");
+																						"/buyerCommon/list");
 																		formObj
 																				.submit();
 																	});
@@ -223,4 +220,4 @@
 
 
 
-<%@include file="../include/buyer_footer.jsp"%>
+<%@include file="../include/footer.jsp"%>

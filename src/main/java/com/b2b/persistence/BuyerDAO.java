@@ -11,19 +11,20 @@ public interface BuyerDAO {
 
 	public BuyerVO read(int buyerId) throws Exception;
 
+	public BuyerVO readPage(int buyerId) throws Exception;
+
 	public void update(BuyerVO vo) throws Exception;
 
 	public void delete(int buyerId) throws Exception;
 
 	public List<BuyerVO> list() throws Exception;
-	
+
 	public List<BuyerVO> adminList() throws Exception;
+	
+	public List<BuyerVO> matchingList() throws Exception;
 
 	public List<BuyerVO> listSearch(SearchCriteria cri) throws Exception;
 
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
-	
-
-	
 }

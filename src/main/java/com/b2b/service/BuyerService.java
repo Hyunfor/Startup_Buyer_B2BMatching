@@ -10,6 +10,8 @@ public interface BuyerService {
 	public void register(BuyerVO vo) throws Exception;
 
 	public BuyerVO read(int buyerId) throws Exception;
+	
+	public BuyerVO readPage(int buyerId) throws Exception;
 
 	public void modify(BuyerVO vo) throws Exception;
 

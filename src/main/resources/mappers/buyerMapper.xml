@@ -6,8 +6,8 @@
 
 	<insert id="create">
 		INSERT INTO BUYER (BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT)
-		VALUES (SEQ_BUYER.nextval, #{buyer_name}, #{email}, #{country},
-		#{category}, #{business}, #{items}, #{order_amount})
+		VALUES (SEQ_BUYER.nextval, #{buyerName}, #{email}, #{country},
+		#{category}, #{business}, #{items}, #{orderAmount})
 	</insert>
 
 	<select id="read" resultType="com.b2b.domain.BuyerVO">
@@ -15,10 +15,16 @@
 		FROM BUYER
 		WHERE BUYER_ID = #{buyerId}
 	</select>
+	
+	<select id="readPage" resultType="com.b2b.domain.BuyerVO">
+		SELECT BUYER_ID, BUYER_NAME, EMAIL, COUNTRY, CATEGORY, BUSINESS, ITEMS, ORDER_AMOUNT, REGDATE
+		FROM BUYER
+		WHERE BUYER_ID = #{buyerId}
+	</select>
 
 	<update id="update">
-		UPDATE BUYER SET BUYER_NAME = #{buyer_name}, EMAIL = #{email},
-		COUNTRY = #{country}, CATEGORY = #{category}, BUSINESS = #{business}, ITEMS = #{items}, ORDER_AMOUNT = #{order_amount}
+		UPDATE BUYER SET BUYER_NAME = #{buyerName}, EMAIL = #{email},
+		COUNTRY = #{country}, CATEGORY = #{category}, BUSINESS = #{business}, ITEMS = #{items}, ORDER_AMOUNT = #{orderAmount}
 		WHERE BUYER_ID = #{buyerId}
 	</update>
 

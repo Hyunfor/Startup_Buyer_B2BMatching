@@ -37,7 +37,7 @@
                   <label for="inputText" class="col-sm-2 col-form-label">바이어명</label>
                   <div class="col-sm-10">
                     <input type="text" name='buyerName' class="form-control"
-                    value="${buyerVO.buyerName}" >
+                    value="${buyerVO.buyerName}" readonly>
                     
                   </div>
                 </div>                               
@@ -66,6 +66,14 @@
                   </div>
                 </div>
                 
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">업태</label>
+                  <div class="col-sm-10">
+                   <input type="text" name='business' class="form-control"
+                   value="${buyerVO.business}" >
+                  </div>
+                </div>
+                
                    <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">주력상품</label>
                   <div class="col-sm-10">
@@ -85,7 +93,8 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">등록하기</label>
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">등록</button>
+                    <button type="submit" class="btn btn-warning">등록</button>
+                    <button type="submit" class="btn btn-primary">목록</button>
                   </div>
                 </div>
                
@@ -100,13 +109,13 @@ $(document).ready(
 
 		console.log(formObj);
 
-		$(".btn-warning")
+		$(".btn-primary")
 				.on("click",function() {
-					self.location = "/startup/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
+					self.location = "/buyer/adminList?page=${cri.page}&perPageNum=${cri.perPageNum}"
 							+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 				});
 
-		$(".btn-primary").on("click",
+		$(".btn-warning").on("click",
 				function() {
 					formObj.submit();
 				});
