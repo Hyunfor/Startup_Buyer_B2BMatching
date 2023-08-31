@@ -5,10 +5,11 @@
 <mapper namespace="com.b2b.mapper.BuyerUserMapper">
 
 	<select id="login" resultType="com.b2b.domain.BuyerUserVO">
-		SELECT B_NAME, B_NAME AS NAME, B_ID, B_PW
+		SELECT B_NAME, B_NAME AS NAME, B_ID, B_PW, BUYER_ID
 		FROM
-		BUYER_USER
-		WHERE B_ID = #{bId} AND B_PW = #{bPw}
+		BUYER_USER, BUYER
+        WHERE BUYER_USER.B_ID = BUYER.EMAIL
+		AND B_ID = #{bId} AND B_PW = #{bPw}
 	</select>
 
 	<insert id="create">

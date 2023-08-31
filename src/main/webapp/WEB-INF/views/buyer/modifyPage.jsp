@@ -29,16 +29,11 @@
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 	<input type='hidden' name='searchType' value="${cri.searchType}">
 	<input type='hidden' name='keyword' value="${cri.keyword}">
-
-</form>
-             
               
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">바이어명</label>
                   <div class="col-sm-10">
-                    <input type="text" name='buyerName' class="form-control"
-                    value="${buyerVO.buyerName}" readonly>
-                    
+                    <input type="text" name='buyerName' class="form-control"  value="${buyerVO.buyerName}"  readonly="readonly">
                   </div>
                 </div>                               
                 
@@ -46,7 +41,7 @@
                   <label for="inputEmail" class="col-sm-2 col-form-label">바이어 이메일</label>
                   <div class="col-sm-10">
                    <input type="text" name='email' class="form-control"
-                   value="${buyerVO.email}" >
+                   value="${buyerVO.email}"  readonly="readonly">
                   </div>
                 </div>
                
@@ -98,9 +93,7 @@
                   </div>
                 </div>
                
-
-              <!-- End General Form Elements -->
-
+</form>
 <script>
 $(document).ready(
 	function() {
