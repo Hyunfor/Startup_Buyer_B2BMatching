@@ -79,7 +79,7 @@ public class ProductController {
 	}
 
 	// 상품 수정
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
 	public String modifyPageGET(@RequestParam("pno") int pno, HttpSession session,
 			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
 
@@ -118,7 +118,7 @@ public class ProductController {
 		}
 	}
 
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
 	public String modifyPagePOST(ProductVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
 			throws Exception {
 
@@ -142,7 +142,7 @@ public class ProductController {
 	public String remove(@RequestParam("pno") int pno, HttpSession session, @ModelAttribute("cri") SearchCriteria cri,
 			RedirectAttributes rttr) throws Exception {
 
-		logger.info("remove get ...");
+		logger.info("remove get ..." + pno);
 
 		// 삭제 하려면 로그인한 정보와 게시글의 작성자가 일치
 

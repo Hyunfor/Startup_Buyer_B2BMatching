@@ -15,15 +15,15 @@
 
 <section class="section">
 	<div class="row">
+	
 		<div class="col-md-12">
 
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">상품 관리</h5>
-
-					<div class="datatable-search">
-
-						<select name="searchType">
+					<h5 class="card-title"></h5>
+					<div class="search-form d-flex align-items-center">
+					<div class="col-xxl-4 col-md-4">
+						<select name="searchType" class="form-select">
 							<option value="none"
 								<c:out value="${cri.searchType == null?'selected':''}"/>>
 								---</option>
@@ -45,50 +45,33 @@
 							<option value="ncw"
 								<c:out value="${cri.searchType eq 'ncs'?'selected':''}"/>>
 								제품명 OR 카테고리 OR 스타트업</option>
-
-						</select> <input class="datatable-input" placeholder="Search..."
-							type="text" name='keyword' id="keywordInput"
-							value='${cri.keyword }' title="Search within table">
-						<!-- <button id='searchBtn' class="btn btn-dark">검색</button>
-       
-        <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
-         -->
-						<button id='searchBtn' class="btn btn-dark">검색</button>
-						<button id='newBtn' class="btn btn-primary">제품 등록</button>
-					</div>
+					</select>
+    				</div>
+        				<input type="text" name="query" placeholder="Search" value='${cri.keyword }' id="keywordInput" title="Enter search keyword">
+       					 <button type="submit" title="Search" id='searchBtn'><i class="bi bi-search"></i></button>
+       					
+    				</div><!-- End Search Bar -->
 				</div>
 			</div>
 		</div>
 	</div>
-
+</section>
+<section class="section">
+  <div class="row">
+   <div class="col-lg-12">
 	<div class="card">
 		<div class="card-body">
+		<h5 class="card-title" align="right"><button type="button" id='newBtn' class="btn btn-primary" >신규 상품등록</button></h5>
 			<h5 class="card-title">상품 목록</h5>
-			<p>
-				Add
-				<code>.table-bordered</code>
-				for borders on all sides of the table and cells.
-			</p>
-
-			<p>
-				<a
-					href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color"
-					target="_blank">Border color utilities</a> can be added to change
-				colors:
-			</p>
-
-			<!-- Primary Color Bordered Table -->
-			<table class="table table-bordered border-primary">
+			<table class="table">
 				<thead>
 					<tr>
-
-						<th style="width: 10px">NO</th>
-						<th>상품명</th>
-						<th>카테고리</th>
-						<th>내용</th>
-						<th>스타트업</th>
-						<th>등록일</th>
-
+						<th scope="col">NO</th>
+						<th scope="col">상품명</th>
+						<th scope="col">카테고리</th>
+						<th scope="col">내용</th>
+						<th scope="col">스타트업</th>
+						<th scope="col">등록일</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -121,42 +104,35 @@
 			<!-- End Primary Color Bordered Table -->
 
 		</div>
-	</div>
-
-	<div class="card">
-		<div class="card-body">
-
-			<div class="text-center">
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 
 					<c:if test="${pageMaker.prev}">
-						<li><a class="page-link"
-							href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+						<li class="page-item"><a class="page-link"
+							href="adminList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
 						</li>
 					</c:if>
 
-					<c:forEach begin="${pageMaker.startPage }"
-						end="${pageMaker.endPage }" var="idx">
+					<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 
-						<li
-							<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-							<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+						<li <c:out value="${pageMaker.cri.page ==idx ? 'class=active' : ''}"/> >
+							<a class="page-link" href="adminList${pageMaker.makeSearch(idx)}">${idx}</a>
 
 						</li>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						<li><a
-							href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+						<li class="page-item"><a
+							href="adminList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 					</c:if>
 
 				</ul>
-			</div>
-
+				</div>
 		</div>
 	</div>
+	</section>
+
+	
 </main>
-</section>
 
 <script>
 	var result = '${msg}';
@@ -174,7 +150,7 @@
 						"click",
 						function(event) {
 
-							self.location = "list"
+							self.location = "adminList"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()
