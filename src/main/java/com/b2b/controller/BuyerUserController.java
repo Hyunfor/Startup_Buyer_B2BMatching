@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.b2b.domain.BuyerUserVO;
+import com.b2b.domain.BuyerVO;
 import com.b2b.domain.SearchCriteria;
 import com.b2b.dto.BuyerLoginDTO;
+import com.b2b.service.BuyerService;
 import com.b2b.service.BuyerUserService;
 
 @Controller
@@ -26,6 +28,9 @@ public class BuyerUserController {
 
 	@Inject
 	private BuyerUserService service;
+	
+	@Inject
+	private BuyerService bservice;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") BuyerLoginDTO dto) throws Exception {
@@ -68,11 +73,20 @@ public class BuyerUserController {
 	}
 
 	@RequestMapping(value = "/memberRegister", method = RequestMethod.POST)
-	public String user_registerPOST(BuyerUserVO vo, RedirectAttributes rttr, Model model) throws Exception {
+	public String user_registerPOST(BuyerUserVO vo, BuyerVO bvo, RedirectAttributes rttr, Model model) throws Exception {
 
 		logger.info("register post...");
+		
+		System.out.println("BuyerUserVO =====>" + vo);
+		System.out.println("BuyerVO =====>" + bvo);
 
+		// 1) 로그인을 위한 담당자 정보 저장
 		service.register(vo);
+		
+		// 2) 기업 정보 저장
+		bvo.setEmail(vo.getbId());
+		bservice.register(bvo);
+	
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
 		return "redirect:/";

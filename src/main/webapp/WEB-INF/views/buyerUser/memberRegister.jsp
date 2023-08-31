@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="bId" class="form-label">Buyer ID</label>
+                      <label for="bId" class="form-label">Buyer ID (Email)</label>
                       <input type="text" name="bId" class="form-control" id="bId" required>
                       <div class="invalid-feedback">Please enter a valid ID.</div>
                     </div>
@@ -82,6 +82,42 @@
                       <label for="bPw" class="form-label">Password</label>
                       <input type="password" name="bPw" class="form-control" id="bPw" required>
                       <div class="invalid-feedback">Please enter your password.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="country" class="form-label">Company Name</label>
+                      <input type="text" name="buyerName" class="form-control" id="buyerName" required>
+                      <div class="invalid-feedback">Please enter your Company Name.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="country" class="form-label">Country</label>
+                      <input type="text" name="country" class="form-control" id="country" required>
+                      <div class="invalid-feedback">Please enter your country.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="category" class="form-label">Category</label>
+                      <input type="text" name="category" class="form-control" id="category" required>
+                      <div class="invalid-feedback">Please enter your category.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="business" class="form-label">Business</label>
+                      <input type="text" name="business" class="form-control" id="business" required>
+                      <div class="invalid-feedback">Please enter your business.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="items" class="form-label">Items</label>
+                      <input type="text" name="items" class="form-control" id="items" required>
+                      <div class="invalid-feedback">Please enter your items.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="orderAmount" class="form-label">Order Amount</label>
+                      <input type="text" name="orderAmount" class="form-control" id="orderAmount" required>
+                      <div class="invalid-feedback">Please enter your orderAmount.</div>
                     </div>
 
                     <div class="col-12">

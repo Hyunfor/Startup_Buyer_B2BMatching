@@ -46,13 +46,13 @@ public class BuyerController {
 		return "redirect:/buyer/adminList";
 
 	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public void homePage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-	@RequestMapping(value = "/adminList", method = RequestMethod.GET)
-	public void adminListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("home get ...");
 
-		logger.info("list get ...");
-
-		model.addAttribute("adminList", service.listSearch(cri));
+		model.addAttribute("home", service.listSearch(cri));
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -106,16 +106,11 @@ public class BuyerController {
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
-	public String modifyPagePOST(BuyerVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
+	public String modifyPagePOST(BuyerVO vo, RedirectAttributes rttr)
 			throws Exception {
 
 		logger.info("modifyPage post ..." + vo);
 		service.modify(vo);
-
-		rttr.addAttribute("page", cri.getPage());
-		rttr.addAttribute("perPageNum", cri.getPerPageNum());
-		rttr.addAttribute("searchType", cri.getSearchType());
-		rttr.addAttribute("keyword", cri.getKeyword());
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 

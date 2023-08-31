@@ -2,225 +2,198 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<jsp:include page="../include/buyer_header.jsp" />
 
-<jsp:include page="../include/buyer_header.jsp" />			
 
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>기업상세보기</h1>
+	<h1>바이어상세보기</h1>
 </div>
 <section class="section">
 	<div class="row">
-		<div class="col-lg-10">
+		<div class="col-lg-12">
 
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">기업 정보 상세보기</h5>
+					<h5 class="card-title"></h5>
 
 					<!-- General Form Elements -->
 
-
 					<form role="form" action="modifyPage" method="post">
 
-						<input type='hidden' name='buyerId' value="${buyerVO.buyerId}">
-						<input type='hidden' name='page' value="${cri.page}">
-						<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+						<input type='hidden' name='pno' value="${buyerVO.buyerId}" id='buyerId'>
+						<input type='hidden' name='page' value="${cri.page}"> <input
+							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
 
 					</form>
 
+			<div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">${buyerVO.buyerName}</h4>
+                <hr>
+                <h4 class="alert-heading">${buyerVO.email}</h4>
+                <hr>
+                <p>${buyerVO.country}</p>
+                <p>${buyerVO.category}</p>
+                <p>${buyerVO.business}</p>
+                <p>${buyerVO.items}</p>
+                <p>${buyerVO.orderAmount}</p>
+              </div>
+              
+              
+           
+			
+</div>
 
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">바이어명</label>
-						<div class="col-sm-10">
-							<input type="text" name='buyerName' class="form-control"
-								value="${buyerVO.buyerName}" readonly="readonly">
-
+						<div class="row mb-3">
+							<div class="text-center"> 
+									<button type="submit" class="btn btn-primary">수정</button>
 						</div>
-					</div>
+					</div>	
+				
 
-					<div class="row mb-3">
-						<label for="inputEmail" class="col-sm-2 col-form-label">바이어
-							이메일</label>
-						<div class="col-sm-10">
-							<input type="text" name='email' class="form-control"
-								value="${buyerVO.email}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">국가</label>
-						<div class="col-sm-10">
-							<input type="text" name='country' class="form-control"
-								value="${buyerVO.country}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">업종</label>
-						<div class="col-sm-10">
-							<input type="text" name='category' class="form-control"
-								value="${buyerVO.category}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">업태</label>
-						<div class="col-sm-10">
-							<input type="text" name='business' class="form-control"
-								value="${buyerVO.business}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">주력상품</label>
-						<div class="col-sm-10">
-							<input type="text" name='items' class="form-control"
-								value="${buyerVO.items}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">잠재주문량</label>
-						<div class="col-sm-10">
-							<input type="text" name='orderAmount' class="form-control"
-								value="${buyerVO.orderAmount}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">등록일자</label>
-						<div class="col-sm-10">
-							<input type="text" name='regdate' class="form-control"
-								value="${buyerVO.regdate}" readonly="readonly">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label"></label>
-						<div class="col-sm-10">
-								<button type="submit" class="btn btn-warning">수정</button>
-								<button type="submit" class="btn btn-danger">삭제</button>
-							<button type="submit" class="btn btn-primary">목록</button>
-
-
-
-
-
-
-
-							<!-- End General Form Elements -->
-
-							<script>
-								var result = '${msg}';
-
-								if (result != '') {
-									alert(result);
-								}
-							</script>
-
-							<script>
-								$(document)
-										.ready(
-												function() {
-
-													var formObj = $("form[role='form']");
-
-													console.log(formObj);
-
-													$(".btn-warning")
-															.on(
-																	"click",
-																	function() {
-																		formObj
-																				.attr(
-																						"action",
-																						"/buyer/modifyPage");
-																		formObj
-																				.attr(
-																						"method",
-																						"get");
-																		formObj
-																				.submit();
-																	});
-
-													$(".btn-danger")
-															.on(
-																	"click",
-																	function() {
-																		formObj
-																				.attr(
-																						"action",
-																						"/buyer/removePage");
-																		formObj
-																				.submit();
-																	});
-
-													$(".btn-primary")
-															.on(
-																	"click",
-																	function() {
-																		formObj
-																				.attr(
-																						"method",
-																						"get");
-																		formObj
-																				.attr(
-																						"action",
-																						"/buyer/adminList");
-																		formObj
-																				.submit();
-																	});
-
-												});
-							</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						</div>
-					</div>
-
-				</div>
-
+				<!-- end card-body-->
 
 			</div>
+			<!-- end card-->
+		</div>
+		<!-- end col -->
 </section>
-
-
-
 
 
 </main>
 
+<!-- content -->
+
+<script>
+	$(document).ready(function() {
+
+		var formObj = $("form[role='form']");
+
+		console.log(formObj);
+
+		/* 수정버튼 */
+		$(".btn-primary").on("click", function() {
+			formObj.attr("action", "/buyer/modifyPage");
+			formObj.attr("method", "get");
+			formObj.submit();
+		});
+		//목록버튼
+		$(".btn-secondary").on("click", function() {
+			formObj.attr("method", "get");
+			formObj.attr("action", "/product/adminList");
+			formObj.submit();
+		});
+		/* 삭제버튼 */
+		$(".btn-danger").on("click", function() {
+			formObj.attr("action", "/product/remove");
+			formObj.submit();
+		});
+
+		getComments();
+
+	});
+
+	function checkImageType(fileName) {
+
+		var pattern = /jpg|gif|png|jpeg/i;
+
+		return img_name.match(pattern);
+
+	}
+</script>
+
+<script>
+	var pno = $("#pno").val(); // pno 변수에 서버에서 전달받은 값 할당 
+	var id = $("#newUserNo").val(); // bId 변수에 서버에서 전달받은 값 할당 
+	var name = $("#newUserName").val(); // bId 변수에 서버에서 전달받은 값 할당 
+
+	$(".comentAddBtn").on("click", function() {
+
+		var CommentsText = $("#newReplyText").val();
+
+		// 댓글 입력처리 수행
+		$.ajax({
+			type : "post",
+			url : "/comments/",
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "POST"
+			},
+			dataType : "text",
+			data : JSON.stringify({
+				pno : pno,
+				id : id,
+				name : name,
+				comments : CommentsText
+			}),
+			success : function(result) {
+				if (result === "SUCCESS") {
+					alert("댓글이 등록되었습니다.");
+					$("#newReplyText").val(""); //댓글 입력창 공백처리
+					getComments(); //댓글 목록 호출
+				}
+			}
+		});
+
+	});
+
+	function deleteComments(commentNo) {
+
+		$.ajax({
+			type : 'delete',
+			url : '/comments/' + commentNo,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "DELETE"
+			},
+			dataType : 'text',
+			success : function(result) {
+				console.log("result: " + result);
+				if (result == 'SUCCESS') {
+					alert("삭제 되었습니다.");
+					getComments();
+				}
+			}
+		});
+
+	}
+
+	function getComments() {
+		$.getJSON("/comments/all/" + pno, function(data) {
+			var str = "";
+
+			$(data).each(
+					function() {
+						var strbutton = "";
+						str += "<li class='list-group-item' data-commentNo='" + this.commentNo + "'>"
+						
+								+ "<i class='bi bi-star me-1 text-success'>" + this.name + "</i>"
+								+ this.comments + "   "
+
+						if (id == this.id)//댓글 정보와 로그인 정보 같을 경우 댓글 삭제 가능
+						{
+							strbutton += "<i class'bi bi-trash'>"
+									+ "  <a href='#' onclick='deleteComments("
+									+ this.commentNo + ")'>삭제</a>" + "</i>";
+						}
+
+						str += strbutton;
+						str += "</li>";
+					});
+
+			$("#comments").html(str);
+
+		});
+
+	}
+</script>
+
+<!-- /.content -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-<%@include file="../include/buyer_footer.jsp"%>
+<%@include file="../include/startup_footer.jsp"%>
