@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.b2b.domain.ProductIMGVO;
 import com.b2b.domain.ProductVO;
 import com.b2b.domain.SearchCriteria;
-import com.b2b.persistence.CommentsDAO;
 import com.b2b.persistence.ProductDAO;
 
 @Service
@@ -17,11 +16,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Inject
 	private ProductDAO dao;
-	
-	@Inject
-	private CommentsDAO commentDao;
-	
-	
 
 	@Override
 	public void register(ProductVO vo) throws Exception {
@@ -88,11 +82,8 @@ public class ProductServiceImpl implements ProductService {
 	public void remove(int pno) throws Exception {
 		// 1.첨부파일 삭제
 		dao.deleteFile(pno);
-		
-		// 2. 댓글 삭제
-		commentDao.deleteAll(pno);
 
-		// 3. 상품 삭제
+		// 2. 상품 삭제
 		dao.adDelete(pno);
 	}
 

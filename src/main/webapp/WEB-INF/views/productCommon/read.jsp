@@ -10,7 +10,7 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>상품 상세 보기</h1>
+	<h1>상품상세보기</h1>
 </div>
 <section class="section">
 	<div class="row">
