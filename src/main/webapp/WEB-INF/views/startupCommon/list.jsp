@@ -60,9 +60,7 @@
 
 		<div class="row">
 			<c:forEach items="${list}" var="startupVO" varStatus="var">
-				<div
-					class="col-lg-3 col-md-6 d-flex align-items-stretch aos-init aos-animate"
-					data-aos="fade-up" data-aos-delay="100">
+				<div class="col-lg-3 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 					<div class="member">
 						<div class="member-img">
 							<img
