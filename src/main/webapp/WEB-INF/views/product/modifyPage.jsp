@@ -14,7 +14,7 @@
 </div>
 <section class="section">
 	<div class="row">
-		<div class="col-lg-10">
+		<div class="col-lg-12">
 
 			<div class="card">
 				<div class="card-body">
@@ -22,15 +22,15 @@
 
 					<!-- General Form Elements -->
 
-					<form role="form" action="modifyPage" method="post">
+					<form role="form" action="modifyPage" method="post" name="frm">
 
-						<input type='hidden' name='productNo' value="${productVO.pno}">
+						<input type='hidden' name='pno' value="${productVO.pno}">
 						<input type='hidden' name='page' value="${cri.page}"> <input
 							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
 
-					</form>
+					
 
 					<div class="row mb-3">
 						<label for="pname">상품명 <span class="must-mark">*</span></label> <input
@@ -58,35 +58,31 @@
 							rows="5">${productVO.content}</textarea>
 					</div>
 
-					<div class="row mb-3">
-						<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
-					</div>
-
 					<div id='mydropzone' class="dropzone">
-
-						<input type="file" id="fileUpload" name="fileUpload"
-							style="visibility: hidden;" />
+						<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
+						<input type="file" id="fileUpload" name="fileUpload" style="visibility: hidden;" />
 
 						<div class="fileDrop">
-							<input type="hidden" id="uploadCount">
-							<div class="dz-message needsclick">
-								<i class="h1 text-muted dripicons-cloud-upload"></i>
-								<h3>Drop files here or click to upload.</h3>
-								<span class="text-muted font-13">첨부파일을 업로드하려면 여기에 첨부파일
-									파일을 끌어 넣거나 클릭해주세요</span>
+								<input type="hidden" id="uploadCount">
+								<div class="alert alert-primary alert-dismissible fade show">
+									<div class="d-flex align-items-center">
+									<i class="h1 bi bi-cloud-download"></i>&nbsp;
+									<h3>Drop files here or click to upload.</h3>
+									</div>
+									<span class="text-muted font-13">첨부파일을 업로드하려면 여기에 첨부파일
+										파일을 끌어 넣거나 클릭해주세요</span>
+								</div>
+
 							</div>
-						</div>
 					</div>
-
 					<div>
-
 						<ul class="dropzone-previews clearfix uploadedList">
 
 							<c:forEach items="${fileList}" var="fVo" varStatus="status">
 								<c:set var="imgName" value="${fVo.imgName}" />
 								<c:set var="pimageNo" value="${fn:toLowerCase(imgName)}" />
 
-								<li class="dropzone-previews mt-3">
+								<li class="list-group-item dropzone-previews mt-3">
 									<div
 										class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 										<div class="p-2">
@@ -95,10 +91,13 @@
 													<img alt="${fVo.imgName}"
 														src="/displayFile?fileName=${fVo.fileLocation}">
 												</div>
+												<div class="col pl-0">
+   													<a href="/displayFile?fileName=${fVo.fileLocation}" data-dz-name="">${fVo.imgName}</a>
+ 												</div>
 												<div class="col-auto">
 													<a href="${fVo.fileLocation}"
-														class="btn btn-default btn-xs pull-right delbtn"><i
-														class="far fa-trash-alt"></i></a>
+														class="btn btn-default btn-xs pull-right delbtn">
+														<i class="bi bi-trash"></i></a>
 												</div>
 											</div>
 										</div>
@@ -107,22 +106,14 @@
 							</c:forEach>
 						</ul>
 					</div>
+					
+					
+				<div class="text-center">
+                  <button type="submit" class="btn btn-primary">수정</button>
+                  <a  class="btn btn-secondary" href="/product/adminList?searchType=${cri.searchType}&keyword=${cri.keyword}&page=${cri.page}&perPageNum=${cri.perPageNum}">목록</a>
+                </div>
 
-					<div class="row mt-4">
-						<div class="col-sm-6">
-							<a
-								href="/product/list?searchType=${cri.searchType}&keyword=${cri.keyword}&page=${cri.page}&perPageNum=${cri.perPageNum}"
-								class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
-								<i class="mdi mdi-arrow-left"></i> 목록으로 돌아가기
-							</a>
-						</div>
-
-						<div class="row mb-3">
-							<label class="col-sm-2 col-form-label">등록하기</label>
-							<div class="col-sm-10">
-								<button type="submit" class="btn btn-primary">수정</button>
-							</div>
-						</div>
+		</form>
 
 						<!-- End General Form Elements -->
 
@@ -132,7 +123,7 @@
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 						<script id="template" type="text/x-handlebars-template">
-							<li class="dropzone-previews mt-3">
+							<li class="list-group-item dropzone-previews mt-3">
 								<div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 									<div class="p-2">
 										<div class="row align-items-center">
@@ -143,7 +134,7 @@
    											<a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  										</div>
  										<div class="col-auto">
-   											<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="far fa-trash-alt"></i></a>
+   											<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="bi bi-trash"></i></a>
  										</div>
 									</div>
 								</div>
@@ -161,9 +152,12 @@
 						<script>
 							$(document).ready(function() {
 								var formObj = $("form[role='form']");
+								
 								formObj.submit(function(event) {
 								event.preventDefault();
+								
 								var that = $(this);
+								
 								var str = "";
 								
 								$(".uploadedList .delbtn").each(
@@ -172,9 +166,11 @@
 										+ $(this).attr("href") + "'> ";
 									});
 								that.append(str);
-								that.get(0).submit();
-									});
+								that.get(0).submit(); 
+								
 								});
+								
+							});
 
 							$('#mydropzone').click(function(event) {
 								document.frm.fileUpload.click();
@@ -206,7 +202,7 @@
 										var fileInfo = getFileInfo(data);
 										var html = template(fileInfo);
 										var str = "";
-									$(".uploadedList").appendhtml);
+									$(".uploadedList").append(html);
 										uploaded++;
 									$("#uploadCount").attr("value",uploaded);
 									$(".uploadedList").append(str);
@@ -215,38 +211,46 @@
 									});
 
 							//클릭으로 파일 업로드할 때 호출되는 함수
-							$("#fileUpload").on("change",function(event) {
+							$("#fileUpload").on("change", function(event) {
 								event.preventDefault();
+
 								var uploaded = $("#uploadCount").val();
+
 								if (uploaded >= 3) {
 									alert('첨부파일은 3개 까지 업로드할 수 있습니다.');
 									return;
-									}
-							// 파일업로드 인풋에서 파일을 받음
-							var file = document.getElementById("fileUpload").files[0];
-							// 새로운 폼데이터를 생성
-							var formData = new FormData();
-							// 폼데이터에 파일을 붙임
-							formData.append("file", file);
-							// AJAX로 uploadAjax 메소드를 호출해서 파일을 업로드함
-							$.ajax({
+								}
+
+								// 파일업로드 인풋에서 파일을 받음
+								var file = document.getElementById("fileUpload").files[0];
+
+								// 새로운 폼데이터를 생성
+								var formData = new FormData();
+
+								// 폼데이터에 파일을 붙임
+								formData.append("file", file);
+
+								// AJAX로 uploadAjax 메소드를 호출해서 파일을 업로드함
+								$.ajax({
 									url : '/uploadAjax',
 									data : formData,
 									dataType : 'text',
 									processData : false,
 									contentType : false,
 									type : 'POST',
-									success : function(ata) {
-							var fileInfo = getFileInfo(data);
-							var html = template(fileInfo);
-							var str = "";
-							
-							$(".uploadedList").append(html);
-								uploaded++;
-							
-							$("#uploadCount").attr("value",uploaded);
-							
-							$(".uploadedList").append(str);
+									success : function(data) {
+
+										var fileInfo = getFileInfo(data);
+										var html = template(fileInfo);
+
+										var str = "";
+
+										$(".uploadedList").append(html);
+
+										uploaded++;
+										$("#uploadCount").attr("value", uploaded);
+
+										$(".uploadedList").append(str);
 									}
 								});
 							});
