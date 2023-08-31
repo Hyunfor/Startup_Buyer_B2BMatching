@@ -5,26 +5,18 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>상품관리</h1>
-
-</div>
-<!-- End Page Title -->
-
-<section class="section">
-	<div class="row">
-		<div class="col-md-12">
-
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">상품 관리</h5>
-
-					<div class="datatable-search">
-
-						<select name="searchType">
-							<option value="none"
+<main id="main"> <footer id='footer'>
+	<div class="footer-newsletter">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<h4>상품 검색</h4>
+					<p>찾고 있는 상품을 검색해보세요</p>
+					<form>
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+								<select name="searchType" class="form-control">
+									<option value="none"
 								<c:out value="${cri.searchType == null?'selected':''}"/>>
 								---</option>
 							<option value="n"
@@ -46,124 +38,97 @@
 								<c:out value="${cri.searchType eq 'ncs'?'selected':''}"/>>
 								제품명 OR 카테고리 OR 스타트업</option>
 
-						</select> <input class="datatable-input" placeholder="Search..."
-							type="text" name='keyword' id="keywordInput"
-							value='${cri.keyword }' title="Search within table">
-						<!-- <button id='searchBtn' class="btn btn-dark">검색</button>
-       
-        <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
-         -->
-						<button id='searchBtn' class="btn btn-dark">검색</button>
-					</div>
+								</select>
+							</div>
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+								<input type="email" id="keywordInput" value='${cri.keyword }'><input
+									type="submit" id='searchBtn' value="검색">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</footer>
 
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title">상품 목록</h5>
-			<p>
-				Add
-				<code>.table-bordered</code>
-				for borders on all sides of the table and cells.
-			</p>
+<section id="team" class="team section-bg">
+	<div class="container aos-init aos-animate" data-aos="fade-up">
 
-			<p>
-				<a
-					href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color"
-					target="_blank">Border color utilities</a> can be added to change
-				colors:
-			</p>
+		<div class="section-title">
+			<h2>상품 정보</h2>
+			<h3>
+				상품 둘러보기 <span>BizMatch Items</span>
+			</h3>
+			<p>현재 BizMatch에 등록된 상품들 입니다.</p>
+		</div>
 
-			<!-- Primary Color Bordered Table -->
-			<table class="table table-bordered border-primary">
-				<thead>
-					<tr>
-
-						<th style="width: 10px">NO</th>
-						<th>상품명</th>
-						<th>카테고리</th>
-						<th>내용</th>
-						<th>스타트업</th>
-						<th>등록일</th>
-
-					</tr>
-				</thead>
-				<tbody>
-
-				</tbody>
-
-				<c:forEach items="${list}" var="productVO" varStatus="var">
-
-					<tr>
-						<c:if test="${pageMaker.cri.page == 1 }">
-							<td>${var.count }</td>
+		<div class="row">
+			<c:forEach items="${list}" var="productVO" varStatus="var">
+				<div class="col-lg-3 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+					<div class="member">
+						<div class="member-img">
+           				<c:if test="${!empty productVO.fileList}">     
+                    			<img class="img-fluid" src="/displayFile?fileName=${productVO.fileList[0].fileLocation}" alt="${productVO.fileList[0].imgName}">
+                		</c:if>
+                		
+						<c:if test="${empty productVO.fileList}">
+							<img src="https://bootstrapmade.com/demo/templates/BizLand/assets/img/team/team-3.jpg" class="img-fluid">
 						</c:if>
-						<c:if test="${pageMaker.cri.page != 1 }">
-							<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-						</c:if>
-						<td><a
-							href='/productCommon/read${pageMaker.makeSearch(pageMaker.cri.page) }&pno=${productVO.pno}'>
-								${productVO.pname} </a></td>
-						<td>${productVO.category}</td>
-						<td>${productVO.content}</td>
-						<td>${productVO.startupId}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${productVO.regdate}" /></td>
-					</tr>
+					<div class="social">
+								<a href='/productCommon/read${pageMaker.makeSearch(pageMaker.cri.page) }&pno=${productVO.pno}'><i
+									class="bi bi-zoom-in"></i></a>
+							</div>
+						</div>
+						<div class="member-info">
+							<h4 class="title">${productVO.pname}</h4>
+							<span>카테고리 &nbsp;	${productVO.category} </span> 
+							<span>내용 &nbsp;	${productVO.content} </span> 
+							<span>스타트업 &nbsp; ${productVO.startupId} </span>
+							<span>등록일 &nbsp; ${productVO.regdate} </span>
+						</div>
+					</div>
+					</div>
+			</c:forEach>
+		</div>
+		</div>
 
+
+		<div class="row justify-content-center">
+			<ul class="pagination justify-content-center">
+
+
+				<c:if test="${pageMaker.prev}">
+					<li><a class="page-link"
+						href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+					</li>
+				</c:if>
+
+				<c:forEach begin="${pageMaker.startPage }"
+					end="${pageMaker.endPage }" var="idx">
+
+					<li
+						<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+						<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+
+					</li>
 				</c:forEach>
 
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+					<li><a
+						href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+				</c:if>
 
-			</table>
-			<!-- End Primary Color Bordered Table -->
-
+			</ul>
 		</div>
 	</div>
 
-	<div class="card">
-		<div class="card-body">
-
-			<div class="text-center">
-				<ul class="pagination">
-
-					<c:if test="${pageMaker.prev}">
-						<li><a class="page-link"
-							href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
-						</li>
-					</c:if>
-
-					<c:forEach begin="${pageMaker.startPage }"
-						end="${pageMaker.endPage }" var="idx">
-
-						<li
-							<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-							<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-
-						</li>
-					</c:forEach>
-
-					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						<li><a
-							href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-					</c:if>
-
-				</ul>
-			</div>
-
-		</div>
-	</div>
-</main>
 </section>
 
-<script>
-	var result = '${msg}';
 
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
-</script>
+
+
+
 
 <script>
 	$(document).ready(
@@ -181,13 +146,8 @@
 
 						});
 
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-
 			});
-</script>
+</script> </main>
+
 
 <%@include file="../include/footer.jsp"%>

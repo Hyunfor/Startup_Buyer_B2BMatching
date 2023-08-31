@@ -1,5 +1,6 @@
 package com.b2b.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -98,7 +99,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception {
-		return dao.listSearch(cri);
+		
+		List<ProductVO> list = dao.listSearch(cri);
+		
+		for(int i=0; i<list.size(); i++) {
+			list.get(i).setFileList((ArrayList<ProductIMGVO>) dao.fileList(list.get(i).getPno()));
+		}
+		
+		return list;
 	}
 
 	@Override
