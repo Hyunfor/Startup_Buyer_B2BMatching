@@ -46,33 +46,29 @@ public class ProductController {
 		service.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/product/list";
+		return "redirect:/product/adminList";
 
 	}
 
-	// 상품 목록
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	// 스타트업 관리자 페이지에서 볼때
+	@RequestMapping(value = "/adminList", method = RequestMethod.GET)
+	public void adminListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-		logger.info("list get ...");
+		logger.info("adminList get ...");
 
-		// 선택된 페이지의 게시글 정보를 10개 가져오기
 		model.addAttribute("list", service.listSearch(cri));
 
-		// 페이지 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 
-		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
 
 	}
 
-	// 상세보기
+	// 스타트업 관리자 입장 - 상세보기
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("pno") int pno, @ModelAttribute("cri") SearchCriteria cri, Model model)
-			throws Exception {
+	public void read(@RequestParam("pno") int pno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
 		// 1) 상품 글
 		model.addAttribute(service.read(pno));
@@ -100,13 +96,12 @@ public class ProductController {
 			// 정보 일치 - > 게시글 수정페이지로 이동
 			// 상품 정보
 			model.addAttribute(vo);
-			
+
 			// 상품 이미지 첨부파일
 			model.addAttribute("fileList", service.fileList(vo.getPno()));
-			
-			
+
 			return "/product/modifyPage";
-			
+
 		} else {
 
 			// 정보 불일치 - > 상세페이지로 강제 이동
@@ -138,7 +133,7 @@ public class ProductController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/product/list";
+		return "redirect:/product/adminList";
 
 	}
 
@@ -164,7 +159,7 @@ public class ProductController {
 
 			// 목록화면으로 이동
 			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/product/list";
+			return "redirect:/product/adminList";
 		} else {
 
 			// 정보 불일치 - > 상세페이지로 강제 이동
@@ -176,7 +171,7 @@ public class ProductController {
 
 			rttr.addFlashAttribute("msg", "잘못된 접근 입니다.");
 
-			return "redirect:/product/list";
+			return "redirect:/product/adminList";
 		}
 
 	}

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.b2b.domain.BuyerVO;
 import com.b2b.domain.ProductIMGVO;
 import com.b2b.domain.ProductVO;
 import com.b2b.domain.SearchCriteria;
@@ -29,6 +30,11 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public ProductVO read(int pno) throws Exception {
 		return session.selectOne(namespace + ".read", pno);
+	}
+	
+	@Override
+	public ProductVO readPage(int startUpId) throws Exception {
+		return session.selectOne(namespace + ".readPage", startUpId);
 	}
 
 	@Override
@@ -64,6 +70,12 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<ProductIMGVO> fileList(int pno) throws Exception {
 		return session.selectList(namespace + ".fileList", pno);
+	}
+
+	// 스타트업 관리자 페이지에서 보는 리스트
+	@Override
+	public List<ProductVO> adminList() throws Exception {
+		return session.selectList(namespace + ".adminList");
 	}
 
 }
