@@ -54,13 +54,6 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -285,7 +278,7 @@
       </li><!-- End Dashboard Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/product/list">
+        <a class="nav-link collapsed" href="/product/adminList">
           <!-- <i class="bi bi-person"></i> -->
           <i class="bi bi-menu-button-wide"></i>
           <span>상품 관리</span>
