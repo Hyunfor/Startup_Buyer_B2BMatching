@@ -104,7 +104,7 @@ public class StartupController {
 
 		// 1) 로그인 정보 가져오기
 		StartUpUserVO startupUser = (StartUpUserVO) session.getAttribute("login");
-				model.addAttribute(service.read(startupUser.getStartupId()));
+				model.addAttribute(service.read(startupUser.getsId()));
 
 		
 	
@@ -123,7 +123,7 @@ public class StartupController {
 
 		// 2)게시글 작성자 정보와 비교
 		// 2-1)게시글 정보 가져오기
-		StartupVO vo = service.read(startupUser.getStartupId());
+		StartupVO vo = service.read(startUpUser.getsId());
 
 		
 			// 정보일치 -> 게시글 수정페이지 이동

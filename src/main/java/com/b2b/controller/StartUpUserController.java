@@ -15,8 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.b2b.domain.SearchCriteria;
 import com.b2b.domain.StartUpUserVO;
+import com.b2b.domain.StartupVO;
 import com.b2b.dto.StartUpLoginDTO;
 import com.b2b.service.StartUpUserService;
+import com.b2b.service.StartupService;
 
 @Controller
 @RequestMapping("/startupUser")
@@ -26,6 +28,9 @@ public class StartUpUserController {
 
 	@Inject
 	private StartUpUserService service;
+	
+	@Inject
+	private StartupService startservice;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") StartUpLoginDTO dto) throws Exception {
@@ -67,15 +72,26 @@ public class StartUpUserController {
 	public void user_registerGET() throws Exception {
 
 		logger.info("register get...");
-
+		
+		
 	}
 
 	@RequestMapping(value = "/memberRegister", method = RequestMethod.POST)
-	public String user_registerPOST(StartUpUserVO vo, RedirectAttributes rttr, Model model) throws Exception {
+	public String user_registerPOST(StartUpUserVO vo, StartupVO svo, RedirectAttributes rttr, Model model) throws Exception {
 
 		logger.info("register post...");
+		
+		
 
 		service.register(vo);
+		
+		svo.setStartupId(vo.getsId());
+		svo.setNames(vo.getsName());
+		
+	
+		startservice.register(svo);
+		
+		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
 		return "redirect:/";

@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="sId" class="form-label">Startup ID</label>
+                      <label for="sId" class="form-label">Startup ID(Email)</label>
                       <input type="text" name="sId" class="form-control" id="sId" required>
                       <div class="invalid-feedback">Please enter a valid ID.</div>
                     </div>
@@ -83,6 +83,63 @@
                       <input type="password" name="sPw" class="form-control" id="sPw" required>
                       <div class="invalid-feedback">Please enter your password.</div>
                     </div>
+                    
+                    
+                      <div class="col-12">
+                      <label for="country" class="form-label">Startup Name</label>
+                      <input type="text" name="startupName" class="form-control" id="startupName" required>
+                      <div class="invalid-feedback">Please enter your Startup Name.</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="country" class="form-label">establishedYear</label>
+                      <input type="text" name="establishedYear" class="form-control" id="establishedYear" required>
+                      <div class="invalid-feedback">Please enter your establishedYear.</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="category" class="form-label">sizes</label>
+                      <input type="text" name="sizes" class="form-control" id="sizes" required>
+                      <div class="invalid-feedback">Please enter your sizes.</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="business" class="form-label">categorys</label>
+                      <input type="text" name="categorys" class="form-control" id="categorys" required>
+                      <div class="invalid-feedback">Please enter your categorys.</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="items" class="form-label">business</label>
+                      <input type="text" name="business" class="form-control" id="business" required>
+                      <div class="invalid-feedback">Please enter your business.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="items" class="form-label">noOfEmployees</label>
+                      <input type="text" name="noOfEmployees" class="form-control" id="noOfEmployees" required>
+                      <div class="invalid-feedback">Please enter your noOfEmployes.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="items" class="form-label">city</label>
+                      <input type="text" name="city" class="form-control" id="city" required>
+                      <div class="invalid-feedback">Please enter your city.</div>
+                    </div>
+                    
+                     <div class="col-12">
+                      <label for="items" class="form-label">items</label>
+                      <input type="text" name="items" class="form-control" id="items" required>
+                      <div class="invalid-feedback">Please enter your items.</div>
+                    </div>
+                 
+                    
+                    
+                    
+
+                    
+                    
+                    
 
                     <div class="col-12">
                       <div class="form-check">

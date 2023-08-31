@@ -28,8 +28,8 @@ public class StartupDAOImpl implements StartupDAO {
 	}
 
 	@Override
-	public StartupVO read(String startupdId) throws Exception {
-		return session.selectOne(namespace + ".read",startupdId);
+	public StartupVO read(String startupId) throws Exception {
+		return session.selectOne(namespace + ".read",startupId);
 		
 	}
 
@@ -39,8 +39,8 @@ public class StartupDAOImpl implements StartupDAO {
 	}
 
 	@Override
-	public void delete(String startupdId) throws Exception {
-		session.delete(namespace + ".delete", startupdId);
+	public void delete(String startupId) throws Exception {
+		session.delete(namespace + ".delete", startupId);
 		
 	}
 
