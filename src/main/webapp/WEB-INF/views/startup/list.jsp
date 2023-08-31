@@ -138,7 +138,9 @@
          <div class="card" >
             <div class="card-body" >
        
-             <div class="text-center">
+             <div class="row justify-content-center">
+             <ul class="pagination justify-content-center">
+             
                 <ul class="pagination">
                 
                 
@@ -163,6 +165,7 @@
 							</c:if>
         
            
+                </ul>
                 </ul>
              </div>
 

@@ -136,32 +136,9 @@ SELECT * FROM(
 
 	</select>
 	
-	
-<!-- 다중 파일 등록 -->
-
-<insert id="insertFile">
-
-INSERT INTO STARTUP_FILE (STARTUP_FILE_NO, STARTUP_FILE_NAME, STARTUP_ID)
-VALUES (SEQ_STARTUP_FILE.NEXTVAL,#{startupFileName}, #{startupId})
-
-</insert>
-
-<!-- 다중 파일 삭제 -->
-
-<delete id="deleteFile">
-
-DELETE FROM STARTUP_FILE WHERE STARTUP_ID = #{startupId}
-
-</delete>
-
 
 	
 	
-	
-	
-
-	
-
 
 
 

@@ -66,12 +66,6 @@ public class StartupServiceImpl implements StartupService  {
 		return dao.listSearchCountCriteria(cri);
 	}
 
-	@Override
-	public List<StartupFileVO> fileList(String startupId) throws Exception {
-		
-		return dao.fileList(startupId);
-	}
-	
 	
 
 }
