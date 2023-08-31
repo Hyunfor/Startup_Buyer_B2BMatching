@@ -9,7 +9,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/startup/list";
+    self.location = "/startup_home";
   </script>
 </body>
 </html>

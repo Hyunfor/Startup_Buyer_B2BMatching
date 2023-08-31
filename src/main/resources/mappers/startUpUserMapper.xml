@@ -7,7 +7,7 @@
 	<select id="login" resultType="com.b2b.domain.StartUpUserVO">
 		SELECT S_NAME, S_NAME AS NAME, S_ID, S_PW
 		FROM 
-		STARTUP_USER
+		STARTUP_USER, START_UP
 		WHERE STARTUP_USER.S_ID = START_UP.STARTUP_ID
 		AND S_ID = #{sId} AND S_PW = #{sPw}
 		

@@ -29,6 +29,30 @@ public class StartupController {
 
 	@Inject
 	private StartupService service;
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public void homePage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+		logger.info("home get ...");
+
+		model.addAttribute("home", service.listSearchCriteria(cri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listSearchCountCriteria(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+
+	}
+	
+	
+
+	
+	
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET() throws Exception {

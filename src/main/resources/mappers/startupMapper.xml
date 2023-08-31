@@ -26,7 +26,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE START_UP SET STARTUP_ID = #{startupId}, STARTUPNAME = #{startupName}, ESTABLISHED_YEAR = #{establishedYear}, SIZES = #{sizes}
+		UPDATE START_UP SET ESTABLISHED_YEAR = #{establishedYear}, SIZES = #{sizes}
 			  				CATEGORYS = #{categorys}, BUSINESS = #{business}, NO_OF_EMPLOYEES = #{noOfEmployees}, CITY = #{city}
 			  				ITEMS = #{items},NAMES = #{names}
 		

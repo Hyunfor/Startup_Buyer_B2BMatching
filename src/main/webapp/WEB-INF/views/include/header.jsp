@@ -57,7 +57,7 @@
 <c:choose>
 <c:when test="${login.name ne null}">${login.name}
 <c:if test="${login.getClass().name eq 'com.b2b.domain.StartUpUserVO'}">
-<a href="/startup/list"><i class="bi bi-box-arrow-in-left"></i><span> My Page </span></a>
+<a href="/startup/readPage"><i class="bi bi-box-arrow-in-left"></i><span> My Page </span></a>
 <a href="/startupUser/logout"><i class="bi bi-box-arrow-in-left"></i><span> Startup Logout </span></a>
 </c:if>
 
