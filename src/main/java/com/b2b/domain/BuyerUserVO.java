@@ -6,6 +6,7 @@ public class BuyerUserVO {
 	private String bId;
 	private String bPw;
 	private String name;
+	private int buyerId;
 
 	public String getbName() {
 		return bName;
@@ -39,9 +40,18 @@ public class BuyerUserVO {
 		this.name = name;
 	}
 
+	public int getBuyerId() {
+		return buyerId;
+	}
+
+	public void setBuyerId(int buyerId) {
+		this.buyerId = buyerId;
+	}
+
 	@Override
 	public String toString() {
-		return "BuyerUserVO [bName=" + bName + ", bId=" + bId + ", bPw=" + bPw + ", name=" + name + "]";
+		return "BuyerUserVO [bName=" + bName + ", bId=" + bId + ", bPw=" + bPw + ", name=" + name + ", buyerId="
+				+ buyerId + "]";
 	}
 
 }

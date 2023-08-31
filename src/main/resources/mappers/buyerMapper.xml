@@ -23,7 +23,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE BUYER SET BUYER_NAME = #{buyerName}, EMAIL = #{email},
+		UPDATE BUYER SET 
 		COUNTRY = #{country}, CATEGORY = #{category}, BUSINESS = #{business}, ITEMS = #{items}, ORDER_AMOUNT = #{orderAmount}
 		WHERE BUYER_ID = #{buyerId}
 	</update>

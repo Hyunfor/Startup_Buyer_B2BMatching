@@ -78,16 +78,16 @@ public class BuyerController {
 	}
 
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("buyerId") int buyerId, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
+	public void read(HttpSession session, Model model) throws Exception {
 
-		model.addAttribute(service.read(buyerId));
+		// 1) 로그인 정보 가져오기
+		BuyerUserVO buyerUser = (BuyerUserVO) session.getAttribute("login");
+		model.addAttribute(service.read(buyerUser.getBuyerId()));
 
 	}
 
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	public String modifyPageGET(@RequestParam("buyerId") int buyerId, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception {
+	public String modifyPageGET(HttpSession session, Model model, RedirectAttributes rttr) throws Exception {
 
 		// 수정 할 수 있으려면, 로그인한 정보와 글의 작성자 정보가 일치
 
@@ -96,29 +96,12 @@ public class BuyerController {
 
 		// 2) 게시글의 작성자 정보와 비교
 		// 2-1) 게시글 정보를 가져오기
-		BuyerVO vo = service.read(buyerId);
+		BuyerVO vo = service.read(buyerUser.getBuyerId());
 
-		// 2-2) 게시글 정보와 작성자 정보 비교
-		if (buyerUser.getbName().equals(vo.getBuyerName())) {
+		// 정보 일치 -> 수정 페이지로 이동
+		model.addAttribute(vo);
 
-			// 정보 일치 -> 수정 페이지로 이동
-			model.addAttribute(vo);
-
-			return "/buyer/modifyPage";
-
-		} else {
-			// 정보 불일치 -> 상세페이지로 강제 이동
-			rttr.addAttribute("buyerId", buyerId);
-			rttr.addAttribute("page", cri.getPage());
-			rttr.addAttribute("perPageNum", cri.getPerPageNum());
-			rttr.addAttribute("searchType", cri.getSearchType());
-			rttr.addAttribute("keyword", cri.getKeyword());
-
-			rttr.addFlashAttribute("msg", "로그인 정보가 일치하지 않아 수정 불가능 합니다.");
-
-			return "redirect:/buyer/readPage";
-
-		}
+		return "/buyer/modifyPage";
 
 	}
 
@@ -126,6 +109,7 @@ public class BuyerController {
 	public String modifyPagePOST(BuyerVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
 			throws Exception {
 
+		logger.info("modifyPage post ..." + vo);
 		service.modify(vo);
 
 		rttr.addAttribute("page", cri.getPage());
@@ -135,7 +119,7 @@ public class BuyerController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/buyer/adminList";
+		return "redirect:/buyer/readPage";
 
 	}
 

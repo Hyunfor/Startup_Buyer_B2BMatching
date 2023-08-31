@@ -284,7 +284,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/buyer/adminList">
+        <a class="nav-link collapsed" href="/buyer/readPage">
           <i class="bi bi-person"></i>
           <span>기업 관리</span>
         </a>
