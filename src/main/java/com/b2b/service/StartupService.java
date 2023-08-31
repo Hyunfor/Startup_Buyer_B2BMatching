@@ -3,7 +3,6 @@ package com.b2b.service;
 import java.util.List;
 
 import com.b2b.domain.SearchCriteria;
-import com.b2b.domain.StartupFileVO;
 import com.b2b.domain.StartupVO;
 
 public interface StartupService {

@@ -1,5 +1,7 @@
 package com.b2b.persistence;
 
+
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.b2b.domain.SearchCriteria;
-import com.b2b.domain.StartupFileVO;
 import com.b2b.domain.StartupVO;
 
 @Repository

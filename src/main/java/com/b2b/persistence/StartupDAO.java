@@ -1,9 +1,10 @@
 package com.b2b.persistence;
 
+
+
 import java.util.List;
 
 import com.b2b.domain.SearchCriteria;
-import com.b2b.domain.StartupFileVO;
 import com.b2b.domain.StartupVO;
 
 public interface StartupDAO {
