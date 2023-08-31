@@ -22,8 +22,7 @@ public interface StartupService {
 	
 	public int listSearchCountCriteria(SearchCriteria cri) throws Exception;
 	
-	// 7. 관리자 :: 파일 목록
-		public List<StartupFileVO> fileList(String startupId) throws Exception;
+	
 
 
 }

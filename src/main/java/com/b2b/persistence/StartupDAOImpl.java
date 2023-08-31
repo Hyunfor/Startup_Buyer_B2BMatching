@@ -60,23 +60,6 @@ public class StartupDAOImpl implements StartupDAO {
 		return session.selectOne(namespace + ".listSearchCountCriteria", cri);
 	}
 
-	@Override
-	public void insertFile(StartupFileVO fVo) throws Exception {
-		session.insert(namespace + ".insertFile" ,fVo);
-		
-	}
-
-	@Override
-	public void deleteFile(String startupId) throws Exception {
-		session.delete(namespace + ".deleteFile" ,startupId);
-		
-	}
-
-	@Override
-	public List<StartupFileVO> fileList(String startupId) throws Exception {
-		
-		return session.selectList(namespace +".fileList",startupId);
-	}
-
+	
 
 }
