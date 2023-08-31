@@ -286,7 +286,7 @@
       </li><!-- End 상품 관리 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/startup/list">
+        <a class="nav-link collapsed" href="/startup/readPage">
           <i class="bi bi-person"></i>
           <span>기업 관리</span>
         </a>

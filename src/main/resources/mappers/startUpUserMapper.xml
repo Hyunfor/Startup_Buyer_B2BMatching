@@ -5,9 +5,12 @@
 <mapper namespace="com.b2b.mapper.StartUpUserMapper">
 
 	<select id="login" resultType="com.b2b.domain.StartUpUserVO">
-		SELECT S_NAME, S_NAME AS NAME, S_ID, S_PW
-		FROM STARTUP_USER
-		WHERE S_ID = #{sId} AND S_PW = #{sPw}
+		SELECT S_NAME, S_NAME AS NAME, S_ID, S_PW, STARTUP_ID
+		FROM 
+		STARTUP_USER,START_UP
+		WHERE STARTUP_USER.S_ID = START_UP.EMAIL
+		AND S_ID = #{sId} AND S_PW = #{sPw}
+		
 	</select>
 
 	<insert id="create">

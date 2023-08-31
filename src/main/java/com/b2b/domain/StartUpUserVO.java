@@ -6,6 +6,7 @@ public class StartUpUserVO {
 	private String sId;
 	private String sPw;
 	private String name;
+	private String startupId;
 	
 	public String getsName() {
 		return sName;
@@ -31,10 +32,18 @@ public class StartUpUserVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getStartupId() {
+		return startupId;
+	}
+	public void setStartupId(String startupId) {
+		this.startupId = startupId;
+	}
 	@Override
 	public String toString() {
-		return "StartUpUserVO [sName=" + sName + ", sId=" + sId + ", sPw=" + sPw + ", name=" + name + "]";
+		return "StartUpUserVO [sName=" + sName + ", sId=" + sId + ", sPw=" + sPw + ", name=" + name + ", startupId="
+				+ startupId + "]";
 	}
+	
 
 	
 	
