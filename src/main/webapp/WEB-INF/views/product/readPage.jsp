@@ -22,11 +22,11 @@
 
 					<!-- General Form Elements -->
 
-					<form role="form" action="modifyPage" method="post">
+					<form role="form">
 
 						<input type='hidden' name='pno' value="${productVO.pno}" id='pno'>
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
+						<input type='hidden' name='page' value="${cri.page}"> 
+						<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
 
@@ -55,9 +55,7 @@
 					<br> <br>
 					<div style="text-align: right;">
 				</div>
-				
-			
-</div>
+			</div>
 
 						<div class="row mb-3">
 							<div class="text-center"> 
@@ -109,6 +107,8 @@
 				</div>
 
 				<!-- end card-body-->
+</div>
+</div>
 
 			</div>
 			<!-- end card-->

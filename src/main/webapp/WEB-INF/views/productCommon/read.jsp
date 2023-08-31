@@ -2,170 +2,66 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jsp:include page="../include/header.jsp" />
+      
+<form role="form" action="modifyPage" method="post">
 
+	<input type='hidden' name='startupId' value="${productVO.startupId}"> 
+	<input type='hidden' name='pno' value="${productVO.pno}" id='pno'> 
+	<input type='hidden' name='page' value="${cri.page}">
+	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+	<input type='hidden' name='searchType' value="${cri.searchType}">
+	<input type='hidden' name='keyword' value="${cri.keyword}">
 
-<main id="main" class="main">
+</form>  
+             <section id="pricing" class="pricing">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
 
-<div class="pagetitle">
-	<h1>상품 상세 보기</h1>
-</div>
-<section class="section">
-	<div class="row">
-		<div class="col-lg-10">
+        <div class="section-title">
+          <h2>product</h2>
+          <h3>상품 정보 <span>상세</span></h3>
+        </div>
 
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">상품 정보 상세보기</h5>
+        <div class="row">
+          <div class="col-lg-20 col-md-12 mt-4 mt-md-0 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            <div class="box featured">
+              <h3>상품 정보</h3>
+              <h4><td>${productVO.startupId}</td></h4>
+              <ul>
+              	<li>상품번호 &nbsp;<td>${productVO.pno}</td></li>
+              	<li>등록일 &nbsp;<td>${productVO.regdate}</td></li> 
+                <li>상품명 &nbsp;<td>${productVO.pname}</td></li>
+                <li>스타트업  &nbsp; <td>${productVO.startupId} </td></li>	
+                <li>카테고리  &nbsp;<td>${productVO.category}</td></li>
+                <li>상품  &nbsp;<td>${productVO.content}</td></li>
+              </ul>
+              
+              <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+             <h4 class="alert-heading">제품 이미지</h4>
+               <hr>
+               
+           <c:if test="${!empty ProductIMGVO}">     
+           <c:forEach items="${ProductIMGVO}" var="ProductIMGVO" varStatus="status">
+                    <img src="/displayFile?fileName=${ProductIMGVO.fileLocation}" class="img-fluid rounded align-items-center" alt="${ProductIMGVO.imgName}">
+                </c:forEach>
+                </c:if>
 
-					<!-- General Form Elements -->
-
-					<form role="form" action="modifyPage" method="post">
-
-						<input type='hidden' name='pno' value="${productVO.pno}" id='pno'>
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
-						<input type='hidden' name='searchType' value="${cri.searchType}">
-						<input type='hidden' name='keyword' value="${cri.keyword}">
-
-					</form>
-
-					<div class="row mb-3">
-						<label for="inputAddress2" class="col-form-label">상품명<span
-							class="must-mark">*</span></label>
-						<div class="col-sm-10">
-							<input type="text" name="pname" id="pname"
-								value="${productVO.pname}" class="form-control"
-								disabled="disabled">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputEmail4" class="col-form-label">스타트업</label>
-						<div class="col-sm-10">
-							<input type="text" name="startupId" id="startupId"
-								value="${productVO.startupId}" class="form-control"
-								disabled="disabled">
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="category" class="col-form-label">카테고리</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" name="category"
-								id="category" value="${productVO.category}" disabled="disabled" />
-						</div>
-					</div>
-
-					<div class="row mb-3">
-						<label for="inputAddress2" class="col-form-label">상세내용</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" name="content" id="content"
-								rows="15" disabled="disabled">${productVO.content}</textarea>
-						</div>
-					</div>
-
-					<c:if test="${!empty ProductIMGVO}">
-						<div class="form-group">
-							<label for="exampleInputEmail1" class="col-form-label">첨부파일</label>
-						</div>
-
-						<ul class="dropzone-previews">
-
-							<c:forEach items="${ProductIMGVO}" var="ProductIMGVO"
-								varStatus="status">
-								<c:set var="imgNamee" value="${ProductIMGVO.imgName}" />
-								<c:set var="pimageNo" value="${fn:toLowerCase(imgName)}" />
-
-								<li class="dropzone-previews mt-3">
-									<div
-										class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-										<div class="p-2">
-											<div class="row align-items-center">
-												<c:forTokens var="token" items="${pimageNo}" delims="."
-													varStatus="status">
-													<c:if test="${status.last}">
-														<c:choose>
-															<c:when test="${token eq 'hwp'}">
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/resources/dist/img/hwp.png" alt="${imgName}" />
-															</c:when>
-															<c:when test="${token eq 'xls' || token eq 'xlsx' }">
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/resources/dist/img/excelIcon.png" />
-															</c:when>
-															<c:when
-																test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/displayFile?fileName=${ProductIMGVO.fileLocation}">
-															</c:when>
-															<c:when test="${token eq 'pdf'}">
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/resources/dist/img/pdf.png" alt="${imgName}" />
-															</c:when>
-															<c:when test="${token eq 'ppt' }">
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/resources/dist/img/ppt.png" alt="${imgName}" />
-															</c:when>
-															<c:otherwise>
-																<img data-dz-thumbnail=""
-																	class="avatar-sm rounded bg-light"
-																	src="/resources/dist/img/file.svg" alt="${imgName}" />
-															</c:otherwise>
-														</c:choose>
-													</c:if>
-												</c:forTokens>
-
-												<div class="col pl-0">
-													<img alt="${ProductIMGVO.imgName}"
-														src="/displayFile?fileName=${ProductIMGVO.fileLocation}">
-												</div>
-												<div class="col pl-0">
-													<a
-														href="/displayFile?fileName=${ProductIMGVO.fileLocation}"
-														text-muted font-weight-bold data-dz-name="">
-														${ProductIMGVO.imgName}</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-							</c:forEach>
-						</ul>
-					</c:if>
 					<c:if test="${empty ProductIMGVO}">
 					</c:if>
 					<br> <br>
 					<div style="text-align: right;">
-
-						<div class="row mb-3">
-							<div class="col-sm-10">
-								<button type="submit" class="btn btn-dark">목록</button>
-
-								<!-- End General Form Elements -->
-
-							</div>
-						</div>
-
-					</div>
-
 				</div>
-
-				<!-- 댓글창 -->
-
-
-				<c:if test="${not empty login}">
-
-					<div class="card">
-						<div class="card-body">
-							<h4 class="mt-0 mb-3">Comments</h4>
+					<c:if test="${empty ProductIMGVO}">
+					</c:if>
+			</div>
+			
+			<div style="text-align: right;">
+              
+               <c:if test="${not empty login}">
+				<div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+					<div class="portfolio-info">
+							<h3>Comments</h3>
 							<form method="get">
 								<c:if
 									test="${login.getClass().name eq 'com.b2b.domain.StartUpUserVO'}">
@@ -195,32 +91,59 @@
 						</div>
 					</div>
 				</c:if>
+				</div>				
 
-
-				<div class="col-lg-12">
-					<div class="inbox-widget">
-						<h5 class="mt-0">댓글 목록</h5>
+				 <div class="col-lg-12">
+				 
+				 <div style="text-align: right;">
+				 <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+					<div class="portfolio-info">
+							<h3>댓글 목록</h3>
 						<div class="card">
 							<ul id="comments">
 							</ul>
 						</div>
 						<div style="text-align: right;"></div>
 					</div>
-
+					</div>
 				</div>
+				</div>
+				 <button type="submit" class="btn btn-outline-primary btn-rounded" >목록</button>
+				</div>
+            </div>
+          </div>
+        </div>
+      
+    </section>
+             
+              <!-- End General Form Elements -->
 
-				<!-- end card-body-->
+<script>
+	var result = '${msg}';
 
-			</div>
-			<!-- end card-->
-		</div>
-		<!-- end col -->
-</section>
+	if(result != '' ) {
+		alert(result);
+	}
+
+</script>
+
+<script>
+	$(document).ready(function() {
+
+		var formObj = $("form[role='form']");
+
+		console.log(formObj);
 
 
-</main>
+		$(".btn-outline-primary").on("click", function() {
+			formObj.attr("method", "get");
+			formObj.attr("action", "/productCommon/list");
+			formObj.submit();
+		});
 
-<!-- content -->
+	});
+</script>
+
 
 <script>
 	$(document).ready(function() {
@@ -275,7 +198,7 @@
 			success : function(result) {
 				if (result === "SUCCESS") {
 					alert("댓글이 등록되었습니다.");
-					$("#newCommentsText").val(""); //댓글 입력창 공백처리
+					$("#newReplyText").val(""); //댓글 입력창 공백처리
 					getComments(); //댓글 목록 호출
 				}
 			}
@@ -310,21 +233,21 @@
 
 			$(data).each(
 					function() {
-
 						var strbutton = "";
-						str += "<li data-commentNo='" + this.commentNo + ">"
-								+ "<div class='card'>" + this.name + "<br>"
-								+ this.comments + "<br>"
+						str += "<li class='list-group-item' data-commentNo='" + this.commentNo + "'>"
+						
+								+ "<i class='bi bi-star me-1 text-success'>" + this.name + "</i>"
+								+ this.comments + "   "
 
 						if (id == this.id)//댓글 정보와 로그인 정보 같을 경우 댓글 삭제 가능
 						{
-							strbutton += "<div class='card'>"
+							strbutton += "<i class'bi bi-trash'>"
 									+ "  <a href='#' onclick='deleteComments("
-									+ this.commentNo + ")'>삭제</a>" + "</div>";
+									+ this.commentNo + ")'>삭제</a>" + "</i>";
 						}
 
 						str += strbutton;
-						str += "</div></li>";
+						str += "</li>";
 					});
 
 			$("#comments").html(str);
@@ -333,8 +256,6 @@
 
 	}
 </script>
-
-<!-- /.content -->
 
 
 <%@include file="../include/footer.jsp"%>
