@@ -25,17 +25,17 @@ public class BuyerDAOUpdateTest {
 
 		BuyerVO vo = new BuyerVO();
 
-		vo.setBuyerId(1);
-		vo.setBuyerName("ÀÌ¸§");
-		vo.setEmail("2023.08.23");
-		vo.setCountry("±¹°¡");
-		vo.setCategory("¾÷Á¾");
-		vo.setBusiness("¾÷ÅÂ");
-		vo.setItems("¾ÆÀÌÅÛ");
-		vo.setOrderAmount("ÁÖ¹®·®");
+		vo.setBuyerId(12);
+		vo.setBuyerName("user2");
+		vo.setEmail("2023.08.02");
+		vo.setCountry("ì§€êµ¬1");
+		vo.setCategory("ìˆ˜ì¶œ ìœ í†µ ì „ë¬¸");
+		vo.setBusiness("ìœ í†µ");
+		vo.setItems("ì „ìê¸°ê¸°");
+		vo.setOrderAmount("1000");
 
 		logger.info("testUpdate: " + vo);
-		dao.create(vo);
+		dao.update(vo);
 
 	}
 

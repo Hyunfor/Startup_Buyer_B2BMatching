@@ -5,30 +5,20 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<main id="main" class="main">
 
-<div class="pagetitle">
-
-</div>
-<!-- End Page Title -->
-
-<section class="section">
-	<div class="row">
-		<div class="col-md-12">
-
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">기업관리</h5>
-
-
-
-
-
-					<div class="datatable-search">
-
-						<select name="searchType">
-							<option value="none"
-								<c:out value="${cri.searchType == null?'selected':''}"/>>
+<main id="main"> <footer id='footer'>
+	<div class="footer-newsletter">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<h4>바이어 검색</h4>
+					<p>찾고 있는 바이어를 검색해보세요</p>
+					<form>
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+								<select name="searchType" class="form-control">
+									<option value="none"
+										<c:out value="${cri.searchType == null?'selected':''}"/>>
 								---</option>
 							<option value="n"
 								<c:out value="${cri.searchType eq 'n'?'selected':''}"/>>
@@ -49,103 +39,77 @@
 								<c:out value="${cri.searchType eq 'nci'?'selected':''}"/>>
 								바이어명 or 업종 or 주력상품</option>
 
-						</select> <input class="datatable-input" placeholder="Search..."
-							type="text" name='keyword' id="keywordInput"
-							value='${cri.keyword }' title="Search within table">
-						<!-- <button id='searchBtn' class="btn btn-dark">검색</button>
-       
-        <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
-         -->
-						<button id='searchBtn' class="btn btn-dark">검색</button>
-					</div>
+								</select>
+							</div>
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+								<input type="email" id="keywordInput" value='${cri.keyword }'><input
+									type="submit" id='searchBtn' value="검색">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</footer>
 
+<section id="team" class="team section-bg">
+	<div class="container aos-init aos-animate" data-aos="fade-up">
 
-
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title">기업정보 테이블</h5>
-
-			<!-- Primary Color Bordered Table -->
-			<table class="table table-bordered border-primary">
-				<thead>
-					<tr>
-
-						<th scope="col">no</th>
-						<th scope="col">바이어명</th>
-						<th scope="col">바이어 이메일</th>
-						<th scope="col">국가</th>
-						<th scope="col">업종</th>
-						<th scope="col">업태</th>
-						<th scope="col">주력상품</th>
-						<th scope="col">잠재주문량</th>
-						<th scope="col">등록일자</th>
-
-					</tr>
-				</thead>
-				<tbody>
-
-
-				</tbody>
-
-
-				<c:forEach items="${list}" var="buyerVO" varStatus="var">
-
-					<tr>
-						<c:if test="${pageMaker.cri.page == 1 }">
-							<td>${var.count }</td>
-						</c:if>
-
-						<c:if test="${pageMaker.cri.page != 1 }">
-							<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-						</c:if>
-
-						<td><a
-							href='/buyerCommon/read${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}'>
-								${buyerVO.buyerName} </a></td>
-						<td>${buyerVO.email}</td>
-						<td>${buyerVO.country}</td>
-						<td>${buyerVO.category}</td>
-						<td>${buyerVO.business}</td>
-						<td>${buyerVO.items}</td>
-						<td>${buyerVO.orderAmount}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${buyerVO.regdate}" /></td>
-
-					</tr>
-
-				</c:forEach>
-
-
-			</table>
-			<!-- End Primary Color Bordered Table -->
-
+		<div class="section-title">
+			<h2>바이어 정보</h2>
+			<h3>
+				바이어 둘러보기 <span>BizMatch Team</span>
+			</h3>
+			<p>현재 BizMatch와 함께하는 기업들 입니다.</p>
 		</div>
-	</div>
+
+		<div class="row">
+			<c:forEach items="${list}" var="buyerVO" varStatus="var">
+				<div
+					class="col-lg-3 col-md-6 d-flex align-items-stretch aos-init aos-animate"
+					data-aos="fade-up" data-aos-delay="100">
+					<div class="member">
+						<div class="member-img">
+							<img
+								src="https://bootstrapmade.com/demo/templates/BizLand/assets/img/team/team-3.jpg"
+								class="img-fluid">
+							<div class="social">
+								<a
+									href="/buyerCommon/read${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}"><i
+									class="bi bi-zoom-in"></i></a>
+							</div>
+						</div>
+						<div class="member-info">
+							<h4 class="title">${buyerVO.buyerName}</h4>
+							<span>업종 &nbsp;	${buyerVO.category} </span> 
+							<span>업태 &nbsp;	${buyerVO.business} </span> 
+							<span>주소 &nbsp; ${buyerVO.country} </span>
+							<span>주력상품 &nbsp; ${buyerVO.items} </span>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
 
 
+		<div class="row justify-content-center">
+			<ul class="pagination justify-content-center">
 
-
-
-
-	<div class="box-footer">
-
-		<div class="text-center">
-			<ul class="pagination">
 
 				<c:if test="${pageMaker.prev}">
-					<li><a
-						href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+					<li><a class="page-link"
+						href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+					</li>
 				</c:if>
 
 				<c:forEach begin="${pageMaker.startPage }"
 					end="${pageMaker.endPage }" var="idx">
+
 					<li
 						<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-						<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+						<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+
 					</li>
 				</c:forEach>
 
@@ -156,9 +120,8 @@
 
 			</ul>
 		</div>
-
 	</div>
-</main>
+
 </section>
 
 
@@ -166,42 +129,6 @@
 
 
 
-
-<script>
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
-</script>
-
-<!-- <script>
-	$(document).ready(
-			function() {
-
-				$('#searchBtn').on(
-						"click",
-						function(event) {
-
-							self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
-
-						});
-
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-
-			});
-</script> -->
-
-
-
 <script>
 	$(document).ready(
 			function() {
@@ -218,14 +145,10 @@
 
 						});
 
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-
 			});
-</script>
+</script> </main>
+
+
 
 
 <%@include file="../include/footer.jsp"%>
