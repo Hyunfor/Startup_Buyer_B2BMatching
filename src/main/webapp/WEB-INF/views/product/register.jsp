@@ -12,66 +12,57 @@
 	<h1>상품등록</h1>
 </div>
 
-
-
 <section class="section">
 	<div class="row">
-		<div class="col-lg-10">
-
+		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">상품 정보 등록</h5>
 
 					<!-- General Form Elements -->
 
-					<form role="form" method="post">
-						<div class="row mb-3">
-							<label for="inputAddress2" class="col-form-label">상품명<span
-								class="must-mark">*</span></label>
-							<div class="col-sm-10">
-								<input type="text" name="pname" id="pname" class="form-control">
-
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="inputEmail4" class="col-form-label">스타트업</label>
-							<div class="col-sm-10">
-								<input type="text" name="startupId" id="startupId"
-									value="${login.sId}" class="form-control" readonly>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="category" class="col-form-label">카테고리<span
-								class="must-mark">*</span></label>
-							<div class="col-sm-10">
-								<input type="text" name="category" id="category"
-									class="form-control" placeholder="카테고리를 입력하세요">
-							</div>
-						</div>
-
-						<div class="row mb-3">
-							<label for="inputAddress2" class="col-form-label">상세내용</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" name="content" id="content"
-									rows="15"></textarea>
-							</div>
-						</div>
-
-						<div class="row mb-3">
-							<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
-							<div class="col-sm-10"></div>
-						</div>
+			<form role="form" method="post" name="frm">
+					
+				<div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">상품명 <span class="must-mark">*</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="pname" id="pname">
+                  </div>
+                </div>		
+                
+				<div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">기업명</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="startupId" id="startupId" value="${login.sId}" readonly>
+                  </div>
+                </div>	       
+                         		
+				<div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">카테고리 <span class="must-mark">*</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="category" id="category" placeholder="카테고리를 입력하세요">
+                  </div>
+                </div>			
+                     
+				<div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">상세내용</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="content" id="content" style="height: 100px"></textarea>
+                  </div>
+                </div>						
 
 						<div id='mydropzone' class="dropzone">
-
+							<label for="exampleInputEmail1" class="col-sm-2 control-label">첨부파일</label>
 							<input type="file" id="fileUpload" name="fileUpload"
 							style="visibility: hidden;" />
 
 							<div class="fileDrop">
 								<input type="hidden" id="uploadCount">
-								<div class="dz-message needsclick">
-									<i class="h1 text-muted dripicons-cloud-upload"></i>
+								<div class="alert alert-primary alert-dismissible fade show">
+									<div class="d-flex align-items-center">
+									<i class="h1 bi bi-cloud-download"></i>&nbsp;
 									<h3>Drop files here or click to upload.</h3>
+									</div>
 									<span class="text-muted font-13">첨부파일을 업로드하려면 여기에 첨부파일
 										파일을 끌어 넣거나 클릭해주세요</span>
 								</div>
@@ -85,14 +76,18 @@
 							</ul>
 						</div>
 
-						<div class="row mb-3">
+				<div class="text-center">
+                  <button type="submit" class="btn btn-primary">등록</button>
+                  <button type="button" class="btn btn-secondary" onclick="location.href='adminList'">취소</button>
+                </div>
+
+<!-- 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label">등록하기</label>
 							<div class="col-sm-10">
 								<button type="submit" class="btn btn-primary">등록</button>
-								<button type="button" onclick="location.href='adminList'"
-									class="btn btn-light" style="font-size: 14px;">취소</button>
+								<button type="button" onclick="location.href='adminList'" class="btn btn-light" style="font-size: 14px;">취소</button>
 							</div>
-						</div>
+						</div> -->
 
 
 					</form>
@@ -106,13 +101,11 @@
 
 	</div>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/resources/upload.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-	<script id="template" type="text/x-handlebars-template">
-<li class="dropzone-previews mt-3">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script id="template" type="text/x-handlebars-template">
+<li class="list-group-item dropzone-previews mt-3">
 <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 <div class="p-2">
 <div class="row align-items-center">
@@ -123,7 +116,7 @@
    <a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  </div>
  <div class="col-auto">
-   <a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="far fa-trash-alt"></i></a>
+   <a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="bi bi-trash"></i></a>
  </div>
 </div>
 </div>
@@ -134,12 +127,12 @@
 		// 신청 등록 유효성 검사 
 		function validate() {
 
-			var title = $("#title").val();
+			var title = $("#pname").val();
 			var content = $("#content").val();
 
 			if (title == "") {
-				alert("제목을 입력해주세요 .");
-				document.getElementById("title").focus();
+				alert("상품명을 입력해주세요 .");
+				document.getElementById("pname").focus();
 				return false;
 			}
 
@@ -175,6 +168,7 @@
 
 
 	<script>
+	
 		$(document).ready(function() {
 			var formObj = $("form[role='form']");
 				formObj.submit(function(event) {
@@ -200,13 +194,12 @@
 				self.location = "list&page=${cri.page}&perPageNum=${cri.perPageNum}"
 					+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
 					});
-				});
-
-
+				
+		
+		});
+		
 		$('#mydropzone').click(function(event) {
-
 			document.frm.fileUpload.click();
-
 		});
 
 		var template = Handlebars.compile($("#template").html());

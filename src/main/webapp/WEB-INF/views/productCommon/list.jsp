@@ -54,7 +54,6 @@
         <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
          -->
 						<button id='searchBtn' class="btn btn-dark">검색</button>
-						<button id='newBtn' class="btn btn-primary">제품 등록</button>
 					</div>
 				</div>
 			</div>
