@@ -57,7 +57,7 @@ public class BuyerDAOImpl implements BuyerDAO {
 	}
 
 	@Override
-	public List<BuyerVO> adminList() throws Exception {
+	public List<BuyerVO> home() throws Exception {
 		return session.selectList(namespace + ".adminList");
 	}
 	

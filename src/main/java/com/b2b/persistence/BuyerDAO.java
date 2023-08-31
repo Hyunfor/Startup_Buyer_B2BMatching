@@ -19,7 +19,7 @@ public interface BuyerDAO {
 
 	public List<BuyerVO> list() throws Exception;
 
-	public List<BuyerVO> adminList() throws Exception;
+	public List<BuyerVO> home() throws Exception;
 	
 	public List<BuyerVO> matchingList() throws Exception;
 
