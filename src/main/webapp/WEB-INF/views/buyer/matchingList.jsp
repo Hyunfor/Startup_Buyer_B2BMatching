@@ -22,31 +22,8 @@
 
 					<div class="datatable-search">
 
-						<select name="searchType">
-							<option value="none"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="n"
-							<c:out value="${cri.searchType eq 'n'?'selected':''}"/>>
-							기업명</option>
-						<option value="s"
-							<c:out value="${cri.searchType eq 's'?'selected':''}"/>>
-							기업규모</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							주소</option>
-							<option value="i"
-							<c:out value="${cri.searchType eq 'i'?'selected':''}"/>>
-							주력상품</option>
-
-						</select> <input class="datatable-input" placeholder="Search..."
-							type="text" name='keyword' id="keywordInput"
-							value='${cri.keyword }' title="Search within table">
-						<!-- <button id='searchBtn' class="btn btn-dark">검색</button>
-       
-        <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
-         -->
-						<button id='searchBtn' class="btn btn-dark">검색</button>
+						
+						<button id='searchBtn' class="btn btn-dark">매칭</button>
 					</div>
 				</div>
 			</div>
@@ -56,26 +33,14 @@
 	<div class="card">
 		<div class="card-body">
 			<h5 class="card-title">스타트업</h5>
-			<p>
-				Add
-				<code>.table-bordered</code>
-				for borders on all sides of the table and cells.
-			</p>
-
-			<p>
-				<a
-					href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color"
-					target="_blank">Border color utilities</a> can be added to change
-				colors:
-			</p>
 
 			<!-- Primary Color Bordered Table -->
 			<table class="table table-bordered border-primary">
 				<thead>
 					<tr>
 
-					<th style="width: 10px">NO</th>
-                    <th>기업 이메일</th>
+						<th style="width: 10px">NO</th>
+						<th>기업 이메일</th>
                     <th>기업명</th>
                     <th>설립일</th>
                     <th>규모</th>
@@ -86,6 +51,7 @@
                     <th>주력상품</th>
                     <th>대표자 명</th>
                     <th>등록일자</th>
+                    <th></th>
 
 					</tr>
 				</thead>
@@ -93,36 +59,74 @@
 
 				</tbody>
 
-				 <c:forEach items="${list}" var="startupVO" varStatus="var">
+				 
+								<tr>
+								<td>1</td>
+								<td><a href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+									angel@gma.com</a></td>		
+								<td>엔젤로보틱스</td> 			 
+								<td>17-02-05</td>
+								<td>중소기업</td>
+								<td>제조</td>
+								<td>의료</td>
+								<td>150명</td>
+								<td>서울</td>				
+								<td>엔젤슈트</td>
+								<td>공경철</td>
+								<td>23-09-01</td>
+								<td><input type="checkbox"></td>
+								</tr>
 
-							<tr>
-								<c:if test="${pageMaker.cri.page == 1 }">
-								<td>${var.count }</td>
-								</c:if>
+								<tr>
+								<td>2</td>
+								<td><a href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+									bear@gma.com</a></td>		
+								<td>베어로보틱스</td> 			 
+								<td>17-05-05</td>
+								<td>중소기업</td>
+								<td>제조</td>
+								<td>외식</td>
+								<td>100명</td>
+								<td>서울</td>				
+								<td>서비(서빙 로봇)</td>
+								<td>김준수</td>
+								<td>23-08-31</td>
+								<td><input type="checkbox"></td>
+								</tr>
 								
-								<c:if test="${pageMaker.cri.page != 1 }">
-								<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-								</c:if>
+								<tr>
+								<td>3</td>
+								<td><a href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+									breezy@gma.com</a></td>		
+								<td>브리지테일</td> 			 
+								<td>17-04-19</td>
+								<td>중소기업</td>
+								<td>제조</td>
+								<td>반려동물</td>
+								<td>53명</td>
+								<td>서울</td>				
+								<td>반려동물 케어제품</td>
+								<td>강창우</td>
+								<td>23-08-25</td>
+								<td><input type="checkbox"></td>
+								</tr>
 								
-								<td><a href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=${startupVO.startupId}'>
-										${startupVO.startupId} </a></td>
-								<td>${startupVO.startupName}</td>	
-								<%-- <td><fmt:formatDate pattern="yyyy-MM-dd" 
-										value="${startupVO.establishedYear}" /></td> --%> 	
-								<td>    <fmt:parseDate value="${startupVO.establishedYear}" pattern ="yyyy-MM-dd" > </fmt:parseDate></td> 			 
-								<td>${startupVO.sizes}</td>
-								<td>${startupVO.categorys}</td>
-								<td>${startupVO.business}</td>
-								<td>${startupVO.noOfEmployees}</td>
-								<td>${startupVO.city}</td>
-								<td>${startupVO.items}</td>				
-								<td>${startupVO.names}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${startupVO.regdate}" /></td>
-								
-							</tr>
-
-						</c:forEach>
+								<tr>
+								<td>4</td>
+								<td><a href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+									monster@gma.com</a></td>		
+								<td>몬스터스튜디오</td> 			 
+								<td>16-07-06</td>
+								<td>중소기업</td>
+								<td>제조</td>
+								<td>콘텐츠</td>
+								<td>37명</td>
+								<td>광주</td>				
+								<td>애니메이션 영상</td>
+								<td>정지환</td>
+								<td>23-08-22</td>
+								<td><input type="checkbox"></td>
+								</tr>
 
 
 			</table>
@@ -134,12 +138,12 @@
 	<div class="card">
 		<div class="card-body">
 
-			<div class="text-center">
-				<ul class="pagination">
+			<div class="row justify-content-center">
+			<ul class="pagination justify-content-center">
 
 					<c:if test="${pageMaker.prev}">
 						<li><a class="page-link"
-							href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+							href="matchingList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
 						</li>
 					</c:if>
 
@@ -148,14 +152,14 @@
 
 						<li
 							<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-							<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+							<a class="page-link" href="matchingList${pageMaker.makeSearch(idx)}">${idx}</a>
 
 						</li>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li><a
-							href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+							href="matchingList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 					</c:if>
 
 				</ul>

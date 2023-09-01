@@ -39,7 +39,7 @@
               <h3>바이어 정보</h3>
               <h4><td>${buyerVO.buyerName}</td></h4>
               <ul>
-                <li>바이어명 &nbsp;<td>${buyerVO.buyerName}</td></li>
+                <li>기업명 &nbsp;<td>${buyerVO.buyerName}</td></li>
                 <li>바이어 이메일  &nbsp; <td>${buyerVO.email} </td></li>	
                 <li>국가  &nbsp;<td>${buyerVO.country}</td></li>
                 <li>업종  &nbsp;<td>${buyerVO.category}</td></li>

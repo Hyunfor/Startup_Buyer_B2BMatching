@@ -62,7 +62,7 @@
 </c:if>
 
 <c:if test="${login.getClass().name eq 'com.b2b.domain.BuyerUserVO'}">
-<a href="/buyer/adminList"><i class="bi bi-box-arrow-in-left"></i><span> My Page </span></a>
+<a href="/buyer/readPage"><i class="bi bi-box-arrow-in-left"></i><span> My Page </span></a>
 <a href="/buyerUser/logout"><i class="bi bi-box-arrow-in-left"></i><span> Buyer Logout </span></a>
 </c:if>
 </c:when>

@@ -8,7 +8,7 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>바이어 매칭</h1>
+	<h1>스타트업 매칭</h1>
 
 </div>
 <!-- End Page Title -->
@@ -19,108 +19,103 @@
 
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">기업관리</h5>
-
-
-
-
 
 					<div class="datatable-search">
 
-						<select name="searchType">
-							<option value="none"
-								<c:out value="${cri.searchType == null?'selected':''}"/>>
-								---</option>
-							<option value="n"
-								<c:out value="${cri.searchType eq 'n'?'selected':''}"/>>
-								바이어명</option>
-							<option value="c"
-								<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-								업종</option>
-							<option value="i"
-								<c:out value="${cri.searchType eq 'i'?'selected':''}"/>>
-								주력상품</option>
-							<option value="nc"
-								<c:out value="${cri.searchType eq 'nc'?'selected':''}"/>>
-								바이어명 or 업종</option>
-							<option value="ci"
-								<c:out value="${cri.searchType eq 'ci'?'selected':''}"/>>
-								업종 or 주력상품</option>
-							<option value="nci"
-								<c:out value="${cri.searchType eq 'nci'?'selected':''}"/>>
-								바이어명 or 업종 or 주력상품</option>
 
-						</select> <input class="datatable-input" placeholder="Search..."
-							type="text" name='keyword' id="keywordInput"
-							value='${cri.keyword }' title="Search within table">
-						<!-- <button id='searchBtn' class="btn btn-dark">검색</button>
-       
-        <button type = "button" id='newBtn' class="btn btn-primary">기업등록</button>
-         -->
-						<button id='searchBtn' class="btn btn-dark">검색</button>
-						<button id='newBtn' class="btn btn-primary">기업 등록</button>
+						<button id='searchBtn' class="btn btn-dark">매칭</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-
 	<div class="card">
 		<div class="card-body">
-			<h5 class="card-title">기업정보 테이블</h5>
-			
+			<h5 class="card-title">바이어</h5>
 
 			<!-- Primary Color Bordered Table -->
 			<table class="table table-bordered border-primary">
 				<thead>
 					<tr>
 
-						<th scope="col">no</th>
-						<th scope="col">바이어명</th>
-						<th scope="col">바이어 이메일</th>
-						<th scope="col">국가</th>
-						<th scope="col">업종</th>
-						<th scope="col">업태</th>
-						<th scope="col">주력상품</th>
-						<th scope="col">잠재주문량</th>
-						<th scope="col">등록일자</th>
+						<th style="width: 10px">NO</th>
+						<th>바이어명</th>
+						<th>바이어 이메일</th>
+						<th>국가</th>
+						<th>업종</th>
+						<th>업태</th>
+						<th>주력상품</th>
+						<th>잠재주문량</th>
+						<th>등록일자</th>
+						<th></th>
 
 					</tr>
 				</thead>
 				<tbody>
 
-
 				</tbody>
 
 
-				<c:forEach items="${adminList}" var="buyerVO" varStatus="var">
+				<tr>
+					<td>1</td>
+					<td><a
+						href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+							Rodney Rogers</a></td>
+					<td>rodney@gma.com</td>
+					<td>미국</td>
+					<td>경영 컨설팅업</td>
+					<td>서비스업</td>
+					<td>매니지먼트 서비스</td>
+					<td>5000</td>
+					<td>23-08-12</td>
+					<td><input type="checkbox"></td>
+				</tr>
 
-					<tr>
-						<c:if test="${pageMaker.cri.page == 1 }">
-							<td>${var.count }</td>
-						</c:if>
+				<tr>
+					<td>2</td>
+					<td><a
+						href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+							Michael Yong</a></td>
+					<td>michael@gma.com</td>
+					<td>호주</td>
+					<td>의약품</td>
+					<td>제조업</td>
+					<td>일반의약품</td>
+					<td>8000</td>
+					<td>23-08-30</td>
+					<td><input type="checkbox"></td>
+				</tr>
 
-						<c:if test="${pageMaker.cri.page != 1 }">
-							<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-						</c:if>
+				<tr>
+					<td>3</td>
+					<td><a
+						href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+							Eddy Man</a></td>
+					<td>eddy@gma.com</td>
+					<td>인도네시아</td>
+					<td>석탄 광업</td>
+					<td>광업</td>
+					<td>석회암</td>
+					<td>3000</td>
+					<td>23-08-23</td>
+					<td><input type="checkbox"></td>
+				</tr>
 
-						<td><a
-							href='/buyer/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&buyerId=${buyerVO.buyerId}'>
-								${buyerVO.buyerName} </a></td>
-						<td>${buyerVO.email}</td>
-						<td>${buyerVO.country}</td>
-						<td>${buyerVO.category}</td>
-						<td>${buyerVO.business}</td>
-						<td>${buyerVO.items}</td>
-						<td>${buyerVO.orderAmount}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${buyerVO.regdate}" /></td>
-
-					</tr>
-
-				</c:forEach>
+				<tr>
+					<td>4</td>
+					<td><a
+						href='/startup/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&startupId=1'>
+							Ben Paul</a></td>
+					<td>ben@gma.com</td>
+					<td>독일</td>
+					<td>아파트 건설업</td>
+					<td>건설업</td>
+					<td>아파트</td>
+					<td>15000</td>
+					<td>23-08-18</td>
+					<td><input type="checkbox"></td>
+				</tr>
 
 
 			</table>
@@ -129,46 +124,41 @@
 		</div>
 	</div>
 
+	<div class="card">
+		<div class="card-body">
 
+			<div class="row justify-content-center">
+				<ul class="pagination justify-content-center">
 
+					<c:if test="${pageMaker.prev}">
+						<li><a class="page-link"
+							href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
+						</li>
+					</c:if>
 
+					<c:forEach begin="${pageMaker.startPage }"
+						end="${pageMaker.endPage }" var="idx">
 
+						<li
+							<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+							<a class="page-link"
+							href="list${pageMaker.makeSearch(idx)}">${idx}</a>
 
-	<div class="box-footer">
+						</li>
+					</c:forEach>
 
-		<div class="text-center">
-			<ul class="pagination">
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li><a
+							href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+					</c:if>
 
-				<c:if test="${pageMaker.prev}">
-					<li><a
-						href="adminList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
-				</c:if>
+				</ul>
+			</div>
 
-				<c:forEach begin="${pageMaker.startPage }"
-					end="${pageMaker.endPage }" var="idx">
-					<li
-						<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-						<a href="adminList${pageMaker.makeSearch(idx)}">${idx}</a>
-					</li>
-				</c:forEach>
-
-				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					<li><a
-						href="adminList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-				</c:if>
-
-			</ul>
 		</div>
-
 	</div>
 </main>
 </section>
-
-
-
-
-
-
 
 <script>
 	var result = '${msg}';
@@ -178,7 +168,7 @@
 	}
 </script>
 
-<!-- <script>
+<script>
 	$(document).ready(
 			function() {
 
@@ -201,34 +191,6 @@
 				});
 
 			});
-</script> -->
-
-
-
-<script>
-	$(document).ready(
-			function() {
-
-				$('#searchBtn').on(
-						"click",
-						function(event) {
-
-							self.location = "adminList"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
-
-						});
-
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-
-			});
 </script>
-
 
 <%@include file="../include/startup_footer.jsp"%>
