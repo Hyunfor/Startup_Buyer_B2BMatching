@@ -22,7 +22,7 @@
 
 					<!-- General Form Elements -->
 
-					<form role="form">
+					<form role="form" method="post">
 
 						<input type='hidden' name='pno' value="${productVO.pno}" id='pno'>
 						<input type='hidden' name='page' value="${cri.page}"> 

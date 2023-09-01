@@ -64,7 +64,7 @@
 					<div class="member">
 						<div class="member-img">
 							<img
-								src="https://bootstrapmade.com/demo/templates/BizLand/assets/img/team/team-3.jpg"
+								src="https://img.kr.news.samsung.com/kr/wp-content/uploads/2020/10/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EB%A0%88%ED%84%B0%EB%A7%88%ED%81%AC-2.jpg"
 								class="img-fluid">
 							<div class="social">
 								<a
